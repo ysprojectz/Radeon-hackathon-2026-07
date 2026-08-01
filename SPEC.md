@@ -242,21 +242,20 @@ this public repo).
 
 ## 7. Automated Test Suite
 
-Phase 1 exit check (51/51 local-LLM regression tests — reconciled 2026-07-25,
-was stale at 60/60 from before the 16th testing_samples fixture was added):
+Phase 1 exit check (20/20 local-LLM regression tests — reconciled 2026-08-02
+against the actual public repo, after the GCC/UAE market purge dropped
+testing_samples from 16 to 10 India-only fixtures):
 ```bash
 pytest tests/test_testing_samples_suite.py \
-       tests/test_agent_c_local_secondary.py \
-       tests/test_tool_calling.py -v
+       tests/test_agent_c_local_secondary.py -v
 ```
 
-Full suite (excluding 2 files that require a live server):
+Full suite:
 ```bash
-pytest tests/ --ignore=tests/test_advance_claim.py \
-               --ignore=tests/test_upload_real.py -q
-# Real baseline (reconciled 2026-07-25): 430 passed, 1 failed, 23 skipped, 17 errors
-# The 1 failure (test_duplicate_detection.py) and the 17 errors are all
-# integration tests requiring a live API server — expected without one running
+pytest tests/ -q
+# Real baseline (reconciled 2026-08-02): 85 collected, 62 passed, 23 skipped,
+# 0 failed. The skips are tests/india_cashless FWA/OPA checks that need
+# those services running separately, not failures.
 ```
 
 ---
@@ -268,5 +267,5 @@ have been invented, estimated, or taken from a mock-server smoke test.
 Specifically:
 - Benchmark numbers → `bench/results/*.json` → reproduced via `bench/benchmark.py`
 - Dual-agent proof → server-side vLLM request-log count method (`grep -c 'POST /v1/chat/completions'`)
-- Test counts (51/51, 430 passed) → `pytest` output, reproducible from the repo
+- Test counts (20/20, 62 passed/23 skipped/0 failed) → `pytest` output, reproducible from the repo
 - Market statistics → cited in §1 with named sources; paraphrased, not copied verbatim

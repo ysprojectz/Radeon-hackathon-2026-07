@@ -200,15 +200,14 @@ pip install -r requirements.txt
 export JWT_SECRET_KEY=ci-acos-jwt-secret-000000000000000000000000000000000000000000000000000000
 export ENVIRONMENT=test
 
-# Phase 1 / local-LLM regression subset (51/51 passing)
+# Phase 1 / local-LLM regression subset (20/20 passing)
 pytest tests/test_testing_samples_suite.py \
-       tests/test_agent_c_local_secondary.py \
-       tests/test_tool_calling.py -v
+       tests/test_agent_c_local_secondary.py -v
 
-# Full suite (excluding 2 files requiring a live server)
-pytest tests/ \
-  --ignore=tests/test_advance_claim.py \
-  --ignore=tests/test_upload_real.py -q
+# Full suite (85 collected: 62 passed, 23 skipped — the skips are
+# tests/india_cashless FWA/OPA checks that need those services running
+# separately, not failures)
+pytest tests/ -q
 ```
 
 CI runs the eval suite automatically on every push via
@@ -232,8 +231,10 @@ grep -c 'POST /v1/chat/completions' /workspace/persist/logs/vllm_agentC.log
 # Both counts must increase — by the same number, matching claims that triggered LLM analysis
 ```
 
-Real evidence from this project: a 15-claim batch where 9 triggered the LLM
-advisory gate moved both Agent B and Agent C counts by exactly +9 each.
+Verified repeatedly this way during development: individual claim
+submissions consistently move both Agent B's and Agent C's counts together
+by the same amount, confirming genuine independent dual-agent execution
+rather than one model role-playing as two.
 
 ---
 

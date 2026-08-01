@@ -1,6 +1,6 @@
 """
-Phase 1 exit check (Victory Bible, Wed Jul 23): run all 15 testing_samples/
-claims through the local pipeline and confirm >=13/15 adjudicate without
+Phase 1 exit check (Victory Bible, Wed Jul 23): run all testing_samples/
+claims through the local pipeline and confirm most adjudicate without
 errors. Runs rules-engine + settlement only — LLM reasoning gracefully
 degrades to rules-only when no provider is configured, which is the
 expected state for CI (no GPU/cloud keys available there).
@@ -35,12 +35,11 @@ def test_sample_claim_adjudicates_without_error(pipeline, sample_path):
     )
 
 
-def test_at_least_thirteen_of_fifteen_pass(pipeline):
-    # 16th fixture added 2026-07-25: CLM-INDIA-2026-REIMB01, a genuine
-    # reimbursement-flow claim (is_cashless: false, no preauth_number) closing
-    # the coverage gap where all prior 15 fixtures defaulted to is_cashless
-    # unset — see CODING_AGENT_BRIEF.md Task 3.
-    assert len(SAMPLE_FILES) == 16, "expected exactly 16 testing_samples fixtures"
+def test_most_samples_pass(pipeline):
+    # 2026-08-02: non-India (UAE/KSA) fixtures removed per the India-only
+    # submission scope, leaving 10 India fixtures. Threshold scaled down
+    # from the original 13/16 (81%) to keep the same tolerance.
+    assert len(SAMPLE_FILES) == 10, "expected exactly 10 testing_samples fixtures"
     passed = 0
     for sample_path in SAMPLE_FILES:
         claim = json.loads(Path(sample_path).read_text())
@@ -50,4 +49,4 @@ def test_at_least_thirteen_of_fifteen_pass(pipeline):
                 passed += 1
         except Exception:
             pass
-    assert passed >= 13, f"only {passed}/16 claims adjudicated cleanly, need >=13"
+    assert passed >= 8, f"only {passed}/10 claims adjudicated cleanly, need >=8"
