@@ -1,0 +1,70 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN035",
+  "claim_type": "EMERGENCY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500035",
+  "patient_name": "Nikhil Gupta",
+  "patient_dob": "1973-05-04",
+  "gender": "MALE",
+  "provider_code": "MAN004",
+  "provider_name": "Manipal Hospital, Old Airport Road",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NETWORK",
+  "service_date": "2026-06-09",
+  "admission_date": "2026-06-09",
+  "discharge_date": "2026-06-13",
+  "primary_diagnosis_code": "T63.0",
+  "primary_diagnosis_desc": "Toxic effect of snake venom",
+  "is_cashless": true,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600035",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Raksha TPA Pvt. Ltd.",
+  "tpa_id": "TPA56884",
+  "total_billed": 112489.79,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 4 night(s) (Single AC Room)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 40400.0,
+      "units": 1,
+      "days": 4
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "T630",
+      "procedure_desc": "Anti-venom administration + ICU observation",
+      "service_category": "SURGERY",
+      "billed_amount": 65500.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 1701.02,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 2712.89,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "AMB",
+      "procedure_desc": "Ambulance charges",
+      "service_category": "TRANSPORT",
+      "billed_amount": 2175.88,
+      "units": 1
+    }
+  ]
+}

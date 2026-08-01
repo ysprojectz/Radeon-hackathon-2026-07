@@ -1,0 +1,70 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN018",
+  "claim_type": "EMERGENCY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500018",
+  "patient_name": "Ravi Iyer",
+  "patient_dob": "1963-11-08",
+  "gender": "MALE",
+  "provider_code": "JAS014",
+  "provider_name": "Jaslok Hospital",
+  "provider_city": "Mumbai",
+  "provider_state": "Maharashtra",
+  "network_tier": "NETWORK",
+  "service_date": "2026-04-12",
+  "admission_date": "2026-04-12",
+  "discharge_date": "2026-04-17",
+  "primary_diagnosis_code": "T63.0",
+  "primary_diagnosis_desc": "Toxic effect of snake venom",
+  "is_cashless": true,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600018",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "MediAssist India TPA Pvt. Ltd.",
+  "tpa_id": "TPA68618",
+  "total_billed": 123748.53,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 5 night(s) (Twin Sharing)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 51500.0,
+      "units": 1,
+      "days": 5
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "T630",
+      "procedure_desc": "Anti-venom administration + ICU observation",
+      "service_category": "SURGERY",
+      "billed_amount": 63200.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 2331.13,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 4957.8,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "AMB",
+      "procedure_desc": "Ambulance charges",
+      "service_category": "TRANSPORT",
+      "billed_amount": 1759.6,
+      "units": 1
+    }
+  ]
+}

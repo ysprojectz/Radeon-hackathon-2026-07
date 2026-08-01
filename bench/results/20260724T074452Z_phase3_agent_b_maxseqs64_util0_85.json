@@ -1,0 +1,50 @@
+{
+  "label": "Phase3 Agent B maxseqs64_util0.85",
+  "base_url": "http://localhost:8000/v1",
+  "model": "Qwen/Qwen2.5-14B-Instruct-AWQ",
+  "run_at_utc": "2026-07-24T07:44:52.318431+00:00",
+  "requests_per_level": 6,
+  "concurrency_levels": [
+    1,
+    4,
+    8
+  ],
+  "results": [
+    {
+      "concurrency": 1,
+      "requests_sent": 6,
+      "requests_ok": 6,
+      "requests_failed": 0,
+      "wall_time_s": 259.242,
+      "requests_per_sec": 0.023,
+      "tokens_per_sec_aggregate": 9.51,
+      "ttft_p50_s": 0.214,
+      "ttft_p95_s": 0.337,
+      "avg_completion_tokens": 411.0
+    },
+    {
+      "concurrency": 4,
+      "requests_sent": 6,
+      "requests_ok": 6,
+      "requests_failed": 0,
+      "wall_time_s": 86.879,
+      "requests_per_sec": 0.069,
+      "tokens_per_sec_aggregate": 28.38,
+      "ttft_p50_s": 0.214,
+      "ttft_p95_s": 0.215,
+      "avg_completion_tokens": 411.0
+    },
+    {
+      "concurrency": 8,
+      "requests_sent": 6,
+      "requests_ok": 6,
+      "requests_failed": 0,
+      "wall_time_s": 43.633,
+      "requests_per_sec": 0.138,
+      "tokens_per_sec_aggregate": 56.52,
+      "ttft_p50_s": 0.212,
+      "ttft_p95_s": 0.214,
+      "avg_completion_tokens": 411.0
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-REIMB01",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-200002",
+  "patient_name": "Vikram Patel",
+  "patient_dob": "1975-12-10",
+  "provider_code": "IND-002",
+  "provider_name": "Fortis Hospital, Bannerghatta Road",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-03-05",
+  "admission_date": "2026-03-05",
+  "discharge_date": "2026-03-10",
+  "primary_diagnosis_code": "I21.9",
+  "primary_diagnosis_desc": "Acute myocardial infarction, unspecified",
+  "is_cashless": false,
+  "total_billed": 110000.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "92928",
+      "procedure_desc": "Percutaneous coronary intervention",
+      "service_category": "SURGERY",
+      "billed_amount": 25000.0,
+      "units": 1
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 5 nights (private suite, above policy daily cap)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 75000.0,
+      "units": 1,
+      "days": 5
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "93000",
+      "procedure_desc": "Electrocardiogram",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 2000.0,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "82550",
+      "procedure_desc": "Cardiac enzyme panel",
+      "service_category": "LAB",
+      "billed_amount": 3000.0,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "PHARMA",
+      "procedure_desc": "Post-op cardiac medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 5000.0,
+      "units": 1
+    }
+  ]
+}

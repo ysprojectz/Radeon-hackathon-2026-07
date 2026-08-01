@@ -1,0 +1,502 @@
+[
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN001",
+    "patient_name": "Pooja Menon",
+    "claim_type": "OUTPATIENT",
+    "is_cashless": false,
+    "hospital": "Narayana Health City",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 5700.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN002",
+    "patient_name": "Suresh Choudhary",
+    "claim_type": "DAYCARE",
+    "is_cashless": true,
+    "hospital": "AIIMS, New Delhi",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+    "total_billed": 23533.85
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN003",
+    "patient_name": "Sanjay Desai",
+    "claim_type": "OUTPATIENT",
+    "is_cashless": false,
+    "hospital": "Narayana Health City",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 4100.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN004",
+    "patient_name": "Geeta Bhat",
+    "claim_type": "INPATIENT",
+    "is_cashless": true,
+    "hospital": "Narayana Health City",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+    "total_billed": 169114.22
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN005",
+    "patient_name": "Aishwarya Sharma",
+    "claim_type": "DAYCARE",
+    "is_cashless": false,
+    "hospital": "Lilavati Hospital",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 52831.25
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN006",
+    "patient_name": "Ravi Patel",
+    "claim_type": "DAYCARE",
+    "is_cashless": true,
+    "hospital": "CMC Vellore",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 50618.04
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN007",
+    "patient_name": "Kavya Bhat",
+    "claim_type": "MATERNITY",
+    "is_cashless": true,
+    "hospital": "AIIMS, New Delhi",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 160211.97
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN008",
+    "patient_name": "Swati Chatterjee",
+    "claim_type": "OPTICAL",
+    "is_cashless": true,
+    "hospital": "Fortis Hospital, Bannerghatta Road",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+    "total_billed": 57700.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN009",
+    "patient_name": "Kavya Patel",
+    "claim_type": "INPATIENT",
+    "is_cashless": false,
+    "hospital": "Narayana Health City",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 189884.04
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN010",
+    "patient_name": "Vikram Verma",
+    "claim_type": "PHARMACY",
+    "is_cashless": true,
+    "hospital": "AIIMS, New Delhi",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 1500.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN011",
+    "patient_name": "Lakshmi Iyer",
+    "claim_type": "INPATIENT",
+    "is_cashless": false,
+    "hospital": "Lilavati Hospital",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 401305.74
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN012",
+    "patient_name": "Amit Nair",
+    "claim_type": "EMERGENCY",
+    "is_cashless": true,
+    "hospital": "Lilavati Hospital",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 130156.13
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN013",
+    "patient_name": "Kiran Pillai",
+    "claim_type": "PHARMACY",
+    "is_cashless": true,
+    "hospital": "Manipal Hospital, Old Airport Road",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "Family Health Plan (FHPL) TPA Ltd.",
+    "total_billed": 4400.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN014",
+    "patient_name": "Ravi Joshi",
+    "claim_type": "INPATIENT",
+    "is_cashless": true,
+    "hospital": "Care Hospitals, Banjara Hills",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 478463.28
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN015",
+    "patient_name": "Siddharth Chatterjee",
+    "claim_type": "PHARMACY",
+    "is_cashless": true,
+    "hospital": "KIMS Hospital",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 3400.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN016",
+    "patient_name": "Priya Desai",
+    "claim_type": "MATERNITY",
+    "is_cashless": false,
+    "hospital": "Lilavati Hospital",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 203820.79
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN017",
+    "patient_name": "Rajesh Gupta",
+    "claim_type": "EMERGENCY",
+    "is_cashless": false,
+    "hospital": "Medanta The Medicity",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Family Health Plan (FHPL) TPA Ltd.",
+    "total_billed": 115434.8
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN018",
+    "patient_name": "Ravi Iyer",
+    "claim_type": "EMERGENCY",
+    "is_cashless": true,
+    "hospital": "Jaslok Hospital",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 123748.53
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN019",
+    "patient_name": "Sanjay Kulkarni",
+    "claim_type": "PHARMACY",
+    "is_cashless": true,
+    "hospital": "Lilavati Hospital",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 4500.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN020",
+    "patient_name": "Sunita Bhat",
+    "claim_type": "PHARMACY",
+    "is_cashless": false,
+    "hospital": "Kokilaben Dhirubhai Ambani Hospital",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 3600.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN021",
+    "patient_name": "Vijay Desai",
+    "claim_type": "DAYCARE",
+    "is_cashless": false,
+    "hospital": "Lilavati Hospital",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+    "total_billed": 17206.63
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN022",
+    "patient_name": "Sunita Kumar",
+    "claim_type": "INPATIENT",
+    "is_cashless": true,
+    "hospital": "Narayana Health City",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 201269.8
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN023",
+    "patient_name": "Rajesh Menon",
+    "claim_type": "INPATIENT",
+    "is_cashless": false,
+    "hospital": "Max Super Speciality Hospital, Saket",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 205396.47
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN024",
+    "patient_name": "Manoj Choudhary",
+    "claim_type": "DAYCARE",
+    "is_cashless": false,
+    "hospital": "Care Hospitals, Banjara Hills",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Raksha TPA Pvt. Ltd.",
+    "total_billed": 38180.73
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN025",
+    "patient_name": "Neha Singh",
+    "claim_type": "DENTAL",
+    "is_cashless": false,
+    "hospital": "Max Super Speciality Hospital, Saket",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 10300.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN026",
+    "patient_name": "Deepak Bose",
+    "claim_type": "DAYCARE",
+    "is_cashless": true,
+    "hospital": "Manipal Hospital, Old Airport Road",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 41719.57
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN027",
+    "patient_name": "Kavya Rao",
+    "claim_type": "EMERGENCY",
+    "is_cashless": true,
+    "hospital": "Medanta The Medicity",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 102982.91
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN028",
+    "patient_name": "Vijay Singh",
+    "claim_type": "EMERGENCY",
+    "is_cashless": true,
+    "hospital": "Columbia Asia Hospital",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 457370.49
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN029",
+    "patient_name": "Manoj Iyer",
+    "claim_type": "OPTICAL",
+    "is_cashless": true,
+    "hospital": "Fortis Hospital, Bannerghatta Road",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "Raksha TPA Pvt. Ltd.",
+    "total_billed": 49500.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN030",
+    "patient_name": "Anjali Reddy",
+    "claim_type": "MATERNITY",
+    "is_cashless": false,
+    "hospital": "KIMS Hospital",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 96110.36
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN031",
+    "patient_name": "Vijay Desai",
+    "claim_type": "DAYCARE",
+    "is_cashless": true,
+    "hospital": "Care Hospitals, Banjara Hills",
+    "insurer": "Star Health and Allied Insurance Co. Ltd.",
+    "tpa": "Family Health Plan (FHPL) TPA Ltd.",
+    "total_billed": 51329.66
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN032",
+    "patient_name": "Vijay Joshi",
+    "claim_type": "DAYCARE",
+    "is_cashless": true,
+    "hospital": "Manipal Hospital, Old Airport Road",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 53077.95
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN033",
+    "patient_name": "Rohan Reddy",
+    "claim_type": "OPTICAL",
+    "is_cashless": true,
+    "hospital": "Lilavati Hospital",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 64200.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN034",
+    "patient_name": "Priya Desai",
+    "claim_type": "INPATIENT",
+    "is_cashless": false,
+    "hospital": "CMC Vellore",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 335981.64
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN035",
+    "patient_name": "Nikhil Gupta",
+    "claim_type": "EMERGENCY",
+    "is_cashless": true,
+    "hospital": "Manipal Hospital, Old Airport Road",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Raksha TPA Pvt. Ltd.",
+    "total_billed": 112489.79
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN036",
+    "patient_name": "Amit Mukherjee",
+    "claim_type": "EMERGENCY",
+    "is_cashless": false,
+    "hospital": "Narayana Health City",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 154111.85
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN037",
+    "patient_name": "Vikram Rao",
+    "claim_type": "EMERGENCY",
+    "is_cashless": false,
+    "hospital": "Medanta The Medicity",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "Family Health Plan (FHPL) TPA Ltd.",
+    "total_billed": 122871.7
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN038",
+    "patient_name": "Rekha Reddy",
+    "claim_type": "OUTPATIENT",
+    "is_cashless": false,
+    "hospital": "Medanta The Medicity",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 5100.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN039",
+    "patient_name": "Vijay Sharma",
+    "claim_type": "OPTICAL",
+    "is_cashless": true,
+    "hospital": "Narayana Health City",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 79600.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN040",
+    "patient_name": "Divya Iyer",
+    "claim_type": "MATERNITY",
+    "is_cashless": true,
+    "hospital": "Fortis Hospital, Bannerghatta Road",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Raksha TPA Pvt. Ltd.",
+    "total_billed": 157412.34
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN041",
+    "patient_name": "Vijay Singh",
+    "claim_type": "DENTAL",
+    "is_cashless": false,
+    "hospital": "CMC Vellore",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 8900.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN042",
+    "patient_name": "Amit Desai",
+    "claim_type": "EMERGENCY",
+    "is_cashless": false,
+    "hospital": "Care Hospitals, Banjara Hills",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 348863.1
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN043",
+    "patient_name": "Sunita Kulkarni",
+    "claim_type": "OPTICAL",
+    "is_cashless": false,
+    "hospital": "Columbia Asia Hospital",
+    "insurer": "Niva Bupa Health Insurance Co. Ltd.",
+    "tpa": "MDIndia Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 60600.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN044",
+    "patient_name": "Ravi Gupta",
+    "claim_type": "PHARMACY",
+    "is_cashless": false,
+    "hospital": "Narayana Health City",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "MediAssist India TPA Pvt. Ltd.",
+    "total_billed": 1800.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN045",
+    "patient_name": "Vijay Choudhary",
+    "claim_type": "PHARMACY",
+    "is_cashless": true,
+    "hospital": "Columbia Asia Hospital",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+    "total_billed": 3800.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN046",
+    "patient_name": "Mohan Mukherjee",
+    "claim_type": "OPTICAL",
+    "is_cashless": false,
+    "hospital": "Fortis Hospital, Bannerghatta Road",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Raksha TPA Pvt. Ltd.",
+    "total_billed": 77400.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN047",
+    "patient_name": "Amit Iyer",
+    "claim_type": "EMERGENCY",
+    "is_cashless": true,
+    "hospital": "Fortis Hospital, Bannerghatta Road",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Raksha TPA Pvt. Ltd.",
+    "total_billed": 407080.84
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN048",
+    "patient_name": "Manoj Gupta",
+    "claim_type": "OUTPATIENT",
+    "is_cashless": true,
+    "hospital": "Columbia Asia Hospital",
+    "insurer": "HDFC ERGO General Insurance Co. Ltd.",
+    "tpa": "Health India TPA Services Pvt. Ltd.",
+    "total_billed": 800.0
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN049",
+    "patient_name": "Sunita Kulkarni",
+    "claim_type": "MATERNITY",
+    "is_cashless": true,
+    "hospital": "Medanta The Medicity",
+    "insurer": "Care Health Insurance Ltd.",
+    "tpa": "Vidal Health Insurance TPA Pvt. Ltd.",
+    "total_billed": 233001.44
+  },
+  {
+    "claim_reference": "CLM-INDIA-2026-SYN050",
+    "patient_name": "Meera Singh",
+    "claim_type": "MATERNITY",
+    "is_cashless": false,
+    "hospital": "Medanta The Medicity",
+    "insurer": "ICICI Lombard General Insurance Co. Ltd.",
+    "tpa": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+    "total_billed": 229012.21
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "claim_reference": "CLM-INDIA-2026-42C9E5B9",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-300004",
+  "patient_name": "Vikram Reddy",
+  "patient_dob": "1978-12-10",
+  "provider_code": "IND-001",
+  "provider_name": "Apollo Hospitals, Greams Road",
+  "network_tier": "NETWORK",
+  "service_date": "2026-02-05",
+  "admission_date": "2026-02-05",
+  "discharge_date": "2026-02-06",
+  "primary_diagnosis_code": "H25.9",
+  "primary_diagnosis_desc": "Unspecified age-related cataract",
+  "preauth_number": "PA-2026-CHN-005",
+  "preauth_approved": true,
+  "total_billed": 55000.0,
+  "policy_inception_date": "2026-01-01",
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "66984",
+      "procedure_desc": "Cataract surgery with IOL insertion",
+      "service_category": "SURGERY",
+      "billed_amount": 45000.0,
+      "units": 1
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "00142",
+      "procedure_desc": "Anaesthesia, eye procedure",
+      "service_category": "ANAESTHESIA",
+      "billed_amount": 5000.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PHARMA",
+      "procedure_desc": "Post-op eye drops",
+      "service_category": "PHARMACY",
+      "billed_amount": 5000.0,
+      "units": 1
+    }
+  ]
+}

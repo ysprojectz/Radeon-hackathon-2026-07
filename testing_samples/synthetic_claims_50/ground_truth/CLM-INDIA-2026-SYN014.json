@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN014",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500014",
+  "patient_name": "Ravi Joshi",
+  "patient_dob": "2000-08-24",
+  "gender": "MALE",
+  "provider_code": "CAR011",
+  "provider_name": "Care Hospitals, Banjara Hills",
+  "provider_city": "Hyderabad",
+  "provider_state": "Telangana",
+  "network_tier": "NETWORK",
+  "service_date": "2026-07-09",
+  "admission_date": "2026-07-09",
+  "discharge_date": "2026-07-16",
+  "primary_diagnosis_code": "I21.9",
+  "primary_diagnosis_desc": "Acute myocardial infarction, unspecified",
+  "is_cashless": true,
+  "insurer_name": "Star Health and Allied Insurance Co. Ltd.",
+  "policy_number": "STAR-COMP-2024-600014",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Vidal Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA21359",
+  "total_billed": 478463.28,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 7 night(s) (ICU)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 88200.0,
+      "units": 1,
+      "days": 7
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "I219",
+      "procedure_desc": "Percutaneous coronary intervention",
+      "service_category": "SURGERY",
+      "billed_amount": 351500.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 10882.68,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 27880.6,
+      "units": 1
+    }
+  ]
+}

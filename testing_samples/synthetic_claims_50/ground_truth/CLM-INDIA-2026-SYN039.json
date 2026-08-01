@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN039",
+  "claim_type": "OPTICAL",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500039",
+  "patient_name": "Vijay Sharma",
+  "patient_dob": "1976-04-20",
+  "gender": "MALE",
+  "provider_code": "NAR008",
+  "provider_name": "Narayana Health City",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NETWORK",
+  "service_date": "2026-03-01",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "H52.1",
+  "primary_diagnosis_desc": "Myopia",
+  "is_cashless": true,
+  "insurer_name": "ICICI Lombard General Insurance Co. Ltd.",
+  "policy_number": "ICICILOM-COMP-2024-600039",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Vidal Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA43107",
+  "total_billed": 79600.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "H521",
+      "procedure_desc": "LASIK refractive surgery, both eyes",
+      "service_category": "SURGERY",
+      "billed_amount": 79600.0,
+      "units": 1
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792]
+   /Resources << /Font << /F1 4 0 R >> >>
+   /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica
+   /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 1069 >>
+stream
+BT
+/F1 11 Tf
+100 750 Td
+(EMPLOYMENT CONTRACT) Tj
+0 -16 Td
+100 734 Td
+(This document is not a medical claim.) Tj
+0 -16 Td
+100 718 Td
+() Tj
+0 -16 Td
+100 702 Td
+(Employee: John Smith) Tj
+0 -16 Td
+100 686 Td
+(Employer: ABC Corporation LLC) Tj
+0 -16 Td
+100 670 Td
+(Position: Software Engineer) Tj
+0 -16 Td
+100 654 Td
+(Salary:   AED 15,000 per month) Tj
+0 -16 Td
+100 638 Td
+() Tj
+0 -16 Td
+100 622 Td
+(Terms and Conditions:) Tj
+0 -16 Td
+100 606 Td
+(1. The employee agrees to work 8 hours per day.) Tj
+0 -16 Td
+100 590 Td
+(2. Annual leave: 30 calendar days.) Tj
+0 -16 Td
+100 574 Td
+(3. Notice period: 30 days.) Tj
+0 -16 Td
+100 558 Td
+() Tj
+0 -16 Td
+100 542 Td
+(This employment agreement is governed by UAE Labour Law.) Tj
+0 -16 Td
+100 526 Td
+(Federal Decree-Law No. 33 of 2021.) Tj
+0 -16 Td
+100 510 Td
+() Tj
+0 -16 Td
+100 494 Td
+(Signed: ____________________   Date: 01/01/2026) Tj
+0 -16 Td
+100 478 Td
+() Tj
+0 -16 Td
+100 462 Td
+(Note: This is intentionally a non-medical document.) Tj
+0 -16 Td
+100 446 Td
+(The claims engine 5-signal validator should reject this.) Tj
+0 -16 Td
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000247 00000 n 
+0000000347 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1468
+%%EOF

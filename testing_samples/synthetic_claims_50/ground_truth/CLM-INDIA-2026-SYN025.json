@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN025",
+  "claim_type": "DENTAL",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500025",
+  "patient_name": "Neha Singh",
+  "patient_dob": "1996-03-14",
+  "gender": "FEMALE",
+  "provider_code": "MAX003",
+  "provider_name": "Max Super Speciality Hospital, Saket",
+  "provider_city": "New Delhi",
+  "provider_state": "Delhi",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-03-13",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "K04.0",
+  "primary_diagnosis_desc": "Pulpitis",
+  "is_cashless": false,
+  "insurer_name": "Star Health and Allied Insurance Co. Ltd.",
+  "policy_number": "STAR-COMP-2024-600025",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "MediAssist India TPA Pvt. Ltd.",
+  "tpa_id": "TPA29853",
+  "total_billed": 10300.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "K040",
+      "procedure_desc": "Root canal treatment, single sitting",
+      "service_category": "SURGERY",
+      "billed_amount": 10300.0,
+      "units": 1
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+# APISIX standalone configuration for India Cashless Lane
+# Routes all /api/india/* traffic with Keycloak JWT validation
+
+upstreams:
+  - id: fastapi-backend
+    nodes:
+      api:8000: 1
+    type: roundrobin
+
+  - id: fhir-server
+    nodes:
+      hapi-fhir:8080: 1
+    type: roundrobin
+
+  - id: graph-service
+    nodes:
+      graph-service:8000: 1
+    type: roundrobin
+
+routes:
+  # Pre-auth submission — JWT required + rate limited
+  - id: india-preauth
+    uri: /api/india/preauth/*
+    upstream_id: fastapi-backend
+    plugins:
+      jwt-auth:
+        key: india-cashless
+        secret: ${KEYCLOAK_JWT_SECRET:-change-in-production}
+        algorithm: RS256
+        jwks_uri: http://keycloak:8080/realms/india-cashless/protocol/openid-connect/certs
+      limit-count:
+        count: 100
+        time_window: 60
+        rejected_code: 429
+        key: consumer_name
+      proxy-rewrite:
+        regex_uri: ["^/api/india/preauth/(.*)", "/api/v1/claims/advance/$1"]
+
+  # FHIR server proxy — JWT required
+  - id: india-fhir
+    uri: /api/india/fhir/*
+    upstream_id: fhir-server
+    plugins:
+      jwt-auth:
+        key: india-cashless
+        secret: ${KEYCLOAK_JWT_SECRET:-change-in-production}
+        algorithm: RS256
+        jwks_uri: http://keycloak:8080/realms/india-cashless/protocol/openid-connect/certs
+      proxy-rewrite:
+        regex_uri: ["^/api/india/fhir/(.*)", "/fhir/$1"]
+
+  # Graph service — JWT required
+  - id: india-graph
+    uri: /api/india/graph/*
+    upstream_id: graph-service
+    plugins:
+      jwt-auth:
+        key: india-cashless
+        secret: ${KEYCLOAK_JWT_SECRET:-change-in-production}
+        algorithm: RS256
+        jwks_uri: http://keycloak:8080/realms/india-cashless/protocol/openid-connect/certs
+      proxy-rewrite:
+        regex_uri: ["^/api/india/graph/(.*)", "/$1"]
+
+  # ABHA verification — JWT required
+  - id: india-abha
+    uri: /api/india/abha/*
+    upstream_id: fastapi-backend
+    plugins:
+      jwt-auth:
+        key: india-cashless
+        secret: ${KEYCLOAK_JWT_SECRET:-change-in-production}
+        algorithm: RS256
+        jwks_uri: http://keycloak:8080/realms/india-cashless/protocol/openid-connect/certs
+      proxy-rewrite:
+        regex_uri: ["^/api/india/abha/(.*)", "/api/v1/india/abha/$1"]
+
+  # Pipeline health — no auth (monitoring)
+  - id: india-health
+    uri: /api/india/health
+    upstream_id: fastapi-backend
+    plugins:
+      proxy-rewrite:
+        uri: /api/v1/india/pipeline/health
+
+#END

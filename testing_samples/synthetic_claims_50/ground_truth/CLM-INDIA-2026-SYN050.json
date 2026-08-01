@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN050",
+  "claim_type": "MATERNITY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500050",
+  "patient_name": "Meera Singh",
+  "patient_dob": "1990-12-09",
+  "gender": "FEMALE",
+  "provider_code": "MED006",
+  "provider_name": "Medanta The Medicity",
+  "provider_city": "Gurugram",
+  "provider_state": "Haryana",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-04-18",
+  "admission_date": "2026-04-18",
+  "discharge_date": "2026-04-24",
+  "primary_diagnosis_code": "O82",
+  "primary_diagnosis_desc": "Encounter for cesarean delivery without indication",
+  "is_cashless": false,
+  "insurer_name": "ICICI Lombard General Insurance Co. Ltd.",
+  "policy_number": "ICICILOM-COMP-2024-600050",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA73096",
+  "total_billed": 229012.21,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 6 night(s) (Twin Sharing)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 84600.0,
+      "units": 1,
+      "days": 6
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "O82",
+      "procedure_desc": "Lower segment caesarean section",
+      "service_category": "SURGERY",
+      "billed_amount": 130700.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 3257.52,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 10454.69,
+      "units": 1
+    }
+  ]
+}

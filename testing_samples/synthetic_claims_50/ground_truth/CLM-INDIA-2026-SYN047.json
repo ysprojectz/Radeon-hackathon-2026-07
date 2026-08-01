@@ -1,0 +1,70 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN047",
+  "claim_type": "EMERGENCY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500047",
+  "patient_name": "Amit Iyer",
+  "patient_dob": "2004-12-23",
+  "gender": "MALE",
+  "provider_code": "FOR002",
+  "provider_name": "Fortis Hospital, Bannerghatta Road",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NETWORK",
+  "service_date": "2026-05-04",
+  "admission_date": "2026-05-04",
+  "discharge_date": "2026-05-10",
+  "primary_diagnosis_code": "I21.0",
+  "primary_diagnosis_desc": "Acute transmural MI of anterior wall",
+  "is_cashless": true,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600047",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Raksha TPA Pvt. Ltd.",
+  "tpa_id": "TPA80505",
+  "total_billed": 407080.84,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 6 night(s) (Twin Sharing)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 22800.0,
+      "units": 1,
+      "days": 6
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "I210",
+      "procedure_desc": "Emergency PCI, primary angioplasty",
+      "service_category": "SURGERY",
+      "billed_amount": 338700.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 17159.24,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 26601.57,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "AMB",
+      "procedure_desc": "Ambulance charges",
+      "service_category": "TRANSPORT",
+      "billed_amount": 1820.03,
+      "units": 1
+    }
+  ]
+}

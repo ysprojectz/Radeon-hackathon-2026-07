@@ -1,0 +1,224 @@
+{
+  "version": "2026-05-06",
+  "hospitals": [
+    {
+      "code": "IND-001",
+      "name": "Apollo Hospitals, Greams Road",
+      "state": "Tamil Nadu",
+      "city": "Chennai",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["Apollo Hospitals Greams Road Chennai", "Apollo Chennai", "Apollo Hospital Chennai"]
+    },
+    {
+      "code": "IND-002",
+      "name": "Fortis Hospital, Bannerghatta Road",
+      "state": "Karnataka",
+      "city": "Bangalore",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["Fortis Bannerghatta", "Fortis Hospital Bangalore", "Fortis Bengaluru"]
+    },
+    {
+      "code": "IND-003",
+      "name": "Max Super Speciality Hospital, Saket",
+      "state": "Delhi",
+      "city": "New Delhi",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["Max Saket", "Max Hospital Saket", "Max Super Speciality Saket"]
+    },
+    {
+      "code": "IND-004",
+      "name": "Kokilaben Dhirubhai Ambani Hospital",
+      "state": "Maharashtra",
+      "city": "Mumbai",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["Kokilaben Hospital", "KDAH Mumbai", "Kokilaben Ambani Hospital"]
+    },
+    {
+      "code": "IND-005",
+      "name": "AIIMS, New Delhi",
+      "state": "Delhi",
+      "city": "New Delhi",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "CENTRES_OF_EXCELLENCE",
+      "aliases": ["AIIMS Delhi", "All India Institute of Medical Sciences Delhi"]
+    },
+    {
+      "code": "IND-006",
+      "name": "Medanta The Medicity",
+      "state": "Haryana",
+      "city": "Gurugram",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "CENTRES_OF_EXCELLENCE",
+      "aliases": ["Medanta Gurgaon", "Medanta Gurugram", "The Medicity"]
+    },
+    {
+      "code": "IND-007",
+      "name": "Narayana Institute of Cardiac Sciences",
+      "state": "Karnataka",
+      "city": "Bangalore",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "CENTRES_OF_EXCELLENCE",
+      "aliases": ["Narayana Hrudayalaya", "Narayana Cardiac Sciences", "Narayana Health Bangalore"]
+    },
+    {
+      "code": "IND-008",
+      "name": "Ruby Hall Clinic",
+      "state": "Maharashtra",
+      "city": "Pune",
+      "city_tier": "TIER_2",
+      "hospital_grade": "GRADE_B",
+      "tier": "NETWORK",
+      "aliases": ["Ruby Hall Pune", "Ruby Hall Clinic Pune"]
+    },
+    {
+      "code": "IND-009",
+      "name": "KIMS Hospitals",
+      "state": "Telangana",
+      "city": "Hyderabad",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["KIMS Hyderabad", "Krishna Institute of Medical Sciences Hyderabad"]
+    },
+    {
+      "code": "IND-010",
+      "name": "Apollo Gleneagles Hospitals",
+      "state": "West Bengal",
+      "city": "Kolkata",
+      "city_tier": "TIER_1",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["Apollo Gleneagles Kolkata", "Apollo Kolkata"]
+    },
+    {
+      "code": "IND-011",
+      "name": "Amrita Hospital",
+      "state": "Kerala",
+      "city": "Kochi",
+      "city_tier": "TIER_2",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["Amrita Institute Kochi", "Amrita Hospital Kochi"]
+    },
+    {
+      "code": "IND-012",
+      "name": "Christian Medical College",
+      "state": "Tamil Nadu",
+      "city": "Vellore",
+      "city_tier": "TIER_3",
+      "hospital_grade": "GRADE_A",
+      "tier": "CENTRES_OF_EXCELLENCE",
+      "aliases": ["CMC Vellore", "Christian Medical College Vellore"]
+    },
+    {
+      "code": "IND-013",
+      "name": "Sawai Man Singh Hospital",
+      "state": "Rajasthan",
+      "city": "Jaipur",
+      "city_tier": "TIER_2",
+      "hospital_grade": "GRADE_A",
+      "tier": "GOVERNMENT",
+      "aliases": ["SMS Hospital Jaipur", "S M S Hospital"]
+    },
+    {
+      "code": "IND-014",
+      "name": "SGPGI Lucknow",
+      "state": "Uttar Pradesh",
+      "city": "Lucknow",
+      "city_tier": "TIER_2",
+      "hospital_grade": "GRADE_A",
+      "tier": "GOVERNMENT",
+      "aliases": ["Sanjay Gandhi PGI", "SGPGIMS Lucknow"]
+    },
+    {
+      "code": "IND-015",
+      "name": "Sterling Hospital",
+      "state": "Gujarat",
+      "city": "Ahmedabad",
+      "city_tier": "TIER_2",
+      "hospital_grade": "GRADE_B",
+      "tier": "NETWORK",
+      "aliases": ["Sterling Hospital Ahmedabad"]
+    },
+    {
+      "code": "IND-016",
+      "name": "Aster Medcity",
+      "state": "Kerala",
+      "city": "Kochi",
+      "city_tier": "TIER_2",
+      "hospital_grade": "GRADE_A",
+      "tier": "NETWORK",
+      "aliases": ["Aster Medcity Kochi", "Aster Kochi"]
+    },
+    {
+      "code": "IND-017",
+      "name": "City Hospital & Research Centre",
+      "state": "Madhya Pradesh",
+      "city": "Indore",
+      "city_tier": "TIER_2",
+      "hospital_grade": "GRADE_C",
+      "tier": "NETWORK",
+      "aliases": ["City Hospital Indore"]
+    }
+  ],
+  "treatment_doctors": [
+    { "name": "Dr. Amit Sharma", "specialty": "Urology", "state": "Delhi", "hospital_codes": ["IND-003", "IND-005"] },
+    { "name": "Dr. Priya Nair", "specialty": "Cardiology", "state": "Kerala", "hospital_codes": ["IND-011", "IND-016"] },
+    { "name": "Dr. Rajesh Iyer", "specialty": "Orthopaedics", "state": "Tamil Nadu", "hospital_codes": ["IND-001", "IND-012"] },
+    { "name": "Dr. Neha Menon", "specialty": "Internal Medicine", "state": "Maharashtra", "hospital_codes": ["IND-004", "IND-008"] },
+    { "name": "Dr. Vikram Rao", "specialty": "Cardiology", "state": "Karnataka", "hospital_codes": ["IND-002", "IND-007"] },
+    { "name": "Dr. Sana Khan", "specialty": "Pulmonology", "state": "Telangana", "hospital_codes": ["IND-009"] },
+    { "name": "Dr. Ananya Bose", "specialty": "Oncology", "state": "West Bengal", "hospital_codes": ["IND-010"] },
+    { "name": "Dr. Ritu Singh", "specialty": "Obstetrics", "state": "Uttar Pradesh", "hospital_codes": ["IND-014"] },
+    { "name": "Dr. Mehul Patel", "specialty": "Gastroenterology", "state": "Gujarat", "hospital_codes": ["IND-015"] },
+    { "name": "Dr. Kavita Mehta", "specialty": "General Surgery", "state": "Rajasthan", "hospital_codes": ["IND-013"] }
+  ],
+  "primary_diagnoses": [
+    { "code": "N39.0", "desc": "Urinary tract infection", "aliases": ["uti", "urinary infection"] },
+    { "code": "N20.0", "desc": "Kidney stone", "aliases": ["renal calculus", "ureteric stone"] },
+    { "code": "I21.9", "desc": "Acute myocardial infarction", "aliases": ["heart attack", "myocardial infarction"] },
+    { "code": "I25.10", "desc": "Coronary artery disease", "aliases": ["cad", "coronary disease"] },
+    { "code": "J18.9", "desc": "Pneumonia", "aliases": ["lower respiratory infection", "chest infection"] },
+    { "code": "J45.9", "desc": "Asthma", "aliases": ["bronchial asthma"] },
+    { "code": "E11.9", "desc": "Type 2 diabetes mellitus", "aliases": ["diabetes", "t2dm"] },
+    { "code": "K35.80", "desc": "Acute appendicitis", "aliases": ["appendicitis"] },
+    { "code": "K80.20", "desc": "Gallstones without cholecystitis", "aliases": ["gall stones", "cholelithiasis"] },
+    { "code": "M17.9", "desc": "Osteoarthritis of knee", "aliases": ["knee osteoarthritis", "oa knee"] },
+    { "code": "O80", "desc": "Single spontaneous delivery", "aliases": ["normal delivery", "maternity delivery"] },
+    { "code": "C50.9", "desc": "Malignant neoplasm of breast", "aliases": ["breast cancer"] }
+  ],
+  "procedures": [
+    { "code": "CONSULT", "name": "Specialist consultation", "category": "CONSULTATION" },
+    { "code": "ROOM", "name": "Room rent and nursing charges", "category": "ROOM_RENT" },
+    { "code": "TURP", "name": "Transurethral resection", "category": "SURGERY" },
+    { "code": "APPEN", "name": "Appendectomy", "category": "SURGERY" },
+    { "code": "CABG", "name": "Coronary artery bypass graft", "category": "SURGERY" },
+    { "code": "ANGIO", "name": "Angiography", "category": "DIAGNOSTIC" },
+    { "code": "MRI", "name": "MRI scan", "category": "DIAGNOSTIC" },
+    { "code": "CT", "name": "CT scan", "category": "DIAGNOSTIC" },
+    { "code": "CHEMO", "name": "Chemotherapy", "category": "PHARMACY" },
+    { "code": "DIAL", "name": "Dialysis", "category": "SURGERY" },
+    { "code": "CSEC", "name": "Cesarean section", "category": "SURGERY" }
+  ],
+  "banks": [
+    { "name": "HDFC Bank", "ifsc_prefix": "HDFC", "upi_handles": ["hdfcbank"] },
+    { "name": "ICICI Bank", "ifsc_prefix": "ICIC", "upi_handles": ["icici"] },
+    { "name": "State Bank of India", "ifsc_prefix": "SBIN", "upi_handles": ["sbi"] },
+    { "name": "Axis Bank", "ifsc_prefix": "UTIB", "upi_handles": ["axisbank"] },
+    { "name": "Kotak Mahindra Bank", "ifsc_prefix": "KKBK", "upi_handles": ["kotak"] },
+    { "name": "Punjab National Bank", "ifsc_prefix": "PUNB", "upi_handles": ["pnb"] },
+    { "name": "Bank of Baroda", "ifsc_prefix": "BARB", "upi_handles": ["barodampay"] },
+    { "name": "Canara Bank", "ifsc_prefix": "CNRB", "upi_handles": ["canarabank"] }
+  ]
+}

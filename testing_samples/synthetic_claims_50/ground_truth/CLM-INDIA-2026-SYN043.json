@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN043",
+  "claim_type": "OPTICAL",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500043",
+  "patient_name": "Sunita Kulkarni",
+  "patient_dob": "1960-04-05",
+  "gender": "FEMALE",
+  "provider_code": "COL009",
+  "provider_name": "Columbia Asia Hospital",
+  "provider_city": "Pune",
+  "provider_state": "Maharashtra",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-01-03",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "H52.1",
+  "primary_diagnosis_desc": "Myopia",
+  "is_cashless": false,
+  "insurer_name": "Niva Bupa Health Insurance Co. Ltd.",
+  "policy_number": "NIVABUPA-REASSURE-2024-600043",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "MDIndia Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA67584",
+  "total_billed": 60600.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "H521",
+      "procedure_desc": "LASIK refractive surgery, both eyes",
+      "service_category": "SURGERY",
+      "billed_amount": 60600.0,
+      "units": 1
+    }
+  ]
+}

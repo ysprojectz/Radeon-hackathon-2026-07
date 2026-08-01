@@ -1,0 +1,62 @@
+# ── Web Framework ──────────────────────────────────────────────────────────────
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.31    # 6 CVEs incl. 2 high-severity DoS (unbounded part headers, quadratic-time querystring parsing) fixed across 0.0.26-0.0.31
+starlette>=0.49.1            # CVE-2025-62727 fix
+
+# ── Database ───────────────────────────────────────────────────────────────────
+sqlalchemy[asyncio]>=2.0.0
+asyncpg>=0.29.0              # async PostgreSQL driver (for async engine)
+psycopg2-binary>=2.9.9       # sync PostgreSQL driver (for pipeline)
+alembic>=1.13.0              # database migrations
+
+# ── AI / LLM ───────────────────────────────────────────────────────────────────
+groq>=0.9.0                  # Groq API client (free tier — Qwen, Llama, etc.)
+anthropic>=0.40.0            # Anthropic Claude API — Reasoning Engine + fallback
+openai>=1.30.0               # OpenAI SDK — used by NVIDIA NIM (OpenAI-compatible) + OpenAI provider
+
+# ── Validation ─────────────────────────────────────────────────────────────────
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+
+# ── OCR & PDF Processing ───────────────────────────────────────────────────────
+pdfplumber>=0.11.4           # PDF text extraction (digital PDFs)
+pypdf>=6.10.2                # PDF metadata + page counting (CVE batch: DoS/RAM/loop fixes)
+Pillow>=12.1.1               # CVE-2026-25990 fix — OOB write in PSD processing
+pytesseract>=0.3.10          # Tesseract OCR wrapper (install tesseract-ocr separately)
+opencv-python-headless>=4.9.0  # Image preprocessing (deskew, denoise)
+
+# ── HTTP Client ────────────────────────────────────────────────────────────────
+httpx>=0.27.0                # async HTTP calls between services
+requests>=2.33.0             # sync HTTP calls (used by BPMN worker) — CVE fixes: insecure temp-file reuse, .netrc credential leak via malicious URLs
+
+# ── Observability ──────────────────────────────────────────────────────────────
+opentelemetry-api>=1.27.0
+opentelemetry-sdk>=1.27.0
+opentelemetry-instrumentation-fastapi>=0.48b0
+prometheus-client>=0.20.0
+
+# ── Caching ────────────────────────────────────────────────────────────────────
+redis>=5.0.0                 # Redis client for response caching
+
+# ── Authentication & Security ──────────────────────────────────────────────────
+PyJWT[crypto]>=2.12.0             # CVE-2026-32597 fix — RFC 7515 critical header validation
+bcrypt>=4.0.1                     # Password hashing (used directly — avoids passlib wrap-bug)
+pyotp>=2.9.0                      # TOTP secret generation + verification (RFC 6238)
+qrcode[pil]>=7.4.0                # QR code PNG generation for authenticator app setup
+
+# ── Rate Limiting ──────────────────────────────────────────────────────────────
+slowapi>=0.1.9               # Token-bucket rate limiting for FastAPI
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0         # Load .env file
+user-agents>=2.2.0           # Local browser/device parsing from User-Agent string (zero latency)
+tenacity>=8.3.0              # Retry logic with exponential backoff
+
+# ── Testing ────────────────────────────────────────────────────────────────────
+pytest>=8.3.5                # bumped past known vulnerability window
+pytest-asyncio>=0.23.0
+anyio>=4.6.0                 # CVE-2024-54994 (race condition in process kill) fixed in 4.6.0
+
+# ── Code Quality ───────────────────────────────────────────────────────────────
+ruff>=0.4.0                  # linter + formatter

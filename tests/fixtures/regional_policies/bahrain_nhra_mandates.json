@@ -1,0 +1,166 @@
+{
+  "market_region": "BAHRAIN",
+  "regulatory_body": "BAHRAIN_NHRA",
+  "effective_date": "2018-01-01",
+  "description": "Mandatory health insurance benefit standards as established by the National Health Regulatory Authority (NHRA) of the Kingdom of Bahrain under Law No. 38 of 2009 establishing the NHRA and subsequent Health Insurance Regulations. These mandates define the minimum benefit package, copayment caps, exclusion prohibitions, and waiting period limitations applicable to all licensed health insurance products offered in the Kingdom of Bahrain.",
+  "clauses": [
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "NHRA-HI-2.1",
+      "title": "Mandatory Inpatient Coverage",
+      "full_text": "All health insurance policies issued in the Kingdom of Bahrain shall provide inpatient coverage at a minimum of general ward accommodation in NHRA-licensed facilities. The insurer shall cover room and board, physician fees, surgical procedures, anaesthesia, diagnostic investigations, and prescribed medications administered during the hospital stay. The maximum permissible copayment for inpatient admissions shall not exceed BHD 20 per admission. The aggregate annual copayment for inpatient services shall not exceed BHD 500 per insured member per policy year. Pre-authorization requirements shall not delay medically necessary emergency admissions.",
+      "structured_data": {
+        "benefit_type": "INPATIENT",
+        "is_mandatory": true,
+        "prohibited_exclusions": ["ACUTE_MEDICAL", "ICU", "SURGICAL"],
+        "minimum_coverage": "FULL_INPATIENT",
+        "room_type_minimum": "GENERAL_WARD",
+        "max_copay_per_admission_bhd": 20.0,
+        "max_copay_annual_bhd": 500.0
+      },
+      "applicable_claim_types": ["INPATIENT", "DAYCARE", "EMERGENCY"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 12, all policies must provide inpatient coverage at general ward level or above in NHRA-licensed facilities."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "NHRA-HI-2.2",
+      "title": "Mandatory Outpatient Coverage",
+      "full_text": "All health insurance policies shall include outpatient coverage for consultations, diagnostic services, laboratory investigations, and prescribed treatments at NHRA-licensed outpatient facilities. The maximum permissible coinsurance for outpatient services shall not exceed 20% of the eligible claim amount. The maximum copayment per outpatient visit shall not exceed BHD 5. Coverage shall include specialist consultations upon referral from a general practitioner or as permitted under the policy network access rules.",
+      "structured_data": {
+        "benefit_type": "OUTPATIENT",
+        "is_mandatory": true,
+        "max_copay_pct": 20,
+        "max_copay_bhd_per_visit": 5.0,
+        "prohibited_copay_above_bhd": 5.0,
+        "covers": ["GP_CONSULTATION", "SPECIALIST", "DIAGNOSTICS", "LAB", "PRESCRIBED_TREATMENTS"]
+      },
+      "applicable_claim_types": ["OUTPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 13, outpatient coinsurance may not exceed 20% and per-visit copayment is capped at BHD 5."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "NHRA-HI-2.3",
+      "title": "Mandatory Emergency Treatment",
+      "full_text": "All health insurance policies shall provide emergency treatment coverage on a worldwide basis. Emergency services shall be covered without any copayment or coinsurance obligation on the insured member. The insured or their representative must notify the insurer within 24 hours of the emergency admission or as soon as reasonably practicable. Emergency treatment includes stabilization, emergency surgery, intensive care, and medically necessary services required to treat the acute condition. No pre-authorization shall be required for genuine emergency admissions.",
+      "structured_data": {
+        "benefit_type": "EMERGENCY",
+        "is_mandatory": true,
+        "preauth_prohibition": true,
+        "max_copay_emergency": 0.0,
+        "geographic_scope": "WORLDWIDE",
+        "non_network_reimbursement": "NETWORK_RATE",
+        "notification_hours": 24
+      },
+      "applicable_claim_types": ["EMERGENCY", "INPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 14, emergency treatment must be covered worldwide with zero cost-sharing and no pre-authorization requirement."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "NHRA-HI-2.4",
+      "title": "Mandatory Maternity Benefits",
+      "full_text": "All health insurance policies shall provide maternity benefits including antenatal care, delivery (normal and caesarean), and postnatal care. The maximum permissible waiting period for maternity benefits shall not exceed 12 months from the policy inception date. The policy shall cover a minimum of 6 antenatal visits during the pregnancy term. Newborn coverage shall be provided for a minimum of 30 days from the date of birth under the mother's policy, including neonatal intensive care if medically required. Maternity complications shall be covered as emergency treatment without waiting period restrictions.",
+      "structured_data": {
+        "benefit_type": "MATERNITY",
+        "is_mandatory": true,
+        "max_waiting_period_months": 12,
+        "min_antenatal_visits": 6,
+        "newborn_coverage_days_minimum": 30,
+        "min_normal_delivery_bhd": 2000.0,
+        "min_caesarean_bhd": 3000.0,
+        "prohibited_exclusions": ["PREGNANCY_COMPLICATIONS", "CAESAREAN", "NEONATAL_ICU"]
+      },
+      "applicable_claim_types": ["MATERNITY", "INPATIENT", "OUTPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 15, maternity waiting periods may not exceed 12 months and newborn coverage must extend at least 30 days from birth."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "NHRA-HI-2.5",
+      "title": "Mandatory Pharmacy Coverage",
+      "full_text": "All health insurance policies shall provide coverage for prescribed pharmaceutical products dispensed at NHRA-licensed pharmacies. For brand-name medications, the maximum permissible coinsurance shall not exceed 25% of the medication cost. For generic medications, the maximum permissible coinsurance shall not exceed 10% of the medication cost. Medications administered during an inpatient admission shall be covered at 100% with no copayment or coinsurance. The insurer shall maintain a formulary that includes essential medications as defined by the NHRA Essential Drug List.",
+      "structured_data": {
+        "benefit_type": "PHARMACY",
+        "is_mandatory": true,
+        "max_brand_copay_pct": 25,
+        "max_generic_copay_pct": 10,
+        "inpatient_medications_copay": 0,
+        "formulary": "NHRA_ESSENTIAL_DRUG_LIST"
+      },
+      "applicable_claim_types": ["PHARMACY", "OUTPATIENT", "INPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 16, pharmacy coinsurance is capped at 25% for brand and 10% for generic medications, with zero cost-sharing for inpatient dispensing."
+    },
+    {
+      "clause_type": "COPAY_COINSURANCE",
+      "section_reference": "NHRA-HI-3.1",
+      "title": "Maximum Copayment Caps",
+      "full_text": "No health insurance policy issued in the Kingdom of Bahrain shall impose copayment or coinsurance obligations exceeding the following limits: outpatient services shall not exceed 20% coinsurance or BHD 5 per visit, whichever is lower; emergency services shall carry zero copayment; inpatient services shall not exceed BHD 20 per admission; the aggregate annual out-of-pocket maximum for all covered services shall not exceed BHD 2,000 per insured member per policy year. Once the annual out-of-pocket maximum is reached, the insurer shall cover all eligible services at 100%.",
+      "structured_data": {
+        "is_mandatory": true,
+        "outpatient_max_copay_pct": 20,
+        "outpatient_max_copay_bhd": 5.0,
+        "emergency_max_copay_bhd": 0.0,
+        "inpatient_max_copay_bhd_per_admission": 20.0,
+        "annual_oop_max_bhd": 2000.0,
+        "violation_consequence": "EXCESS_COPAY_VOID"
+      },
+      "applicable_claim_types": ["OUTPATIENT", "INPATIENT", "EMERGENCY", "PHARMACY"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 18, annual out-of-pocket obligations are capped at BHD 2,000 to protect insured members from catastrophic cost-sharing."
+    },
+    {
+      "clause_type": "LIMITATION",
+      "section_reference": "NHRA-HI-3.2",
+      "title": "Minimum Annual Benefit Limit",
+      "full_text": "All health insurance policies issued in the Kingdom of Bahrain shall provide a minimum annual benefit limit of no less than BHD 50,000 per insured member per policy year for aggregate covered services. The minimum sub-limit for emergency treatment shall be BHD 50,000. The minimum sub-limit for normal maternity delivery shall be BHD 2,000. The minimum sub-limit for caesarean delivery shall be BHD 3,000. Insurers may provide higher limits but shall not issue policies with annual benefit limits below these prescribed minimums.",
+      "structured_data": {
+        "is_mandatory": true,
+        "min_annual_limit_bhd": 50000.0,
+        "min_emergency_limit_bhd": 50000.0,
+        "min_maternity_normal_bhd": 2000.0,
+        "min_maternity_caesarean_bhd": 3000.0
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "EMERGENCY", "MATERNITY"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 19, minimum annual benefit limits ensure adequate coverage for insured members across all service categories."
+    },
+    {
+      "clause_type": "EXCLUSION",
+      "section_reference": "NHRA-HI-4.1",
+      "title": "Prohibited Exclusions — Conditions Insurers May Not Exclude",
+      "full_text": "No health insurance policy issued in the Kingdom of Bahrain shall exclude coverage for the following conditions and services: HIV/AIDS-related treatment and management shall not be excluded from coverage. Mental health conditions shall be covered with a minimum of 10 inpatient days per policy year. Dialysis treatment for chronic kidney disease shall not be excluded. Cancer screening services including mammography, colonoscopy, and cervical screening as recommended by NHRA clinical guidelines shall not be excluded. Any policy containing exclusions for the aforementioned conditions shall be deemed non-compliant with NHRA regulations.",
+      "structured_data": {
+        "is_mandatory": true,
+        "prohibited_exclusion_categories": [
+          "HIV_AIDS_TREATMENT",
+          "MENTAL_HEALTH_ACUTE_INPATIENT",
+          "DIALYSIS_CHRONIC_KIDNEY_DISEASE",
+          "CANCER_SCREENING"
+        ],
+        "mental_health_inpatient_min_days": 10
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 22, insurers are prohibited from excluding coverage for specified critical conditions to ensure equitable access to healthcare."
+    },
+    {
+      "clause_type": "WAITING_PERIOD",
+      "section_reference": "NHRA-HI-5.1",
+      "title": "Maximum Waiting Period Caps",
+      "full_text": "The maximum permissible waiting period for pre-existing diseases and conditions shall not exceed 6 months from the date of policy inception or enrollment. No waiting period shall be imposed for emergency treatment regardless of whether the condition is pre-existing. No waiting period shall be imposed for maternity complications that require emergency intervention. Waiting periods applied to renewed policies shall credit the time already served under the preceding policy term. Chronic conditions disclosed at inception and accepted by the insurer shall be subject to the 6-month cap without further extension.",
+      "structured_data": {
+        "is_mandatory": true,
+        "max_ped_waiting_period_months": 6,
+        "no_waiting_period_for": ["EMERGENCY", "MATERNITY_COMPLICATIONS"],
+        "portability_required": true,
+        "portability_waiting_period_carryover": true
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "EMERGENCY", "MATERNITY"],
+      "is_mandatory": true,
+      "regulatory_note": "Per NHRA Health Insurance Regulation Article 24, waiting periods for pre-existing conditions are capped at 6 months, with no waiting period permitted for emergencies or maternity complications."
+    }
+  ]
+}

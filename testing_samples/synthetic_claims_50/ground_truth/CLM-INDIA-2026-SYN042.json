@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN042",
+  "claim_type": "EMERGENCY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500042",
+  "patient_name": "Amit Desai",
+  "patient_dob": "1987-03-21",
+  "gender": "MALE",
+  "provider_code": "CAR011",
+  "provider_name": "Care Hospitals, Banjara Hills",
+  "provider_city": "Hyderabad",
+  "provider_state": "Telangana",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-06-04",
+  "admission_date": "2026-06-04",
+  "discharge_date": "2026-06-10",
+  "primary_diagnosis_code": "I21.0",
+  "primary_diagnosis_desc": "Acute transmural MI of anterior wall",
+  "is_cashless": false,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600042",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "MediAssist India TPA Pvt. Ltd.",
+  "tpa_id": "TPA88190",
+  "total_billed": 348863.1,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 6 night(s) (ICU)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 87000.0,
+      "units": 1,
+      "days": 6
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "I210",
+      "procedure_desc": "Emergency PCI, primary angioplasty",
+      "service_category": "SURGERY",
+      "billed_amount": 238600.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 7385.05,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 15878.05,
+      "units": 1
+    }
+  ]
+}

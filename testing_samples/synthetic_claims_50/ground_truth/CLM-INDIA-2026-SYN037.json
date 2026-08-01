@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN037",
+  "claim_type": "EMERGENCY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500037",
+  "patient_name": "Vikram Rao",
+  "patient_dob": "1964-08-16",
+  "gender": "MALE",
+  "provider_code": "MED006",
+  "provider_name": "Medanta The Medicity",
+  "provider_city": "Gurugram",
+  "provider_state": "Haryana",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-03-28",
+  "admission_date": "2026-03-28",
+  "discharge_date": "2026-04-04",
+  "primary_diagnosis_code": "T63.0",
+  "primary_diagnosis_desc": "Toxic effect of snake venom",
+  "is_cashless": false,
+  "insurer_name": "Niva Bupa Health Insurance Co. Ltd.",
+  "policy_number": "NIVABUPA-REASSURE-2024-600037",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Family Health Plan (FHPL) TPA Ltd.",
+  "tpa_id": "TPA51219",
+  "total_billed": 122871.7,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 7 night(s) (ICU)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 32900.0,
+      "units": 1,
+      "days": 7
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "T630",
+      "procedure_desc": "Anti-venom administration + ICU observation",
+      "service_category": "SURGERY",
+      "billed_amount": 83000.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 2791.11,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 4180.59,
+      "units": 1
+    }
+  ]
+}

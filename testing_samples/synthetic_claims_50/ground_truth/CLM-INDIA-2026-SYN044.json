@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN044",
+  "claim_type": "PHARMACY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500044",
+  "patient_name": "Ravi Gupta",
+  "patient_dob": "1979-05-04",
+  "gender": "MALE",
+  "provider_code": "NAR008",
+  "provider_name": "Narayana Health City",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-02-14",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "E11.9",
+  "primary_diagnosis_desc": "Type 2 diabetes mellitus without complications",
+  "is_cashless": false,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600044",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "MediAssist India TPA Pvt. Ltd.",
+  "tpa_id": "TPA52641",
+  "total_billed": 1800.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "E119",
+      "procedure_desc": "90-day chronic medication refill",
+      "service_category": "PHARMACY",
+      "billed_amount": 1800.0,
+      "units": 1
+    }
+  ]
+}

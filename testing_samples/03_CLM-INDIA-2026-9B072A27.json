@@ -1,0 +1,80 @@
+{
+  "claim_reference": "CLM-INDIA-2026-9B072A27",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-200003",
+  "patient_name": "Ananya Reddy",
+  "patient_dob": "1998-08-25",
+  "provider_code": "IND-003",
+  "provider_name": "Max Super Speciality Hospital, Saket",
+  "network_tier": "NETWORK",
+  "service_date": "2026-05-20",
+  "admission_date": "2026-05-20",
+  "discharge_date": "2026-05-23",
+  "primary_diagnosis_code": "M17.9",
+  "primary_diagnosis_desc": "Osteoarthritis of knee, unspecified",
+  "preauth_number": "PA-2026-DEL-003",
+  "preauth_approved": true,
+  "total_billed": 205000.0,
+  "room_rent_per_day": 15000.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Private room, 3 nights",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 45000.0,
+      "units": 1,
+      "days": 3
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "27447",
+      "procedure_desc": "Total knee replacement",
+      "service_category": "SURGERY",
+      "billed_amount": 80000.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "01402",
+      "procedure_desc": "Anaesthesia, knee surgery",
+      "service_category": "ANAESTHESIA",
+      "billed_amount": 35000.0,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "OT",
+      "procedure_desc": "Operation theatre charges",
+      "service_category": "OT",
+      "billed_amount": 40000.0,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "71046",
+      "procedure_desc": "Pre-op diagnostics panel",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 15000.0,
+      "units": 1
+    },
+    {
+      "line_number": 6,
+      "procedure_code": "PHARMA",
+      "procedure_desc": "Medicines",
+      "service_category": "PHARMACY",
+      "billed_amount": 18000.0,
+      "units": 1
+    },
+    {
+      "line_number": 7,
+      "procedure_code": "CONSUMABLES",
+      "procedure_desc": "Surgical consumables",
+      "service_category": "CONSUMABLES",
+      "billed_amount": 12000.0,
+      "units": 1
+    }
+  ]
+}

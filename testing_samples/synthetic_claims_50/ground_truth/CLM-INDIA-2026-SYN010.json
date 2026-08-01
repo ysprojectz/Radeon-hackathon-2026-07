@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN010",
+  "claim_type": "PHARMACY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500010",
+  "patient_name": "Vikram Verma",
+  "patient_dob": "1972-01-09",
+  "gender": "MALE",
+  "provider_code": "AII005",
+  "provider_name": "AIIMS, New Delhi",
+  "provider_city": "New Delhi",
+  "provider_state": "Delhi",
+  "network_tier": "NETWORK",
+  "service_date": "2026-05-10",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "I10",
+  "primary_diagnosis_desc": "Essential (primary) hypertension",
+  "is_cashless": true,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600010",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Health India TPA Services Pvt. Ltd.",
+  "tpa_id": "TPA47841",
+  "total_billed": 1500.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "I10",
+      "procedure_desc": "90-day antihypertensive medication refill",
+      "service_category": "PHARMACY",
+      "billed_amount": 1500.0,
+      "units": 1
+    }
+  ]
+}

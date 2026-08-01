@@ -1,0 +1,30 @@
+{
+  "claim_reference": "CLM-INDIA-2026-14F74E0C",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-200001",
+  "patient_name": "Priya Sharma",
+  "patient_dob": "1992-04-18",
+  "provider_code": "IND-004",
+  "provider_name": "Kokilaben Dhirubhai Ambani Hospital",
+  "network_tier": "NETWORK",
+  "service_date": "2026-01-25",
+  "admission_date": "2026-01-25",
+  "discharge_date": "2026-01-26",
+  "primary_diagnosis_code": "L91.0",
+  "primary_diagnosis_desc": "Hypertrophic scar (keloid)",
+  "preauth_number": null,
+  "preauth_approved": false,
+  "total_billed": 85000.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "15780",
+      "procedure_desc": "Dermabrasion",
+      "service_category": "SURGERY",
+      "billed_amount": 85000.0,
+      "units": 1
+    }
+  ]
+}

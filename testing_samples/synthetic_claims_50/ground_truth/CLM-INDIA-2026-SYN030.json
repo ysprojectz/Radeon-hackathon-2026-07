@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN030",
+  "claim_type": "MATERNITY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500030",
+  "patient_name": "Anjali Reddy",
+  "patient_dob": "1989-06-15",
+  "gender": "FEMALE",
+  "provider_code": "KIM010",
+  "provider_name": "KIMS Hospital",
+  "provider_city": "Hyderabad",
+  "provider_state": "Telangana",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2025-10-28",
+  "admission_date": "2025-10-28",
+  "discharge_date": "2025-10-31",
+  "primary_diagnosis_code": "O80",
+  "primary_diagnosis_desc": "Encounter for full-term uncomplicated delivery",
+  "is_cashless": false,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600030",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Health India TPA Services Pvt. Ltd.",
+  "tpa_id": "TPA29700",
+  "total_billed": 96110.36,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 3 night(s) (Single AC Room)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 28200.0,
+      "units": 1,
+      "days": 3
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "O80",
+      "procedure_desc": "Normal vaginal delivery",
+      "service_category": "SURGERY",
+      "billed_amount": 62100.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 3641.79,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 2168.57,
+      "units": 1
+    }
+  ]
+}

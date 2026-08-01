@@ -1,0 +1,142 @@
+# ACOS on Radeon — demo bring-up stack (Victory Bible Phase 2, Jul 26 deliverable).
+#
+# Scope: this compose file starts the API + UI + their (optional) datastores.
+# It deliberately does NOT try to containerize vLLM/ROCm itself — the AMD
+# OneClick base image and GPU passthrough are tied to the Radeon Cloud host
+# environment (see SKILL.md §6), not portable into a generic container here.
+# Instead, run vLLM directly on the host (per SKILL.md's setup block) and this
+# stack reaches it via host.docker.internal.
+#
+# One-command bring-up:
+#   1. On the Radeon host, in a separate terminal, start vLLM per SKILL.md §6:
+#        source /opt/venv/bin/activate
+#        export HF_HOME=/workspace/persist/hf_cache
+#        export HF_ENDPOINT=https://hf-mirror.com
+#        export VLLM_ATTENTION_BACKEND=TRITON_ATTN
+#        vllm serve Qwen/Qwen2.5-14B-Instruct-AWQ --host 0.0.0.0 --max-model-len 8192
+#   2. cp deploy/radeon/.env.example deploy/radeon/.env   (edit if needed)
+#   3. docker compose -f deploy/radeon/docker-compose.yml up --build
+#   4. UI at http://localhost:3000 , API at http://localhost:8080/api/v1/health
+#
+# Exit check (Bible §Phase 2 Jul 26): cold start to working UI in <=10 min.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: claims_os
+      POSTGRES_USER: claims_os
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-claims_os_demo_only}
+    ports:
+      - "5433:5432"
+    volumes:
+      - acos_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U claims_os"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api_gateway:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8080:8000"
+    environment:
+      # Must be +asyncpg — shared/database.py's create_async_engine() rejects
+      # a bare postgresql:// URL (defaults to sync psycopg2), 500ing every
+      # endpoint that touches it (found 2026-07-25 via /admin/audit-logs).
+      DATABASE_URL: postgresql+asyncpg://claims_os:${POSTGRES_PASSWORD:-claims_os_demo_only}@postgres:5432/claims_os
+      # shared/db_sync.py reads this as a SEPARATE env var from DATABASE_URL
+      # (used by test_connection()/get_sync_db()/persist_claim() — the sync
+      # path, distinct from the app's main async DB path). Never set here
+      # before, so it silently fell back to its broken default
+      # (postgresql+psycopg2://claims_admin:claimspass@localhost:5432/
+      # claims_engine — wrong host, user, and database name), causing the
+      # "Database disconnected / running in memory-only mode" banner and
+      # actual claim persistence to silently no-op. Found 2026-07-24.
+      SYNC_DATABASE_URL: postgresql+psycopg2://claims_os:${POSTGRES_PASSWORD:-claims_os_demo_only}@postgres:5432/claims_os
+      REDIS_URL: redis://redis:6379/0
+
+      # ── Core inference: local only, per Track 2 non-negotiable #2 ──────────
+      LLM_ENABLED: "true"
+      MULTI_AGENT_ENABLED: "true"
+      LOCAL_LLM_ENABLED: "true"
+      LOCAL_LLM_BASE_URL: ${LOCAL_LLM_BASE_URL:-http://host.docker.internal:8000/v1}
+      LOCAL_LLM_MODEL: ${LOCAL_LLM_MODEL:-Qwen/Qwen2.5-14B-Instruct-AWQ}
+      LOCAL_LLM_SECONDARY_ENABLED: ${LOCAL_LLM_SECONDARY_ENABLED:-false}
+      LOCAL_LLM_SECONDARY_BASE_URL: ${LOCAL_LLM_SECONDARY_BASE_URL:-http://host.docker.internal:8001/v1}
+      LOCAL_LLM_SECONDARY_MODEL: ${LOCAL_LLM_SECONDARY_MODEL:-Qwen/Qwen2.5-7B-Instruct-AWQ}
+
+      # All cloud LLM providers explicitly disabled for the demo — the point
+      # is proving zero cloud dependency for core inference.
+      GROQ_ENABLED: "false"
+      NVIDIA_ENABLED: "false"
+      OPENAI_ENABLED: "false"
+      ANTHROPIC_ENABLED: "false"
+
+      # Local-dev-only 2FA bypass (auth.py) — off by default, set
+      # DISABLE_MFA=true in .env to skip TOTP during local UI walkthroughs.
+      # Never enable this for anything judge-facing or deployed.
+      DISABLE_MFA: ${DISABLE_MFA:-false}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # needed on Linux hosts (Radeon instance is Ubuntu)
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 15s
+
+  claims_ui:
+    build:
+      context: ../../claims-ui
+      dockerfile: Dockerfile
+      args:
+        # Baked in at build time — used by the BROWSER, which reaches the
+        # gateway via the host-mapped port, so localhost is correct here.
+        NEXT_PUBLIC_API_URL: http://localhost:8080
+    environment:
+      # Used by claims-ui's own server-side API proxy route
+      # (app/api/v1/proxy/[...path]/route.ts), which runs INSIDE this
+      # container, not in the browser — "localhost" there means the
+      # container's own loopback (nothing listens on 8080 in here), not the
+      # host. Found 2026-07-24: the proxy silently fell back to
+      # NEXT_PUBLIC_API_URL (browser-only) and got ECONNREFUSED on every
+      # login/API call routed through it. Must use the docker-internal
+      # service name + the container's real internal port (8000, not the
+      # host-mapped 8080).
+      API_URL: http://api_gateway:8000
+      # lib/api-server.ts (Settings page's server-side isAdmin check, used to
+      # decide whether to render the Master Settings / Admin Console tabs)
+      # reads a DIFFERENT env var name than the proxy route above and has no
+      # docker-aware default — it silently fell back to localhost:8000
+      # (this container's own loopback, nothing listens there) and every
+      # getMeServer()/getDashboardKPIsServer() call failed, making isAdmin
+      # always false regardless of actual role. Found 2026-07-25 while
+      # verifying the Admin Console screens post color-audit.
+      INTERNAL_API_URL: http://api_gateway:8000
+    depends_on:
+      api_gateway:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+
+volumes:
+  acos_pg_data:

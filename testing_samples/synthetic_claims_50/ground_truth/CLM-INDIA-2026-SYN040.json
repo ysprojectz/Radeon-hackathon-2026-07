@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN040",
+  "claim_type": "MATERNITY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500040",
+  "patient_name": "Divya Iyer",
+  "patient_dob": "1998-07-14",
+  "gender": "FEMALE",
+  "provider_code": "FOR002",
+  "provider_name": "Fortis Hospital, Bannerghatta Road",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NETWORK",
+  "service_date": "2025-12-07",
+  "admission_date": "2025-12-07",
+  "discharge_date": "2025-12-13",
+  "primary_diagnosis_code": "O80",
+  "primary_diagnosis_desc": "Encounter for full-term uncomplicated delivery",
+  "is_cashless": true,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600040",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Raksha TPA Pvt. Ltd.",
+  "tpa_id": "TPA96391",
+  "total_billed": 157412.34,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 6 night(s) (ICU)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 77400.0,
+      "units": 1,
+      "days": 6
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "O80",
+      "procedure_desc": "Normal vaginal delivery",
+      "service_category": "SURGERY",
+      "billed_amount": 71700.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 2920.97,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 5391.37,
+      "units": 1
+    }
+  ]
+}

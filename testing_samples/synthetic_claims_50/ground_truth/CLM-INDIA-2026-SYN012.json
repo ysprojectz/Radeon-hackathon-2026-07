@@ -1,0 +1,70 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN012",
+  "claim_type": "EMERGENCY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500012",
+  "patient_name": "Amit Nair",
+  "patient_dob": "1959-04-04",
+  "gender": "MALE",
+  "provider_code": "LIL012",
+  "provider_name": "Lilavati Hospital",
+  "provider_city": "Mumbai",
+  "provider_state": "Maharashtra",
+  "network_tier": "NETWORK",
+  "service_date": "2026-04-19",
+  "admission_date": "2026-04-19",
+  "discharge_date": "2026-04-21",
+  "primary_diagnosis_code": "T63.0",
+  "primary_diagnosis_desc": "Toxic effect of snake venom",
+  "is_cashless": true,
+  "insurer_name": "Niva Bupa Health Insurance Co. Ltd.",
+  "policy_number": "NIVABUPA-REASSURE-2024-600012",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "MDIndia Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA88833",
+  "total_billed": 130156.13,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 2 night(s) (ICU)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 8400.0,
+      "units": 1,
+      "days": 2
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "T630",
+      "procedure_desc": "Anti-venom administration + ICU observation",
+      "service_category": "SURGERY",
+      "billed_amount": 109400.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 2696.67,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 8152.16,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "AMB",
+      "procedure_desc": "Ambulance charges",
+      "service_category": "TRANSPORT",
+      "billed_amount": 1507.3,
+      "units": 1
+    }
+  ]
+}

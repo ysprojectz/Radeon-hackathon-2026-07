@@ -1,0 +1,87 @@
+[
+  {
+    "claim_reference": "CLM-UAE-2024-000001",
+    "expected": {
+      "description": "Standard outpatient with 20% copay (max AED 50/visit) on consultation and diagnostics, 10% on pharmacy",
+      "total_allowed": 780.0,
+      "total_copay": 110.0,
+      "total_plan_payment": 670.0,
+      "total_member_responsibility": 110.0
+    }
+  },
+  {
+    "claim_reference": "CLM-UAE-2024-000002",
+    "expected": {
+      "description": "Inpatient appendectomy at CoE. AED 200 flat copay (first admission). Private room covered in Gold plan.",
+      "total_allowed": 35800.0,
+      "total_copay": 200.0,
+      "total_plan_payment": 35600.0,
+      "total_member_responsibility": 200.0
+    }
+  },
+  {
+    "claim_reference": "CLM-UAE-2024-000003",
+    "expected": {
+      "description": "Thiqa member \u2014 zero copay, zero deductible. Full coverage.",
+      "total_allowed": 2850.0,
+      "total_copay": 0.0,
+      "total_plan_payment": 2850.0,
+      "total_member_responsibility": 0.0
+    }
+  },
+  {
+    "claim_reference": "CLM-IND-2024-000001",
+    "expected": {
+      "description": "Room rent \u20b915K/night vs eligible \u20b910K/night = 66.67% ratio. Proportionate deduction on surgeon, anaesthesia, OT charges. Diagnostics, medicines, consumables exempt from deduction.",
+      "room_rent_ratio": 0.6667,
+      "room_eligible": 30000.0,
+      "surgery_payable": 80000.0,
+      "anaesthesia_payable": 23333.0,
+      "ot_payable": 26667.0,
+      "diagnostics_payable": 15000.0,
+      "medicines_payable": 18000.0,
+      "consumables_payable": 12000.0,
+      "total_allowed": 205000.0,
+      "total_copay": 0.0,
+      "total_plan_payment": 205000.0,
+      "total_member_responsibility": 80000.0
+    }
+  },
+  {
+    "claim_reference": "CLM-IND-2024-000002",
+    "expected": {
+      "description": "DENIED \u2014 Dermabrasion (CPT 15780) is listed under cosmetic exclusion in Section 5.1. The diagnosis (keloid) may warrant review if medically necessary, triggering HITL.",
+      "total_allowed": 0.0,
+      "total_copay": 0.0,
+      "total_plan_payment": 0.0,
+      "total_member_responsibility": 85000.0,
+      "denial_code": "EX-001",
+      "denial_reason": "Excluded service: Cosmetic/aesthetic treatment per Section 5.1",
+      "hitl_recommended": true,
+      "hitl_reason": "Keloid diagnosis may qualify for medical necessity exception"
+    }
+  },
+  {
+    "claim_reference": "CLM-UAE-2024-000004",
+    "expected": {
+      "description": "Basic Plan: 20% copay (max AED 50) on consultation + diagnostics, 30% copay on pharmacy. Pharmacy annual limit AED 1,500.",
+      "total_allowed": 650.0,
+      "consultation_copay": 40.0,
+      "lab_copay": 24.0,
+      "pharmacy_copay": 99.0,
+      "total_copay": 163.0,
+      "total_plan_payment": 487.0,
+      "total_member_responsibility": 163.0
+    }
+  },
+  {
+    "claim_reference": "CLM-IND-2024-000003",
+    "expected": {
+      "description": "Star Assure with \u20b950,000 deductible. Member has met \u20b925,000 already. Remaining deductible \u20b925,000 applies first. Room rent \u20b94K/night is within \u20b95K limit \u2014 no proportionate deduction.",
+      "remaining_deductible": 25000.0,
+      "total_after_deductible": 70000.0,
+      "total_plan_payment": 70000.0,
+      "total_member_responsibility": 25000.0
+    }
+  }
+]

@@ -1,0 +1,19 @@
+# OCR Service Dependencies
+# Version: v2026.03.13.5 (Enhanced OCR)
+
+# Core OCR engines
+pdfplumber>=0.11.9
+pytesseract>=0.3.13
+pypdf>=6.10.2
+
+# Image processing
+Pillow>=12.1.1
+
+# NEW: Enhanced OCR dependencies (v2026.03.13.5)
+opencv-python-headless>=4.13.0.92  # Advanced image preprocessing without GUI deps
+scipy>=1.16.3                      # Image rotation/deskewing (Phase 1)
+
+# Note: Tesseract OCR binary must be installed on system
+# Ubuntu/Debian: apt-get install tesseract-ocr
+# macOS: brew install tesseract
+# Docker: RUN apt-get install -y tesseract-ocr

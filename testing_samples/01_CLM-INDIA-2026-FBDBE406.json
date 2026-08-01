@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-FBDBE406",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-200001",
+  "patient_name": "Priya Sharma",
+  "patient_dob": "1992-04-18",
+  "provider_code": "IND-001",
+  "provider_name": "Apollo Hospitals, Greams Road",
+  "network_tier": "NETWORK",
+  "service_date": "2026-01-10",
+  "admission_date": "2026-01-10",
+  "discharge_date": "2026-01-13",
+  "primary_diagnosis_code": "K35.80",
+  "primary_diagnosis_desc": "Acute appendicitis without peritoneal abscess",
+  "preauth_number": "PA-2026-CHN-001",
+  "preauth_approved": true,
+  "total_billed": 185000.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "27447",
+      "procedure_desc": "Appendectomy, laparoscopic",
+      "service_category": "SURGERY",
+      "billed_amount": 150000.0,
+      "units": 1
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "00840",
+      "procedure_desc": "Anaesthesia for intraperitoneal procedure",
+      "service_category": "ANAESTHESIA",
+      "billed_amount": 20000.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "71046",
+      "procedure_desc": "Chest X-ray, 2 views",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 3000.0,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "85025",
+      "procedure_desc": "Complete blood count (CBC)",
+      "service_category": "LAB",
+      "billed_amount": 2000.0,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "PHARMA",
+      "procedure_desc": "Post-op medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 10000.0,
+      "units": 1
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN034",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500034",
+  "patient_name": "Priya Desai",
+  "patient_dob": "2004-09-11",
+  "gender": "FEMALE",
+  "provider_code": "CMC013",
+  "provider_name": "CMC Vellore",
+  "provider_city": "Vellore",
+  "provider_state": "Tamil Nadu",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2025-09-27",
+  "admission_date": "2025-09-27",
+  "discharge_date": "2025-10-01",
+  "primary_diagnosis_code": "S72.001A",
+  "primary_diagnosis_desc": "Fracture of neck of right femur",
+  "is_cashless": false,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600034",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "MDIndia Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA38582",
+  "total_billed": 335981.64,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 4 night(s) (Single AC Room)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 47600.0,
+      "units": 1,
+      "days": 4
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "S72001A",
+      "procedure_desc": "Hip fracture fixation surgery",
+      "service_category": "SURGERY",
+      "billed_amount": 271300.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 8545.65,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 8535.99,
+      "units": 1
+    }
+  ]
+}

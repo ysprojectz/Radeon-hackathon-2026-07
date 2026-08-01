@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN015",
+  "claim_type": "PHARMACY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500015",
+  "patient_name": "Siddharth Chatterjee",
+  "patient_dob": "1963-10-16",
+  "gender": "MALE",
+  "provider_code": "KIM010",
+  "provider_name": "KIMS Hospital",
+  "provider_city": "Hyderabad",
+  "provider_state": "Telangana",
+  "network_tier": "NETWORK",
+  "service_date": "2026-05-11",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "I10",
+  "primary_diagnosis_desc": "Essential (primary) hypertension",
+  "is_cashless": true,
+  "insurer_name": "Niva Bupa Health Insurance Co. Ltd.",
+  "policy_number": "NIVABUPA-REASSURE-2024-600015",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "MediAssist India TPA Pvt. Ltd.",
+  "tpa_id": "TPA61079",
+  "total_billed": 3400.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "I10",
+      "procedure_desc": "90-day antihypertensive medication refill",
+      "service_category": "PHARMACY",
+      "billed_amount": 3400.0,
+      "units": 1
+    }
+  ]
+}

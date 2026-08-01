@@ -1,0 +1,70 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN023",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500023",
+  "patient_name": "Rajesh Menon",
+  "patient_dob": "1979-06-06",
+  "gender": "MALE",
+  "provider_code": "MAX003",
+  "provider_name": "Max Super Speciality Hospital, Saket",
+  "provider_city": "New Delhi",
+  "provider_state": "Delhi",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-02-25",
+  "admission_date": "2026-02-25",
+  "discharge_date": "2026-02-28",
+  "primary_diagnosis_code": "S72.001A",
+  "primary_diagnosis_desc": "Fracture of neck of right femur",
+  "is_cashless": false,
+  "insurer_name": "Niva Bupa Health Insurance Co. Ltd.",
+  "policy_number": "NIVABUPA-REASSURE-2024-600023",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Vidal Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA24914",
+  "total_billed": 205396.47,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 3 night(s) (ICU)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 24000.0,
+      "units": 1,
+      "days": 3
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "S72001A",
+      "procedure_desc": "Hip fracture fixation surgery",
+      "service_category": "SURGERY",
+      "billed_amount": 161500.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 8093.74,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 10634.09,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "AMB",
+      "procedure_desc": "Ambulance charges",
+      "service_category": "TRANSPORT",
+      "billed_amount": 1168.64,
+      "units": 1
+    }
+  ]
+}

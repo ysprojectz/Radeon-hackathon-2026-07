@@ -1,0 +1,70 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN024",
+  "claim_type": "DAYCARE",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500024",
+  "patient_name": "Manoj Choudhary",
+  "patient_dob": "2001-07-03",
+  "gender": "MALE",
+  "provider_code": "CAR011",
+  "provider_name": "Care Hospitals, Banjara Hills",
+  "provider_city": "Hyderabad",
+  "provider_state": "Telangana",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-02-21",
+  "admission_date": "2026-02-21",
+  "discharge_date": "2026-02-22",
+  "primary_diagnosis_code": "K63.5",
+  "primary_diagnosis_desc": "Polyp of colon",
+  "is_cashless": false,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600024",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Raksha TPA Pvt. Ltd.",
+  "tpa_id": "TPA96903",
+  "total_billed": 38180.73,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 1 night(s) (Single AC Room)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 12800.0,
+      "units": 1,
+      "days": 1
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "K635",
+      "procedure_desc": "Colonoscopy with polypectomy",
+      "service_category": "SURGERY",
+      "billed_amount": 22400.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 1065.9,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 880.6,
+      "units": 1
+    },
+    {
+      "line_number": 5,
+      "procedure_code": "AMB",
+      "procedure_desc": "Ambulance charges",
+      "service_category": "TRANSPORT",
+      "billed_amount": 1034.23,
+      "units": 1
+    }
+  ]
+}

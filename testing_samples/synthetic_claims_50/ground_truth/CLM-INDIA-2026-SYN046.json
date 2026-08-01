@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN046",
+  "claim_type": "OPTICAL",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500046",
+  "patient_name": "Mohan Mukherjee",
+  "patient_dob": "2002-02-04",
+  "gender": "MALE",
+  "provider_code": "FOR002",
+  "provider_name": "Fortis Hospital, Bannerghatta Road",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-05-17",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "H25.9",
+  "primary_diagnosis_desc": "Age-related cataract, unspecified",
+  "is_cashless": false,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600046",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Raksha TPA Pvt. Ltd.",
+  "tpa_id": "TPA68179",
+  "total_billed": 77400.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "H259",
+      "procedure_desc": "Cataract surgery with premium IOL",
+      "service_category": "SURGERY",
+      "billed_amount": 77400.0,
+      "units": 1
+    }
+  ]
+}

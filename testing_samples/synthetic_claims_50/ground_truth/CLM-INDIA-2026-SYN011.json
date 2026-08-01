@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN011",
+  "claim_type": "INPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500011",
+  "patient_name": "Lakshmi Iyer",
+  "patient_dob": "1990-01-10",
+  "gender": "FEMALE",
+  "provider_code": "LIL012",
+  "provider_name": "Lilavati Hospital",
+  "provider_city": "Mumbai",
+  "provider_state": "Maharashtra",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-03-30",
+  "admission_date": "2026-03-30",
+  "discharge_date": "2026-04-01",
+  "primary_diagnosis_code": "I21.9",
+  "primary_diagnosis_desc": "Acute myocardial infarction, unspecified",
+  "is_cashless": false,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600011",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Vidal Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA98999",
+  "total_billed": 401305.74,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 2 night(s) (Single AC Room)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 13400.0,
+      "units": 1,
+      "days": 2
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "I219",
+      "procedure_desc": "Percutaneous coronary intervention",
+      "service_category": "SURGERY",
+      "billed_amount": 358500.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 7486.86,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 21918.88,
+      "units": 1
+    }
+  ]
+}

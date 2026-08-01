@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN006",
+  "claim_type": "DAYCARE",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500006",
+  "patient_name": "Ravi Patel",
+  "patient_dob": "1980-03-18",
+  "gender": "MALE",
+  "provider_code": "CMC013",
+  "provider_name": "CMC Vellore",
+  "provider_city": "Vellore",
+  "provider_state": "Tamil Nadu",
+  "network_tier": "NETWORK",
+  "service_date": "2026-05-09",
+  "admission_date": "2026-05-09",
+  "discharge_date": "2026-05-10",
+  "primary_diagnosis_code": "K63.5",
+  "primary_diagnosis_desc": "Polyp of colon",
+  "is_cashless": true,
+  "insurer_name": "Star Health and Allied Insurance Co. Ltd.",
+  "policy_number": "STAR-COMP-2024-600006",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Health India TPA Services Pvt. Ltd.",
+  "tpa_id": "TPA17617",
+  "total_billed": 50618.04,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 1 night(s) (General Ward)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 10700.0,
+      "units": 1,
+      "days": 1
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "K635",
+      "procedure_desc": "Colonoscopy with polypectomy",
+      "service_category": "SURGERY",
+      "billed_amount": 35700.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 1836.26,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 2381.78,
+      "units": 1
+    }
+  ]
+}

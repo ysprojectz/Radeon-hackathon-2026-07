@@ -1,0 +1,176 @@
+{
+  "market_region": "INDIA",
+  "regulatory_body": "IRDAI",
+  "effective_date": "2016-01-01",
+  "description": "Insurance Regulatory and Development Authority of India (IRDAI) mandatory health insurance regulations — Standard Exclusions List, mental health mandate, waiting period caps, AYUSH coverage, and standardized benefit definitions per IRDAI Health Insurance Regulations 2016 and subsequent circulars including Mental Healthcare Act 2017.",
+  "clauses": [
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "IRDAI-HI-2.1",
+      "title": "Mandatory Inpatient Hospitalization Coverage",
+      "full_text": "All individual and group health insurance policies must cover hospitalization expenses for illness, injury, or disease requiring admission for more than 24 hours. Coverage must include room rent, nursing, ICU charges, surgeon fees, anaesthetist fees, diagnostics, blood, oxygen, OT charges, and medicines. Policies may apply room rent sub-limits; however, the proportionate deduction formula (Payable = Billed x Eligible Room Rent / Actual Room Rent) is the ONLY permissible method for applying room rent limits. No other formula for room-rent based deduction is permissible under IRDAI regulations.",
+      "structured_data": {
+        "benefit_type": "INPATIENT",
+        "is_mandatory": true,
+        "minimum_hospitalization_hours": 24,
+        "permitted_room_rent_limit_method": "PROPORTIONATE_DEDUCTION_ONLY",
+        "covers": ["ROOM_RENT", "NURSING", "ICU", "SURGEON", "ANAESTHETIST", "DIAGNOSTICS", "MEDICINES", "OT"]
+      },
+      "applicable_claim_types": ["INPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Health Insurance Regulations 2016, Regulation 12 — Standard coverage requirements"
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "IRDAI-HI-2.2",
+      "title": "Mandatory Daycare Procedures Coverage",
+      "full_text": "All health insurance policies must cover all daycare procedures that due to technological advancement do not require 24-hour hospitalization. Policies must not restrict daycare coverage to a fixed list of procedures — coverage must extend to all procedures where the treating doctor certifies that less than 24-hour hospitalization was medically appropriate. Minimum 546 procedures per IRDAI standard list must be covered. Insurers may not deny daycare claims solely on the basis that the procedure was completed in less than 24 hours.",
+      "structured_data": {
+        "benefit_type": "DAYCARE",
+        "is_mandatory": true,
+        "minimum_procedures_covered": 546,
+        "open_ended_list_required": true,
+        "doctor_certification_sufficient": true,
+        "denial_ground_prohibited": "LESS_THAN_24_HOURS"
+      },
+      "applicable_claim_types": ["DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Health Insurance Circular IRDA/HLT/REG/CIR/136/06/2016"
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "IRDAI-HI-2.3",
+      "title": "Mandatory Mental Health Coverage — Mental Healthcare Act 2017",
+      "full_text": "Per the Mental Healthcare Act 2017 and IRDAI Circular IRDA/HLT/CIR/MISC/149/07/2018, all health insurance policies must provide coverage for mental health conditions on par with physical health conditions. This includes: inpatient psychiatric treatment, outpatient psychiatric consultations, prescribed psychotropic medications, and medically necessary psychological therapy. Insurers may not apply separate sub-limits, higher copays, or waiting periods specifically for mental health conditions that are more restrictive than those for physical health conditions. Mental illness as defined under the Act must be treated as any other illness for insurance purposes.",
+      "structured_data": {
+        "benefit_type": "MENTAL_HEALTH",
+        "is_mandatory": true,
+        "parity_with_physical_health": true,
+        "prohibited_discriminatory_limits": [
+          "HIGHER_COPAY_FOR_MENTAL_HEALTH",
+          "STRICTER_WAITING_PERIOD_FOR_MENTAL_HEALTH",
+          "LOWER_ANNUAL_LIMIT_FOR_MENTAL_HEALTH",
+          "SEPARATE_MENTAL_HEALTH_SUB_LIMIT_BELOW_PHYSICAL"
+        ],
+        "covers": ["INPATIENT_PSYCHIATRIC", "OUTPATIENT_PSYCHIATRIC", "PSYCHOTROPIC_MEDICATIONS", "PSYCHOLOGICAL_THERAPY"]
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "PHARMACY"],
+      "is_mandatory": true,
+      "regulatory_note": "Mental Healthcare Act 2017, Section 21(4); IRDAI Circular IRDA/HLT/CIR/MISC/149/07/2018"
+    },
+    {
+      "clause_type": "WAITING_PERIOD",
+      "section_reference": "IRDAI-HI-3.1",
+      "title": "Standard Waiting Period Caps — IRDAI Mandatory Limits",
+      "full_text": "IRDAI mandates maximum waiting periods as follows: Initial waiting period for all illness claims (excluding accidents): maximum 30 days. Pre-existing disease (PED) waiting period: maximum 48 months from the first policy inception date. For portability cases, PED waiting period credit must be given for continuous prior coverage. Specific disease waiting period (e.g., cataract, hernia, joint replacement): maximum 24 months. Maternity waiting period: maximum 24 months. No waiting period may be applied for claims arising from accidents regardless of coverage tenure. Waiting periods exceeding these caps are void and unenforceable.",
+      "structured_data": {
+        "is_mandatory": true,
+        "max_initial_waiting_days": 30,
+        "max_ped_waiting_months": 48,
+        "max_specific_disease_waiting_months": 24,
+        "max_maternity_waiting_months": 24,
+        "accident_waiting_period": 0,
+        "portability_ped_credit_required": true,
+        "prohibited_longer_waiting_periods": true
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "MATERNITY", "DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Health Insurance Regulations 2016, Regulation 8 — Waiting period caps"
+    },
+    {
+      "clause_type": "EXCLUSION",
+      "section_reference": "IRDAI-HI-4.1",
+      "title": "IRDAI Standard Exclusion List — Permitted Exclusions Only",
+      "full_text": "Only the following exclusions are permitted in IRDAI-compliant health insurance policies. Any exclusion not on this standard list is void and unenforceable: (1) Cosmetic or aesthetic surgery unless necessitated by accident or cancer treatment; (2) Expenses incurred outside India (except in approved international plans); (3) Elective circumcision unless medically necessary; (4) Routine vaccination and inoculation; (5) Spectacles, contact lenses, and hearing aids (except post-injury); (6) Dental treatment except following an accident requiring hospitalization; (7) Infertility and IVF treatment; (8) Non-allopathic treatments (except AYUSH under approved policies); (9) Self-inflicted injuries including suicide attempts. Mental health conditions, HIV/AIDS for legal residents, and substance abuse treatment (within limits) are NOT permitted exclusions.",
+      "structured_data": {
+        "is_mandatory": true,
+        "permitted_exclusions_only": [
+          "COSMETIC_ELECTIVE",
+          "OVERSEAS_TREATMENT",
+          "ELECTIVE_CIRCUMCISION",
+          "ROUTINE_VACCINATION",
+          "SPECTACLES_CONTACTS_HEARING_AID",
+          "DENTAL_ELECTIVE",
+          "INFERTILITY_IVF",
+          "NON_ALLOPATHIC_WITHOUT_APPROVAL",
+          "SELF_INFLICTED"
+        ],
+        "prohibited_exclusions": [
+          "MENTAL_HEALTH",
+          "HIV_AIDS_LEGAL_RESIDENTS",
+          "SUBSTANCE_ABUSE_TREATMENT"
+        ]
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Standardization of Exclusions in Health Insurance Policies — Circular IRDA/HLT/REG/CIR/193/08/2019"
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "IRDAI-HI-4.2",
+      "title": "Mandatory AYUSH Treatment Coverage",
+      "full_text": "All health insurance policies issued or renewed from 2013 must provide coverage for treatment under Ayurveda, Yoga, Naturopathy, Unani, Siddha, and Homeopathy (AYUSH) systems at government-approved AYUSH hospitals or accredited facilities. The coverage terms for AYUSH treatment must be equivalent to allopathic inpatient treatment and may not be subject to a lower sub-limit than 25% of the sum insured. Exclusion of AYUSH treatment at approved facilities is not permitted.",
+      "structured_data": {
+        "benefit_type": "AYUSH",
+        "is_mandatory": true,
+        "minimum_coverage_pct_of_sum_insured": 25,
+        "approved_facilities_only": true,
+        "systems_covered": ["AYURVEDA", "YOGA", "NATUROPATHY", "UNANI", "SIDDHA", "HOMEOPATHY"]
+      },
+      "applicable_claim_types": ["INPATIENT", "DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Circular — AYUSH Coverage Mandate IRDA/HLT/CIR/MISC/121/06/2013"
+    },
+    {
+      "clause_type": "COPAY_COINSURANCE",
+      "section_reference": "IRDAI-HI-5.1",
+      "title": "Copayment Restrictions — IRDAI Regulations",
+      "full_text": "Copayment clauses in health insurance policies are subject to IRDAI approval. Approved copayment structures may not exceed 30% of the claim amount for any single benefit. Copayment for senior citizens (aged 60 or above) must not exceed 20% unless the member opted for a voluntary deductible at inception. Copayment cannot be applied to emergency admissions. Copayment for pre-existing condition claims is not permitted once the PED waiting period has been completed — no additional PED-specific copay loading is allowed.",
+      "structured_data": {
+        "is_mandatory": true,
+        "max_copay_pct": 30,
+        "max_senior_copay_pct": 20,
+        "emergency_copay": 0,
+        "prohibited_ped_specific_copay_loading": true,
+        "senior_age_threshold_years": 60
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Health Insurance Regulations 2016, Regulation 17 — Copayment restrictions"
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "IRDAI-HI-5.2",
+      "title": "Mandatory Pre and Post Hospitalization Coverage",
+      "full_text": "All inpatient health insurance policies must cover medical expenses incurred 30 days prior to and 60 days post-hospitalization for the same condition or illness that necessitated the hospitalization. Policies may extend this to more generous periods but may not offer less than 30 days pre and 60 days post. These pre/post hospitalization expenses may not be subject to a separate annual sub-limit — they must count against the overall sum insured only. Claims for pre/post expenses may not be denied solely because the hospitalization was at a non-network facility if the admission itself was covered.",
+      "structured_data": {
+        "benefit_type": "PRE_POST_HOSPITALIZATION",
+        "is_mandatory": true,
+        "min_pre_hospitalization_days": 30,
+        "min_post_hospitalization_days": 60,
+        "no_separate_sub_limit": true,
+        "must_be_related_to_admission_condition": true
+      },
+      "applicable_claim_types": ["INPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Health Insurance Regulations 2016, Regulation 12(3)"
+    },
+    {
+      "clause_type": "GENERAL_PROVISION",
+      "section_reference": "IRDAI-HI-6.1",
+      "title": "Mandatory Policy Portability Rights",
+      "full_text": "All insured persons have the right to port their health insurance policy to another insurer without loss of waiting period credit for pre-existing diseases. The new insurer must accept portability requests made within 45 days before policy renewal. The new insurer may not apply fresh waiting periods to conditions covered under the previous policy for the years already served. Insurers may not penalize or impose additional loading solely on grounds of portability. Continuous coverage from the previous insurer counts toward all waiting periods at the new insurer.",
+      "structured_data": {
+        "is_mandatory": true,
+        "portability_right": true,
+        "ped_credit_carryover": true,
+        "application_window_days": 45,
+        "no_fresh_waiting_period_for_covered_conditions": true,
+        "no_portability_loading": true
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "IRDAI Health Insurance Portability Regulations — Circular IRDA/HLT/REG/CIR/080/03/2011"
+    }
+  ]
+}

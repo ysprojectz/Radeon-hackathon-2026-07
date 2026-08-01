@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  targetNamespace="http://bpmn.io/schema/bpmn">
+
+  <bpmn:process id="PreAuthProcess" name="India Cashless Pre-Auth Process"
+    isExecutable="true" camunda:historyTimeToLive="180">
+
+    <!-- ── Start ─────────────────────────────────────────────────────── -->
+    <bpmn:startEvent id="StartEvent_1" name="Pre-Auth Requested">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <!-- ── Task 1: Extract FHIR Bundle from discharge PDF ────────────── -->
+    <bpmn:serviceTask id="Task_ExtractFHIR" name="Extract FHIR from Document"
+      camunda:type="external" camunda:topic="Task_ExtractFHIR">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="Task_ExtractFHIR"/>
+
+    <!-- ── Task 2: Verify ABDM consent ───────────────────────────────── -->
+    <bpmn:serviceTask id="Task_CheckConsent" name="Check ABDM Consent"
+      camunda:type="external" camunda:topic="Task_CheckConsent">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_ExtractFHIR" targetRef="Task_CheckConsent"/>
+
+    <!-- ── Task 3: Evaluate IRDAI OPA rules ──────────────────────────── -->
+    <bpmn:serviceTask id="Task_EvaluateRules" name="Evaluate IRDAI Rules (OPA)"
+      camunda:type="external" camunda:topic="Task_EvaluateRules">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_CheckConsent" targetRef="Task_EvaluateRules"/>
+
+    <!-- ── Task 4: FWA anomaly scoring ───────────────────────────────── -->
+    <bpmn:serviceTask id="Task_FWAScore" name="FWA Anomaly Score"
+      camunda:type="external" camunda:topic="Task_FWAScore">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_EvaluateRules" targetRef="Task_FWAScore"/>
+
+    <!-- ── Gateway: auto-approve or manual review ────────────────────── -->
+    <bpmn:exclusiveGateway id="Gateway_Rules" name="Rules + FWA Passed?">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Flow_AutoApprove</bpmn:outgoing>
+      <bpmn:outgoing>Flow_ManualReview</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_FWAScore" targetRef="Gateway_Rules"/>
+
+    <!-- ── Task 5a: Auto-approve → NHCX submission ───────────────────── -->
+    <bpmn:serviceTask id="Task_AutoApprove" name="Auto-Approve and Submit to NHCX"
+      camunda:type="external" camunda:topic="Task_AutoApprove">
+      <bpmn:incoming>Flow_AutoApprove</bpmn:incoming>
+      <bpmn:outgoing>Flow_End_Approved</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_AutoApprove" sourceRef="Gateway_Rules" targetRef="Task_AutoApprove">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${rulesPassed == true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+
+    <!-- ── Task 5b: Manual review (HITL) ─────────────────────────────── -->
+    <bpmn:userTask id="Task_ManualReview" name="Manual Review (HITL)">
+      <bpmn:incoming>Flow_ManualReview</bpmn:incoming>
+      <bpmn:outgoing>Flow_End_Manual</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_ManualReview" sourceRef="Gateway_Rules" targetRef="Task_ManualReview">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${rulesPassed == false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+
+    <!-- ── End events ─────────────────────────────────────────────────── -->
+    <bpmn:endEvent id="EndEvent_Approved" name="Pre-Auth Approved">
+      <bpmn:incoming>Flow_End_Approved</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_End_Approved" sourceRef="Task_AutoApprove" targetRef="EndEvent_Approved"/>
+
+    <bpmn:endEvent id="EndEvent_Manual" name="Claim Processed (Manual)">
+      <bpmn:incoming>Flow_End_Manual</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_End_Manual" sourceRef="Task_ManualReview" targetRef="EndEvent_Manual"/>
+
+  </bpmn:process>
+</bpmn:definitions>

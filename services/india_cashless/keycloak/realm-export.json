@@ -1,0 +1,81 @@
+{
+  "realm": "india-cashless",
+  "enabled": true,
+  "displayName": "India Cashless Pre-Auth",
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": true,
+  "duplicateEmailsAllowed": false,
+  "resetPasswordAllowed": false,
+  "editUsernameAllowed": false,
+  "bruteForceProtected": true,
+  "accessTokenLifespan": 1800,
+  "roles": {
+    "realm": [
+      { "name": "tpa-reviewer",   "description": "TPA reviewer — can view and take HITL decisions on pre-auth requests" },
+      { "name": "tpa-admin",      "description": "TPA administrator — full access to India cashless lane" },
+      { "name": "nhcx-submitter", "description": "Service role — allowed to submit pre-auth requests to NHCX" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "apisix-gateway",
+      "name": "APISIX Gateway",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": true,
+      "standardFlowEnabled": false,
+      "serviceAccountsEnabled": false,
+      "protocol": "openid-connect"
+    },
+    {
+      "clientId": "nhcx-service-account",
+      "name": "NHCX Service Account",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": false,
+      "standardFlowEnabled": false,
+      "serviceAccountsEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "protocol": "openid-connect",
+      "secret": "CHANGE-ME-generate-a-real-secret-before-deploy",
+      "defaultClientScopes": ["profile", "email", "roles"]
+    },
+    {
+      "clientId": "claims-ui",
+      "name": "Claims UI",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:3000"],
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "tpa-admin",
+      "email": "tpa-admin@example.com",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "TPA",
+      "lastName": "Administrator",
+      "credentials": [
+        { "type": "password", "value": "admin123", "temporary": true }
+      ],
+      "realmRoles": ["tpa-admin", "tpa-reviewer", "nhcx-submitter"]
+    },
+    {
+      "username": "tpa-reviewer",
+      "email": "tpa-reviewer@example.com",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "TPA",
+      "lastName": "Reviewer",
+      "credentials": [
+        { "type": "password", "value": "reviewer123", "temporary": true }
+      ],
+      "realmRoles": ["tpa-reviewer"]
+    }
+  ]
+}

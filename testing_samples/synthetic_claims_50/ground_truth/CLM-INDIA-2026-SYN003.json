@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN003",
+  "claim_type": "OUTPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500003",
+  "patient_name": "Sanjay Desai",
+  "patient_dob": "1992-08-21",
+  "gender": "MALE",
+  "provider_code": "NAR008",
+  "provider_name": "Narayana Health City",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-03-21",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "E78.5",
+  "primary_diagnosis_desc": "Hyperlipidaemia, unspecified",
+  "is_cashless": false,
+  "insurer_name": "Niva Bupa Health Insurance Co. Ltd.",
+  "policy_number": "NIVABUPA-REASSURE-2024-600003",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Vidal Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA53347",
+  "total_billed": 4100.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "E785",
+      "procedure_desc": "Lipid profile + physician review",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 4100.0,
+      "units": 1
+    }
+  ]
+}

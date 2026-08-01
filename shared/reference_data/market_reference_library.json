@@ -1,0 +1,106 @@
+{
+  "version": "2026-05-06",
+  "market": "INDIA",
+  "name": "GIPSA/PPN Reference Library",
+  "description": "Standard negotiated package rates for Public Sector Undertaking (PSU) insurers in India.",
+  "packages": [
+    {
+      "procedure_code": "TURP",
+      "name": "Transurethral Resection of Prostate",
+      "rates": {
+        "TIER_1": {
+          "GRADE_A": 75000,
+          "GRADE_B": 60000,
+          "GRADE_C": 45000
+        },
+        "TIER_2": {
+          "GRADE_A": 60000,
+          "GRADE_B": 48000,
+          "GRADE_C": 36000
+        },
+        "TIER_3": {
+          "GRADE_A": 45000,
+          "GRADE_B": 36000,
+          "GRADE_C": 27000
+        }
+      }
+    },
+    {
+      "procedure_code": "APPEN",
+      "name": "Appendectomy",
+      "rates": {
+        "TIER_1": {
+          "GRADE_A": 55000,
+          "GRADE_B": 44000,
+          "GRADE_C": 33000
+        },
+        "TIER_2": {
+          "GRADE_A": 44000,
+          "GRADE_B": 35000,
+          "GRADE_C": 26500
+        },
+        "TIER_3": {
+          "GRADE_A": 33000,
+          "GRADE_B": 26500,
+          "GRADE_C": 20000
+        }
+      }
+    },
+    {
+      "procedure_code": "CABG",
+      "name": "Coronary Artery Bypass Grafting",
+      "rates": {
+        "TIER_1": {
+          "GRADE_A": 250000,
+          "GRADE_B": 200000,
+          "GRADE_C": 150000
+        },
+        "TIER_2": {
+          "GRADE_A": 200000,
+          "GRADE_B": 160000,
+          "GRADE_C": 120000
+        },
+        "TIER_3": {
+          "GRADE_A": 150000,
+          "GRADE_B": 120000,
+          "GRADE_C": 90000
+        }
+      }
+    },
+    {
+      "procedure_code": "ANGIO",
+      "name": "Angiography",
+      "rates": {
+        "TIER_1": {
+          "GRADE_A": 25000,
+          "GRADE_B": 20000,
+          "GRADE_C": 15000
+        },
+        "TIER_2": {
+          "GRADE_A": 20000,
+          "GRADE_B": 16000,
+          "GRADE_C": 12000
+        },
+        "TIER_3": {
+          "GRADE_A": 15000,
+          "GRADE_B": 12000,
+          "GRADE_C": 9000
+        }
+      }
+    },
+    {
+      "procedure_code": "MRI",
+      "name": "MRI Scan (One Region)",
+      "rates": {
+        "TIER_1": { "GRADE_A": 8000, "GRADE_B": 7000, "GRADE_C": 6000 },
+        "TIER_2": { "GRADE_A": 6500, "GRADE_B": 5500, "GRADE_C": 4500 },
+        "TIER_3": { "GRADE_A": 5000, "GRADE_B": 4000, "GRADE_C": 3000 }
+      }
+    }
+  ],
+  "room_rent_caps": {
+    "TIER_1": { "NORMAL": 5000, "ICU": 10000 },
+    "TIER_2": { "NORMAL": 3500, "ICU": 7000 },
+    "TIER_3": { "NORMAL": 2000, "ICU": 4000 }
+  }
+}

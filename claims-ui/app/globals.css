@@ -1,0 +1,1619 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "./tokens.css";
+@import "./professional-theme.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ── Universal Scaling (iPad to 4K) ── */
+  /* Keep body text stable across viewports; layout can scale, type should not drift. */
+  --base-font-size: 0.9375rem;
+  --section-padding: clamp(1rem, 0.5rem + 2vw, 4rem);
+  --grid-gap: clamp(0.75rem, 0.5rem + 1vw, 2rem);
+  
+  /* Standard tokens updated for fluid feel */
+  --header-height: 64px;
+  --sidebar-width: 320px;
+  --sidebar-frozen-width: 72px;
+
+  /* ACOS production UI contract — layout (non-adaptive) */
+  --acos-page-gap: 1.5rem;
+  --acos-section-gap: 1rem;
+  --acos-panel-radius: 1.25rem;
+  --acos-card-radius: 1rem;
+  --acos-control-radius: 0.875rem;
+  --acos-label-size: 0.6875rem;
+  --acos-label-tracking: 0;
+
+  /* Light mode is the only mode (toggle removed) — tokens defined once.
+     Dark-surface (white-opacity) values would be invisible against the
+     light bg/card colors in tokens.css — these are the light-appropriate
+     (dark-opacity) equivalents. */
+  --acos-surface:        rgba(15, 23, 42, 0.028);
+  --acos-surface-strong: rgba(15, 23, 42, 0.048);
+  --acos-surface-muted:  rgba(15, 23, 42, 0.018);
+  --acos-border:         rgba(15, 23, 42, 0.08);
+  --acos-border-strong:  rgba(15, 23, 42, 0.14);
+  --acos-text:           rgba(15, 23, 42, 0.96);
+  --acos-text-muted:     rgba(15, 23, 42, 0.58);
+  --acos-text-subtle:    rgba(15, 23, 42, 0.4);
+  --acos-shadow-panel:   0 12px 32px rgba(15, 23, 42, 0.10);
+  --acos-shadow-control: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --sidebar-width: 360px; /* More room for larger displays */
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   LIGHT-THEME COMPATIBILITY LAYER (2026-07-24, revised from dark-only)
+   ══════════════════════════════════════════════════════════════════════
+   109 component files still use raw white-opacity Tailwind utilities
+   (text-white/60, border-white/10, bg-white/5, etc.) written when the app
+   was dark-only — those read as white-on-white (invisible) against the new
+   light background. This is a stopgap so the app is immediately usable and
+   consistent in light mode while components get fixed at the source (per
+   DESIGN_SYSTEM.md §7: switch to the semantic token classes directly,
+   e.g. text-text-primary instead of text-white/90) — remove each rule below
+   once no component depends on it anymore. Unconditional (not gated behind
+   `.dark`/`:not(.dark)`) since there is only one theme now.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── TEXT: opacity-graded hierarchy ─────────────────────────────────── */
+[class*="text-white/"] { color: var(--text-subtle) !important; }
+[class*="text-white/3"],
+[class*="text-white/4"] { color: var(--text-muted) !important; }
+[class*="text-white/5"],
+[class*="text-white/6"] { color: var(--text-secondary) !important; }
+[class*="text-white/7"],
+[class*="text-white/8"],
+[class*="text-white/9"] { color: var(--text-primary) !important; }
+[class~="text-white"] { color: var(--text-primary) !important; }
+[class*="hover:text-white"]:hover,
+.group:hover [class*="group-hover:text-white"],
+[class*="focus:text-white"]:focus { color: var(--text-primary) !important; }
+
+/* Exceptions: keep actual white text where the surface underneath is
+   intentionally the dark brand color (e.g. a filled primary button/chip) */
+.sidebar-nav-button[class~="text-white"],
+[data-slot="button"][data-variant="default"],
+.ui-button-primary,
+.ui-button-primary * { color: #ffffff !important; }
+
+/* ── BORDERS: white-opacity → border-subtle token ───────────────────── */
+[class*="border-white/"] { border-color: var(--border-subtle) !important; }
+
+/* ── BACKGROUNDS: white-opacity → neutral surface ───────────────────── */
+[class*="bg-white/0"],
+[class*="bg-white/1"] { background-color: var(--bg-card-muted) !important; }
+[class*="bg-white/2"],
+[class*="bg-white/3"],
+[class*="bg-white/4"],
+[class*="bg-white/5"] { background-color: var(--bg-card) !important; }
+
+/* ── Sidebar icon active animations ────────────────────────────────────────── */
+.sidebar-nav-button {
+  transform: translate3d(0, 0, 0);
+  transition:
+    width 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    padding 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 180ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, background-color, box-shadow;
+}
+
+.sidebar-nav-button:hover,
+.sidebar-nav-button:focus-visible {
+  transform: translate3d(0, -2px, 0);
+}
+
+.sidebar-nav-button:active {
+  transform: translate3d(0, 0, 0) scale(0.985);
+}
+
+.sidebar-icon-shell {
+  transform: translate3d(0, 0, 0);
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.group:hover .sidebar-icon-shell,
+.group:focus-visible .sidebar-icon-shell,
+.sidebar-icon-shell-active {
+  transform: translate3d(0, -1px, 0) scale(1.06);
+}
+
+.sidebar-icon-motion {
+  transform-origin: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform, filter;
+  animation-play-state: paused;
+}
+
+.group:hover .sidebar-icon-motion,
+.group:focus-visible .sidebar-icon-motion,
+.sidebar-icon-motion-active {
+  animation-play-state: running;
+}
+
+/* Dashboard: grid squares pulse outward */
+.sidebar-icon-grid {
+  animation: sidebarGrid 1.8s ease-in-out infinite;
+}
+@keyframes sidebarGrid {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.25) rotate(3deg); }
+}
+
+/* Claims: page flip */
+.sidebar-icon-flip {
+  animation: sidebarFlip 2s ease-in-out infinite;
+}
+@keyframes sidebarFlip {
+  0%, 100% { transform: scale(1.1) rotateY(0deg); }
+  50% { transform: scale(1.1) rotateY(15deg); }
+}
+
+/* New Claim: + pops twice */
+.sidebar-icon-pop {
+  animation: sidebarPop 2s ease-in-out infinite;
+}
+@keyframes sidebarPop {
+  0%, 100% { transform: scale(1.1); }
+  20% { transform: scale(1.35); }
+  35% { transform: scale(1.05); }
+  50% { transform: scale(1.3); }
+  65% { transform: scale(1.1); }
+}
+
+/* Policies: stamp / press down */
+.sidebar-icon-stamp {
+  animation: sidebarStamp 2.2s ease-in-out infinite;
+}
+@keyframes sidebarStamp {
+  0%, 100% { transform: scale(1.1) translateY(0); }
+  40% { transform: scale(1.05) translateY(3px); }
+  55% { transform: scale(1.15) translateY(-1px); }
+}
+
+/* HITL: alert shake */
+.sidebar-icon-shake {
+  animation: sidebarShake 2s ease-in-out infinite;
+}
+@keyframes sidebarShake {
+  0%, 100% { transform: scale(1.1) rotate(0deg); }
+  20% { transform: scale(1.1) rotate(-8deg); }
+  40% { transform: scale(1.1) rotate(8deg); }
+  60% { transform: scale(1.1) rotate(-4deg); }
+  80% { transform: scale(1.1) rotate(0deg); }
+}
+
+/* Reports: bars rising */
+.sidebar-icon-bars {
+  animation: sidebarBars 2s ease-in-out infinite;
+}
+@keyframes sidebarBars {
+  0%, 100% { transform: scale(1.1) translateY(0); }
+  30% { transform: scale(1.1) translateY(3px); }
+  60% { transform: scale(1.2) translateY(-2px); }
+}
+
+/* Audit: shield pulse */
+.sidebar-icon-shield {
+  animation: sidebarShield 2s ease-in-out infinite;
+}
+@keyframes sidebarShield {
+  0%, 100% { transform: scale(1.1); filter: drop-shadow(0 0 0px transparent); }
+  50% { transform: scale(1.2); filter: drop-shadow(0 0 6px rgba(34, 211, 238, 0.4)); }
+}
+
+/* Policy Library: sliders slide */
+.sidebar-icon-sliders {
+  animation: sidebarSliders 2.4s ease-in-out infinite;
+}
+@keyframes sidebarSliders {
+  0%, 100% { transform: scale(1.1) translateX(0); }
+  33% { transform: scale(1.1) translateX(2px); }
+  66% { transform: scale(1.1) translateX(-2px); }
+}
+
+/* Settings: gear spin */
+.sidebar-icon-spin {
+  animation: sidebarSpin 4s linear infinite;
+}
+@keyframes sidebarSpin {
+  from { transform: scale(1.1) rotate(0deg); }
+  to { transform: scale(1.1) rotate(360deg); }
+}
+
+/* ── Cinematic motion primitives ─────────────────────────────────────────── */
+@keyframes cinematicPageIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+@keyframes shimmerSweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+@keyframes scanLineDown {
+  0%   { top: 0; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.3; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes particleFloat {
+  0%   { transform: translateY(0) scale(1); opacity: 0.4; }
+  50%  { transform: translateY(-30px) scale(1.5); opacity: 0.15; }
+  100% { transform: translateY(-60px) scale(0.5); opacity: 0; }
+}
+@keyframes springScaleIn {
+  from { opacity: 0; transform: scale(0.82) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes staggerSlideLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fillBar {
+  from { width: 0; }
+  to   { width: var(--fill-width, 100%); }
+}
+@keyframes countUpFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Cinematic utility classes ───────────────────────────────────────────── */
+.cinematic-page-in {
+  animation: cinematicPageIn 700ms var(--ease-cinematic, cubic-bezier(0.22,1,0.36,1)) both;
+}
+.spring-scale-in {
+  animation: springScaleIn 600ms var(--ease-spring, cubic-bezier(0.34,1.56,0.64,1)) both;
+}
+
+/* ── Deep Glass surface treatment ───────────────────────────────────────── */
+.deep-glass {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--acos-shadow-panel);
+  position: relative;
+  overflow: hidden;
+}
+
+.deep-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,220,0.04) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: shimmerSweep 2s 0.8s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.sheet-native-glass {
+  background: var(--surface-glass);
+  border-color: var(--border-subtle);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  box-shadow: var(--acos-shadow-panel);
+}
+
+/* Glass card without shimmer (for static content) */
+.glass-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--acos-shadow-panel);
+}
+
+.dark .deep-glass,
+.dark .glass-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.052), rgba(255,255,255,0.018)), var(--surface-base);
+  border-color: var(--border-subtle);
+}
+
+.dark .sheet-native-glass {
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.022)), rgba(14,15,20,0.97);
+}
+
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(0,212,220,0.06) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: shimmerSweep 2s 0.8s ease-in-out infinite;
+  pointer-events: none;
+}
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--scan-line-color, rgba(0,212,220,0.3)), transparent);
+  animation: scanLineDown 3s ease-in-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #00d4dc;
+  animation: particleFloat 4s ease-in-out infinite;
+  pointer-events: none;
+}
+.particle:nth-child(2) { animation-delay: 1.3s; width: 3px; height: 3px; opacity: 0.25; }
+.particle:nth-child(3) { animation-delay: 2.6s; opacity: 0.3; }
+
+/* ── Base reset ─────────────────────────────────────────────────────────────── */
+
+html {
+  font-size: var(--base-font-size);
+  background-color: var(--page-bg);
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Prevent double-tap zoom on touch — keeps UI snappy */
+  touch-action: manipulation;
+  /* Hardware-accelerated scroll on iOS */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Touch-Optimized Interaction */
+@media (pointer: coarse) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Crisp rendering for icons on Retina/4K */
+svg {
+  shape-rendering: geometricPrecision;
+  vector-effect: non-scaling-stroke;
+}
+
+html, body {
+  overflow: hidden;
+  height: 100%;
+  background-color: var(--page-bg);
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  color: var(--text-primary);
+  letter-spacing: 0;
+}
+
+/* ── Typography scale ───────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.15;
+  color: var(--text-primary);
+  text-wrap: balance;
+}
+
+h1 { font-size: 2.25rem; font-weight: 800; letter-spacing: 0; }
+h2 { font-size: 1.375rem; font-weight: 700; letter-spacing: 0; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+h4 { font-size: 1.125rem; font-weight: 600; }
+h5 { font-size: 1rem;    font-weight: 600; }
+h6 { font-size: 0.875rem; font-weight: 600; }
+
+p, span, li, dt, dd, th, td {
+  font-family: var(--font-ui);
+}
+
+/* ── Chat Widget keyframes ──────────────────────────────────────────────────── */
+@keyframes neuralPulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50%       { opacity: 1;    transform: scale(1.3);  }
+}
+@keyframes waveBar {
+  0%, 100% { height: 4px;  opacity: 0.5; }
+  50%       { height: 14px; opacity: 1;   }
+}
+@keyframes loadBeam {
+  0%   { left: -35%; }
+  100% { left: 120%; }
+}
+@keyframes msgSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+@keyframes cornerPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1;   }
+}
+.chat-msg-new { animation: msgSlideIn 220ms cubic-bezier(0.22,1,0.36,1) both; }
+.chat-scanlines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.06) 3px,
+    rgba(0,0,0,0.06) 4px
+  );
+  pointer-events: none;
+}
+.chat-panel-border {
+  background: linear-gradient(180deg,
+    rgba(6,182,212,0.22) 0%,
+    rgba(6,182,212,0.06) 40%,
+    rgba(6,182,212,0.02) 100%
+  );
+}
+
+small {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+}
+
+input, textarea, select, button {
+  font: inherit;
+}
+
+/* ── Theme tokens ───────────────────────────────────────────────────────────── */
+
+@theme {
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-code);
+  --font-display: var(--font-sora), "Sora", var(--font-ui);
+  --font-logo: var(--font-sora), "Sora", var(--font-ui);
+
+  /* Legacy "dark-*" names kept (some components still reference them) —
+     now resolve to the light palette, matching tokens.css's --bg-* values. */
+  --color-dark-bg: #F8FAFC;
+  --color-dark-card: #FFFFFF;
+  --color-dark-lighter: #F1F5F9;
+
+  /* One enterprise blue accent (DESIGN_SYSTEM.md §1.1) */
+  --color-brand-primary: #2563EB;
+
+  /* Light mode is the only mode (toggle removed) — tokens defined once */
+  --color-dashboard-bg: #F8FAFC;
+  --color-sidebar-bg:   #FFFFFF;
+  --color-card-bg:      #FFFFFF;
+}
+
+/* ── Scrollbar utilities ────────────────────────────────────────────────────── */
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-styled {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 216, 214, 0.25) transparent;
+}
+.scrollbar-styled::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.scrollbar-styled::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-styled::-webkit-scrollbar-thumb {
+  background: rgba(0, 216, 214, 0.20);
+  border-radius: 9999px;
+}
+.scrollbar-styled::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 216, 214, 0.38);
+}
+.scrollbar-styled::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ── Touch & scroll smoothness ─────────────────────────────────────────────── */
+
+/* All scrollable containers get momentum scroll on iOS */
+.overflow-y-auto,
+.overflow-x-auto,
+.overflow-auto,
+.custom-scrollbar {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: auto;
+}
+
+.app-scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: none;
+  scrollbar-gutter: stable;
+  scroll-behavior: smooth;
+  scroll-padding-top: 1.25rem;
+  scroll-padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+/* ── ACOS app-wide production surface system ──────────────────────────────── */
+.acos-app-shell {
+  background: var(--page-bg);
+}
+
+.dark .acos-app-shell {
+  background:
+    radial-gradient(ellipse 80% 60% at -10% -10%, rgba(0, 212, 220, 0.045) 0%, transparent 60%),
+    radial-gradient(ellipse 58% 52% at 104% 8%, rgba(59, 130, 246, 0.05) 0%, transparent 58%),
+    var(--page-bg);
+}
+
+.acos-topbar {
+  height: var(--header-height);
+  background: var(--surface-glass);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Explicit overrides here (not just color) because this class sits on an
+   <h1>, and the unlayered `h1, h2, h3, h4, h5, h6 { font-size: 2.25rem;
+   font-weight: 800; ... }` rule below otherwise wins over the Tailwind
+   utility classes on the element (text-base, font-extrabold, truncate,
+   whitespace-nowrap) — Tailwind's generated utilities live inside its own
+   internal `@layer utilities`, and per the CSS cascade-layers spec, ANY
+   unlayered rule beats ANY layered rule regardless of specificity or source
+   order. That silently blew up this title to 36px/800-weight and broke
+   single-line truncation, which only became visible as wrapping/overlap at
+   the 375px breakpoint (the huge font still fit on one line at wider
+   viewports, so it went unnoticed there). Declaring the properties directly
+   on this higher-specificity class (both rules are unlayered, so normal
+   specificity resolves it) restores the intended compact, single-line,
+   truncated topbar title. */
+.acos-topbar-title {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.acos-topbar-subtitle {
+  color: var(--text-muted);
+}
+
+.acos-topbar-divider {
+  background: var(--border-subtle);
+}
+
+.acos-icon-button {
+  display: inline-flex;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--acos-control-radius);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-base);
+  box-shadow: var(--acos-shadow-control);
+  color: var(--text-muted);
+  transition: color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.acos-icon-button:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+}
+
+.acos-page {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  gap: var(--acos-page-gap);
+  padding-bottom: clamp(2rem, 4vw, 4rem);
+}
+
+.acos-page-narrow {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+}
+
+.acos-page-compact {
+  --acos-page-gap: 1rem;
+}
+
+.acos-panel,
+.dashboard-panel {
+  border-radius: var(--acos-panel-radius);
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+  box-shadow: var(--acos-shadow-panel);
+}
+
+.dark .acos-panel,
+.dark .dashboard-panel {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.016)),
+    var(--surface-base);
+}
+
+.acos-card {
+  border-radius: var(--acos-card-radius);
+  border: 1px solid var(--acos-border);
+  background: var(--acos-surface-muted);
+  box-shadow: var(--acos-shadow-control);
+}
+
+.acos-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-radius: var(--acos-panel-radius);
+  border: 1px solid var(--acos-border);
+  background: var(--acos-surface-muted);
+  padding: 1rem;
+}
+
+.acos-tab-rail,
+.custom-scrollbar.flex.gap-1\.5 {
+  border-radius: var(--acos-control-radius);
+  border-color: var(--border-subtle);
+  background: var(--acos-surface-muted);
+}
+
+.acos-page :is(h1, h2, h3, h4, [data-slot="card-title"]) {
+  letter-spacing: 0;
+}
+
+.acos-page :is(.ui-eyebrow, .dashboard-panel-label, .ui-chip-label) {
+  font-size: var(--acos-label-size);
+  letter-spacing: var(--acos-label-tracking);
+  color: var(--acos-text-subtle);
+}
+
+.acos-page :is(table) {
+  font-size: 0.875rem;
+}
+
+.acos-page :is(th) {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  color: var(--acos-text-subtle);
+}
+
+.acos-page :is(td) {
+  color: var(--text-secondary);
+}
+
+.acos-page :is(input, select, textarea, button) {
+  letter-spacing: 0;
+}
+
+body [class*="tracking-"] {
+  letter-spacing: 0 !important;
+}
+
+/* Remove tap highlight flash on touch devices */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure all interactive elements meet 44px minimum touch target */
+button,
+[role="button"],
+a,
+input[type="checkbox"],
+input[type="radio"],
+select {
+  touch-action: manipulation;
+}
+
+/* Prevent layout shift when keyboard appears on mobile */
+@media (pointer: coarse) {
+  input, textarea, select {
+    font-size: 16px; /* Prevents iOS auto-zoom on focus */
+  }
+}
+
+/* Smooth GPU-accelerated transitions on touch surfaces */
+.pro-card,
+.pro-kpi-card,
+.pro-sidebar-item {
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.ui-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.875rem;
+  border: 1px solid transparent;
+  background: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: var(--shadow);
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.ui-button-primary:hover:not(:disabled) {
+  background: var(--brand-primary-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+.ui-button-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+.ui-button-secondary {
+  background: var(--acos-surface-muted);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  will-change: auto;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.ui-button-secondary:hover:not(:disabled) {
+  background: var(--acos-surface);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.ui-overlay-backdrop {
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.dark .ui-overlay-backdrop {
+  background: rgba(2, 6, 23, 0.68);
+}
+
+.ui-floating-surface {
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-glass);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(26px);
+  -webkit-backdrop-filter: blur(26px);
+}
+
+.dark .ui-floating-surface {
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.52);
+}
+
+.ui-modal-surface {
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.5rem;
+  background: var(--surface-glass);
+  box-shadow: 0 30px 96px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+}
+
+.dark .ui-modal-surface {
+  box-shadow: 0 30px 96px rgba(0, 0, 0, 0.58);
+}
+
+.ui-form-field {
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-base);
+  color: var(--text-primary);
+  border-radius: 0.9rem;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.ui-form-field::placeholder {
+  color: var(--text-muted);
+}
+
+.ui-form-field:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-raised);
+}
+
+.ui-form-field:focus-visible {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(var(--brand-primary), 0.14);
+}
+
+.ui-form-field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-form-field,
+.login-form-field:autofill,
+.login-form-field:-webkit-autofill,
+.login-form-field:-webkit-autofill:hover,
+.login-form-field:-webkit-autofill:focus {
+  background-color: var(--surface-base) !important;
+  color: var(--text-primary) !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  caret-color: var(--text-primary);
+  box-shadow:
+    inset 0 0 0 1000px var(--surface-base) !important;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 9999s ease-out;
+}
+
+.login-form-field::selection {
+  background: rgba(0, 143, 163, 0.24);
+  color: var(--text-primary);
+}
+
+.dark .login-form-field,
+.dark .login-form-field:-webkit-autofill,
+.dark .login-form-field:-webkit-autofill:hover,
+.dark .login-form-field:-webkit-autofill:focus {
+  box-shadow:
+    inset 0 0 0 1000px var(--surface-base),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+.ui-menu-item {
+  border-radius: 0.85rem;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.ui-menu-item:hover,
+.ui-menu-item:focus-visible {
+  transform: translateY(-1px);
+}
+
+/* Landing & login pages need their own scroll — body overflow:hidden is for the AppShell only */
+.page-scroll {
+  height: 100vh;
+  overflow-y: auto;
+  min-height: 100%;
+  overscroll-behavior-y: contain;
+}
+
+/* Prevent text selection on drag/swipe in interactive elements */
+button,
+[role="button"],
+.pro-sidebar-item {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bot-mode-label {
+    animation: botModeLabel 2.6s ease-in-out forwards;
+  }
+
+  @keyframes botModeLabel {
+    0% {
+      opacity: 0;
+      transform: translateY(4px) translateX(-50%);
+    }
+    14%,
+    72% {
+      opacity: 1;
+      transform: translateY(0) translateX(-50%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-3px) translateX(-50%);
+    }
+  }
+
+  /* Gentle idle float for the bot character icon */
+  .bot-character-img {
+    animation: botFloat 3.6s ease-in-out infinite;
+  }
+
+  @keyframes botFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  /* Orange glow pulse on the button */
+  .bot-toggle-btn {
+    animation: botGlowPulse 3.6s ease-in-out infinite;
+  }
+
+  @keyframes botGlowPulse {
+    0%, 100% {
+      box-shadow: 0 8px 28px rgba(255, 107, 0, 0.38);
+    }
+    50% {
+      box-shadow: 0 10px 38px rgba(255, 107, 0, 0.68);
+    }
+  }
+
+  .chat-launcher-icon {
+    animation: chatLauncherFloat 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.34)) drop-shadow(0 0 14px rgba(125, 241, 255, 0.26));
+  }
+
+  @keyframes chatLauncherFloat {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-5px) scale(1.06);
+    }
+  }
+
+  .chat-assistant-avatar-stage {
+    isolation: isolate;
+    animation:
+      chatAssistantFloat 3.8s ease-in-out infinite,
+      chatAssistantGlow 4.6s ease-in-out infinite;
+    filter:
+      drop-shadow(0 14px 26px rgba(0, 0, 0, 0.42))
+      drop-shadow(0 0 22px rgba(0, 216, 214, 0.26));
+  }
+
+  .chat-assistant-avatar-stage canvas {
+    position: relative;
+    z-index: 2;
+  }
+
+  .chat-assistant-scan-ring {
+    position: absolute;
+    inset: 5px;
+    z-index: 1;
+    border-radius: 999px;
+    border: 1px solid rgba(125, 241, 255, 0.18);
+    background:
+      conic-gradient(from 0deg, transparent 0deg, rgba(125, 241, 255, 0.0) 230deg, rgba(125, 241, 255, 0.72) 292deg, transparent 330deg),
+      radial-gradient(circle at center, rgba(0, 216, 214, 0.08), transparent 62%);
+    mask: radial-gradient(circle, transparent 55%, #000 57%, #000 68%, transparent 70%);
+    animation: chatAssistantScan 5.4s linear infinite;
+    pointer-events: none;
+  }
+
+  .chat-assistant-signal-dot {
+    position: absolute;
+    z-index: 3;
+    height: 5px;
+    width: 5px;
+    border-radius: 999px;
+    background: #7df1ff;
+    box-shadow: 0 0 10px rgba(125, 241, 255, 0.85);
+    pointer-events: none;
+  }
+
+  .chat-assistant-signal-dot-a {
+    right: 12%;
+    top: 18%;
+    animation: chatAssistantSignalA 4.8s ease-in-out infinite;
+  }
+
+  .chat-assistant-signal-dot-b {
+    bottom: 15%;
+    left: 16%;
+    animation: chatAssistantSignalB 5.6s ease-in-out infinite;
+  }
+
+  .group:hover .chat-assistant-avatar-stage {
+    animation-duration: 2.6s, 3.2s;
+    filter:
+      drop-shadow(0 16px 30px rgba(0, 0, 0, 0.5))
+      drop-shadow(0 0 30px rgba(125, 241, 255, 0.44));
+  }
+
+  .chat-assistant-header-avatar {
+    animation: chatAssistantHeaderPulse 4.4s ease-in-out infinite;
+  }
+
+  @keyframes chatAssistantFloat {
+    0%, 100% {
+      transform: translateY(0) rotate(-1.2deg);
+    }
+    50% {
+      transform: translateY(-6px) rotate(1.2deg);
+    }
+  }
+
+  @keyframes chatAssistantGlow {
+    0%, 100% {
+      filter:
+        drop-shadow(0 14px 26px rgba(0, 0, 0, 0.42))
+        drop-shadow(0 0 18px rgba(0, 216, 214, 0.2));
+    }
+    50% {
+      filter:
+        drop-shadow(0 16px 30px rgba(0, 0, 0, 0.48))
+        drop-shadow(0 0 28px rgba(125, 241, 255, 0.38));
+    }
+  }
+
+  @keyframes chatAssistantScan {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes chatAssistantSignalA {
+    0%, 100% {
+      opacity: 0.35;
+      transform: translate3d(0, 0, 0) scale(0.82);
+    }
+    42% {
+      opacity: 1;
+      transform: translate3d(4px, -3px, 0) scale(1.16);
+    }
+  }
+
+  @keyframes chatAssistantSignalB {
+    0%, 100% {
+      opacity: 0.28;
+      transform: translate3d(0, 0, 0) scale(0.74);
+    }
+    56% {
+      opacity: 0.9;
+      transform: translate3d(-5px, 4px, 0) scale(1.08);
+    }
+  }
+
+  @keyframes chatAssistantHeaderPulse {
+    0%, 100% {
+      box-shadow: 0 0 18px rgba(0, 216, 214, 0.14);
+    }
+    50% {
+      box-shadow: 0 0 26px rgba(125, 241, 255, 0.26);
+    }
+  }
+
+  .chat-roaming-avatar {
+    animation:
+      chatRoamSearch 15s cubic-bezier(0.42, 0, 0.18, 1) infinite,
+      chatRoamWorkPulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes chatRoamSearch {
+    0% {
+      transform: translate3d(18px, 22px, 0) rotate(-5deg);
+    }
+    18% {
+      transform: translate3d(calc(100% + 210px), 54px, 0) rotate(5deg);
+    }
+    34% {
+      transform: translate3d(calc(100% + 155px), 190px, 0) rotate(-7deg);
+    }
+    52% {
+      transform: translate3d(36px, 238px, 0) rotate(4deg);
+    }
+    72% {
+      transform: translate3d(calc(100% + 232px), 314px, 0) rotate(8deg);
+    }
+    100% {
+      transform: translate3d(18px, 22px, 0) rotate(-5deg);
+    }
+  }
+
+  @keyframes chatRoamWorkPulse {
+    0%, 100% {
+      filter: drop-shadow(0 10px 18px rgba(0, 216, 214, 0.12));
+    }
+    50% {
+      filter: drop-shadow(0 14px 26px rgba(0, 216, 214, 0.32));
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOTION & TOUCH SMOOTHNESS — v2
+   Layered on top of the existing primitives above.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. GPU Containment ──────────────────────────────────────────────────── */
+/*
+  `contain: layout style paint` tells the browser a subtree is independent:
+  no layout/paint outside it is affected by changes inside.
+  Use on cards, panels, and heavy list items so reflows stay local.
+*/
+.pro-card,
+.pro-kpi-card,
+.glass-card,
+.deep-glass,
+.ui-floating-surface,
+.ui-modal-surface,
+.shimmer-card {
+  contain: layout style paint;
+}
+
+/*
+  `content-visibility: auto` skips rendering for off-screen items entirely.
+  Pair with `contain-intrinsic-size` so the scrollbar doesn't jump.
+*/
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 200px; /* fallback estimated height */
+}
+.cv-auto-sm  { content-visibility: auto; contain-intrinsic-size: 0 80px;  }
+.cv-auto-lg  { content-visibility: auto; contain-intrinsic-size: 0 400px; }
+
+/* Isolate stacking contexts for backdrop-filter elements — prevents compositing bleed */
+.deep-glass,
+.sheet-native-glass,
+.ui-overlay-backdrop,
+.ui-floating-surface,
+.ui-modal-surface {
+  isolation: isolate;
+}
+
+/* ── 2. Modern Spring Easing (CSS linear()) ──────────────────────────────── */
+/*
+  CSS `linear()` with multiple stops produces a true physics-spring curve
+  that matches how iOS/Android native controls feel. Supported in all modern
+  browsers (Chrome 113+, Safari 17.2+, Firefox 112+).
+
+  --ease-spring-snappy : fast in, gentle overshoot then settle (~200ms ideal)
+  --ease-spring-gentle : slower entry with subtle bounce (~350ms ideal)
+  --ease-spring-ios    : matches UISpringTimingParameters k=400 d=35
+*/
+:root {
+  --ease-spring-snappy: linear(
+    0, 0.006, 0.025 2.8%, 0.101 6.1%, 0.539 18.9%, 0.721 25.3%, 0.849,
+    0.937, 0.98 39.4%, 0.996 42.4%, 1.001 45.7%, 1.003 51.9%, 1 100%
+  );
+  --ease-spring-gentle: linear(
+    0, 0.004, 0.016, 0.035, 0.063 7.7%, 0.272 18.4%, 0.662 30.9%, 0.831,
+    0.942, 1.013 50.5%, 1.032, 1.041, 1.038 59.1%, 1.017 65.7%,
+    1.003 71.2%, 0.997 74.5%, 1 100%
+  );
+  --ease-spring-ios: linear(
+    0, 0.009, 0.035 2.1%, 0.141 4.4%, 0.723 14.3%, 0.938 20.9%, 1.017,
+    1.076, 1.107, 1.121 32.2%, 1.119, 1.105, 1.079 42.7%, 1.019 53.2%,
+    0.999 60.4%, 0.995 65.5%, 1 100%
+  );
+
+  /* Snappy enter for overlays / sheets (matches sheet-drop on iOS) */
+  --ease-sheet-drop: linear(
+    0, 0.012, 0.046, 0.102, 0.178 6.5%, 0.541 16.7%, 0.838 27.4%, 0.975 36.6%,
+    1.019, 1.037 45.6%, 1.031, 1.016, 1.003 61%, 1 100%
+  );
+}
+
+/* ── 3. Active-Press Haptic Feedback ─────────────────────────────────────── */
+/*
+  All interactive elements get a brief scale-down on :active.
+  This mimics iOS / Material "tactile" press response.
+  transform is GPU-composited → zero layout cost.
+*/
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+a:not([aria-disabled="true"]) {
+  transition:
+    transform 120ms var(--ease-spring-snappy),
+    opacity   120ms ease,
+    box-shadow 180ms ease;
+}
+
+button:not(:disabled):active,
+[role="button"]:not([aria-disabled="true"]):active,
+a:not([aria-disabled="true"]):active {
+  transform: scale(0.965) translateZ(0);
+}
+
+/* Primary buttons get a deeper press */
+.ui-button-primary:not(:disabled):active {
+  transform: scale(0.955) translateY(1px) translateZ(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Cards and clickable panels */
+[data-pressable]:active,
+.pro-card:active,
+.glass-card[role="button"]:active {
+  transform: scale(0.98) translateZ(0);
+}
+
+/* Touch-hold ripple for pressable cards — pure CSS, no JS */
+[data-pressable] {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+[data-pressable]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--touch-x, 50%) var(--touch-y, 50%),
+    rgba(255,255,255,0.07) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 300ms ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+[data-pressable]:active::after {
+  opacity: 1;
+  transition: opacity 0ms;
+}
+
+/* ── 4. Scroll Snap ──────────────────────────────────────────────────────── */
+/* Horizontal card rails (e.g. KPI row, claim cards) */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.scroll-snap-x::-webkit-scrollbar { display: none; }
+.scroll-snap-x > * { scroll-snap-align: start; scroll-snap-stop: always; }
+
+/* Vertical paged sections (e.g. step wizards, full-screen panels) */
+.scroll-snap-y {
+  scroll-snap-type: y proximity;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+.scroll-snap-y > * { scroll-snap-align: start; }
+
+/* ── 5. @starting-style — Smooth Enter for Overlays / Dialogs ───────────── */
+/*
+  @starting-style lets transitions fire on the FIRST paint (display: none → block).
+  Without it, the browser skips the "from" state and elements snap into view.
+  Supported: Chrome 117+, Safari 17.5+, Firefox 129+.
+*/
+@supports (animation: auto) {
+  dialog[open],
+  [data-state="open"] {
+    transition:
+      opacity    280ms var(--ease-cinematic),
+      transform  320ms var(--ease-spring-gentle),
+      display    320ms allow-discrete;
+  }
+
+  @starting-style {
+    dialog[open],
+    [data-state="open"] {
+      opacity: 0;
+      transform: scale(0.94) translateY(8px);
+    }
+  }
+
+  /* Slide-up sheet (mobile bottom sheets) */
+  [data-sheet="bottom"][data-state="open"] {
+    transition:
+      opacity   240ms ease,
+      transform 360ms var(--ease-sheet-drop),
+      display   360ms allow-discrete;
+  }
+  @starting-style {
+    [data-sheet="bottom"][data-state="open"] {
+      opacity: 0;
+      transform: translateY(48px);
+    }
+  }
+}
+
+/* ── 6. Smooth height / size transitions (interpolate-size) ─────────────── */
+/*
+  Allows transition from `height: auto` which was previously impossible in CSS.
+  Chrome 129+. Graceful fallback: no animation, instant expand (fine).
+*/
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  .height-transition {
+    transition: height 320ms var(--ease-spring-gentle),
+                min-height 320ms var(--ease-spring-gentle);
+  }
+
+  details > summary ~ * {
+    transition: height 280ms var(--ease-cinematic);
+  }
+}
+
+/* ── 7. Improved will-change Management ──────────────────────────────────── */
+/*
+  Apply will-change ONLY when interaction is imminent (hover/focus),
+  not on every element all the time (wastes VRAM on mobile).
+  Remove will-change after transition ends via :not(:hover).
+*/
+.sidebar-nav-button {
+  will-change: auto; /* reset base */
+}
+.sidebar-nav-button:hover,
+.sidebar-nav-button:focus-visible {
+  will-change: transform, box-shadow;
+}
+
+.ui-button-primary:hover {
+  will-change: transform, box-shadow;
+}
+
+/* ── 8. Overscroll & Rubber-Band Tuning ─────────────────────────────────── */
+/* Pull-to-refresh / overscroll glow — contained per panel, not full page */
+.panel-scroll {
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-padding-top: 0.75rem;
+}
+
+/* List views: lock horizontal overscroll (prevents accidental left/right flick) */
+.list-scroll {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── 9. Touch-Action per Surface ─────────────────────────────────────────── */
+/*
+  Explicit touch-action declarations eliminate the 300ms tap delay
+  AND prevent the browser from consuming gestures it shouldn't.
+*/
+
+/* Vertical-scroll-only panels — blocks horizontal swipe-back gesture on those surfaces */
+.touch-pan-y {
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Horizontal-only carousels */
+.touch-pan-x {
+  touch-action: pan-x pinch-zoom;
+}
+
+/* Canvas / map areas — full gesture pass-through */
+.touch-none {
+  touch-action: none;
+}
+
+/* Draggable handles */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+/* ── 10. Form Field Touch Polish ─────────────────────────────────────────── */
+.ui-form-field {
+  /* Smooth caret movement on iOS */
+  -webkit-text-fill-color: var(--text-primary);
+  /* Crisp borders on Retina */
+  -webkit-font-smoothing: antialiased;
+}
+
+.ui-form-field:focus-visible {
+  /* GPU-composite the glow ring — no repaint */
+  transform: translateZ(0);
+  will-change: box-shadow;
+}
+
+/* Remove iOS inner shadow on inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ── 11. List Item Stagger Entrance ──────────────────────────────────────── */
+/*
+  Apply .stagger-list on the <ul>/<ol> and .stagger-item on each <li>.
+  Items slide in sequentially via CSS custom property --i (set inline).
+*/
+.stagger-list { --stagger-base: 60ms; }
+
+.stagger-item {
+  animation: staggerSlideUp 420ms var(--ease-spring-gentle) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger-base, 60ms));
+}
+
+@keyframes staggerSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── 12. Skeleton / Loading Pulse ────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.09) 50%,
+    rgba(255,255,255,0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.6s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── 13. Page Transition (route change) ──────────────────────────────────── */
+/*
+  Wrap each page's root div with .page-enter to get a consistent
+  cinematic entrance on navigation. Next.js App Router fires a new
+  component mount on route change, so the animation replays automatically.
+*/
+.page-enter {
+  animation: pageEnterUp 480ms var(--ease-spring-snappy) both;
+}
+
+.page-enter-fade {
+  animation: pageEnterFade 360ms var(--ease-cinematic) both;
+}
+
+@keyframes pageEnterUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.975);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageEnterFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* ── 14. iPad / Tablet touch support ──────────────────────────────────────── */
+
+/* Remove tap highlight on iOS/iPadOS */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure interactive elements meet 44px minimum touch target on touch screens */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Sidebar nav buttons already have py-4/h-14, but keep specificity safe */
+  .sidebar-nav-button {
+    min-height: 44px;
+  }
+
+  /* Smooth momentum scroll on iOS/iPadOS */
+  .app-scroll-container {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  /* Tables scroll smoothly on touch */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+}
+
+/* iPad portrait (768–1023px): tighter padding so content isn't cramped */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-scroll-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Safe area insets — notch and home indicator on iPad */
+.app-scroll-container {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  padding-left: max(0px, env(safe-area-inset-left));
+  padding-right: max(0px, env(safe-area-inset-right));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .sidebar-icon-motion,
+  .sidebar-icon-grid,
+  .sidebar-icon-flip,
+  .sidebar-icon-pop,
+  .sidebar-icon-stamp,
+  .sidebar-icon-shake,
+  .sidebar-icon-bars,
+  .sidebar-icon-shield,
+  .sidebar-icon-sliders,
+  .sidebar-icon-spin {
+    animation: none !important;
+  }
+
+  .chat-roaming-avatar {
+    transform: translate3d(18px, 22px, 0);
+  }
+
+  .chat-launcher-icon {
+    animation: none !important;
+  }
+
+  .chat-assistant-avatar-stage,
+  .chat-assistant-scan-ring,
+  .chat-assistant-signal-dot,
+  .chat-assistant-header-avatar {
+    animation: none !important;
+  }
+
+  .cinematic-page-in,
+  .spring-scale-in {
+    animation: fadeIn 150ms ease both !important;
+  }
+  .shimmer-card::after,
+  .scan-line,
+  .particle {
+    animation: none !important;
+    display: none;
+  }
+}

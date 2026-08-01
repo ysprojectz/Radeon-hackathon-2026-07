@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN002",
+  "claim_type": "DAYCARE",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500002",
+  "patient_name": "Suresh Choudhary",
+  "patient_dob": "1993-02-06",
+  "gender": "MALE",
+  "provider_code": "AII005",
+  "provider_name": "AIIMS, New Delhi",
+  "provider_city": "New Delhi",
+  "provider_state": "Delhi",
+  "network_tier": "NETWORK",
+  "service_date": "2026-06-13",
+  "admission_date": "2026-06-13",
+  "discharge_date": "2026-06-14",
+  "primary_diagnosis_code": "N18.6",
+  "primary_diagnosis_desc": "End stage renal disease",
+  "is_cashless": true,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600002",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA66114",
+  "total_billed": 23533.85,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 1 night(s) (Single AC Room)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 12500.0,
+      "units": 1,
+      "days": 1
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "N186",
+      "procedure_desc": "Haemodialysis session",
+      "service_category": "SURGERY",
+      "billed_amount": 10100.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 493.0,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 440.85,
+      "units": 1
+    }
+  ]
+}

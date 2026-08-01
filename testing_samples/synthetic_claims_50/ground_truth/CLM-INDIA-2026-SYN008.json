@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN008",
+  "claim_type": "OPTICAL",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500008",
+  "patient_name": "Swati Chatterjee",
+  "patient_dob": "1978-04-20",
+  "gender": "FEMALE",
+  "provider_code": "FOR002",
+  "provider_name": "Fortis Hospital, Bannerghatta Road",
+  "provider_city": "Bengaluru",
+  "provider_state": "Karnataka",
+  "network_tier": "NETWORK",
+  "service_date": "2026-02-22",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "H52.1",
+  "primary_diagnosis_desc": "Myopia",
+  "is_cashless": true,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600008",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA93326",
+  "total_billed": 57700.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "H521",
+      "procedure_desc": "LASIK refractive surgery, both eyes",
+      "service_category": "SURGERY",
+      "billed_amount": 57700.0,
+      "units": 1
+    }
+  ]
+}

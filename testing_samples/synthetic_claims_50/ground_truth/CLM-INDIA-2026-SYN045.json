@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN045",
+  "claim_type": "PHARMACY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500045",
+  "patient_name": "Vijay Choudhary",
+  "patient_dob": "1969-05-16",
+  "gender": "MALE",
+  "provider_code": "COL009",
+  "provider_name": "Columbia Asia Hospital",
+  "provider_city": "Pune",
+  "provider_state": "Maharashtra",
+  "network_tier": "NETWORK",
+  "service_date": "2026-03-29",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "E11.9",
+  "primary_diagnosis_desc": "Type 2 diabetes mellitus without complications",
+  "is_cashless": true,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600045",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA98876",
+  "total_billed": 3800.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "E119",
+      "procedure_desc": "90-day chronic medication refill",
+      "service_category": "PHARMACY",
+      "billed_amount": 3800.0,
+      "units": 1
+    }
+  ]
+}

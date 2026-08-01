@@ -1,0 +1,38 @@
+name: Hackathon Eval Suite
+
+# Track 2 Phase 2 exit check: runs the 15-claim eval suite plus the
+# local-provider routing tests on every push/PR. Requires no secrets or
+# external services — the LLM step gracefully degrades to rules-only when
+# no provider is configured, which is the expected state here.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  eval-suite:
+    name: Eval Suite (15 claims) + Perf Summary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run eval suite + local-provider routing tests
+        run: |
+          pytest tests/test_testing_samples_suite.py tests/test_agent_c_local_secondary.py -v --junitxml=eval-results.xml
+
+      - name: Upload eval results artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: eval-results.xml

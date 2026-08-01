@@ -1,0 +1,6 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.3
+pydantic==2.11.4
+python-multipart==0.0.32   # 6 CVEs incl. 2 high-severity DoS fixed across 0.0.26-0.0.31
+requests==2.34.2           # CVE fixes: insecure temp-file reuse, .netrc credential leak
+confluent-kafka==2.8.0

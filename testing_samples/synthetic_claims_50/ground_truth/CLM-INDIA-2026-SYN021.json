@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN021",
+  "claim_type": "DAYCARE",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500021",
+  "patient_name": "Vijay Desai",
+  "patient_dob": "1988-01-24",
+  "gender": "MALE",
+  "provider_code": "LIL012",
+  "provider_name": "Lilavati Hospital",
+  "provider_city": "Mumbai",
+  "provider_state": "Maharashtra",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-05-01",
+  "admission_date": "2026-05-01",
+  "discharge_date": "2026-05-02",
+  "primary_diagnosis_code": "N18.6",
+  "primary_diagnosis_desc": "End stage renal disease",
+  "is_cashless": false,
+  "insurer_name": "Star Health and Allied Insurance Co. Ltd.",
+  "policy_number": "STAR-COMP-2024-600021",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "Paramount Health Services & Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA22794",
+  "total_billed": 17206.63,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 1 night(s) (ICU)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 10300.0,
+      "units": 1,
+      "days": 1
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "N186",
+      "procedure_desc": "Haemodialysis session",
+      "service_category": "SURGERY",
+      "billed_amount": 6400.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 153.77,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 352.86,
+      "units": 1
+    }
+  ]
+}

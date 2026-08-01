@@ -1,0 +1,5 @@
+-- Align HITL trigger enum with reasons emitted by the adjudication pipeline.
+ALTER TYPE hitl_trigger ADD VALUE IF NOT EXISTS 'INCOMPLETE_PROCESSING';
+ALTER TYPE hitl_trigger ADD VALUE IF NOT EXISTS 'AGENT_DISAGREEMENT';
+ALTER TYPE hitl_trigger ADD VALUE IF NOT EXISTS 'AGENT_CONFLICT';
+ALTER TYPE hitl_trigger ADD VALUE IF NOT EXISTS 'REGULATORY_VIOLATION';

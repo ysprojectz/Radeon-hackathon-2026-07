@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN041",
+  "claim_type": "DENTAL",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500041",
+  "patient_name": "Vijay Singh",
+  "patient_dob": "1964-01-25",
+  "gender": "MALE",
+  "provider_code": "CMC013",
+  "provider_name": "CMC Vellore",
+  "provider_city": "Vellore",
+  "provider_state": "Tamil Nadu",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-03-09",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "K04.0",
+  "primary_diagnosis_desc": "Pulpitis",
+  "is_cashless": false,
+  "insurer_name": "Care Health Insurance Ltd.",
+  "policy_number": "CARE-SUPREME-2024-600041",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "MDIndia Health Insurance TPA Pvt. Ltd.",
+  "tpa_id": "TPA97484",
+  "total_billed": 8900.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "K040",
+      "procedure_desc": "Root canal treatment, single sitting",
+      "service_category": "SURGERY",
+      "billed_amount": 8900.0,
+      "units": 1
+    }
+  ]
+}

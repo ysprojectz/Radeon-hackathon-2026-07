@@ -1,0 +1,62 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN028",
+  "claim_type": "EMERGENCY",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500028",
+  "patient_name": "Vijay Singh",
+  "patient_dob": "1997-01-14",
+  "gender": "MALE",
+  "provider_code": "COL009",
+  "provider_name": "Columbia Asia Hospital",
+  "provider_city": "Pune",
+  "provider_state": "Maharashtra",
+  "network_tier": "NETWORK",
+  "service_date": "2025-12-31",
+  "admission_date": "2025-12-31",
+  "discharge_date": "2026-01-05",
+  "primary_diagnosis_code": "I21.0",
+  "primary_diagnosis_desc": "Acute transmural MI of anterior wall",
+  "is_cashless": true,
+  "insurer_name": "HDFC ERGO General Insurance Co. Ltd.",
+  "policy_number": "HERGO-HEALTH-2024-600028",
+  "policy_tier": "ENHANCED_SILVER",
+  "tpa_name": "MediAssist India TPA Pvt. Ltd.",
+  "tpa_id": "TPA73541",
+  "total_billed": 457370.49,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "ROOM",
+      "procedure_desc": "Room rent, 5 night(s) (Twin Sharing)",
+      "service_category": "ROOM_RENT",
+      "billed_amount": 37000.0,
+      "units": 1,
+      "days": 5
+    },
+    {
+      "line_number": 2,
+      "procedure_code": "I210",
+      "procedure_desc": "Emergency PCI, primary angioplasty",
+      "service_category": "SURGERY",
+      "billed_amount": 392100.0,
+      "units": 1
+    },
+    {
+      "line_number": 3,
+      "procedure_code": "PRE-HOSP",
+      "procedure_desc": "Pre-hospitalisation diagnostics & consultation",
+      "service_category": "DIAGNOSTIC",
+      "billed_amount": 9926.93,
+      "units": 1
+    },
+    {
+      "line_number": 4,
+      "procedure_code": "POST-HOSP",
+      "procedure_desc": "Post-hospitalisation follow-up & medication",
+      "service_category": "PHARMACY",
+      "billed_amount": 18343.56,
+      "units": 1
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+/*
+ * ACOS — Design Token System
+ * 
+ * This file contains all CSS custom properties (design tokens) for the application.
+ * These tokens are used throughout the application to ensure consistency.
+ * 
+ * Usage:
+ *   - Reference tokens in CSS: var(--brand-primary)
+ *   - Reference in Tailwind: Use the theme extension in tailwind.config.ts
+ * 
+ * Token Categories:
+ *   - Colors (Brand, Background, Text, Border, Glass)
+ *   - Typography (Font family, size, weight, line-height)
+ *   - Spacing
+ *   - Border Radius
+ *   - Shadows
+ *   - Transitions
+ *   - Z-index scale
+ */
+
+/* =============================================================================
+   COLOR TOKENS
+   ============================================================================ */
+
+/* ── ACOS Design System v1.1 — canonical tokens (see DESIGN_SYSTEM.md §1) ─────
+   Light mode only, by product decision (2026-07-24, revised from the earlier
+   dark-only decision): this is claims/medical software, and a light, clean,
+   clinical color scheme is the correct convention for the domain (matches
+   how enterprise medical/claims platforms are normally built) — a dark neon
+   dashboard reads as consumer/gaming, not clinical. Tokens are defined once
+   (no :root/.dark pairs, no toggle) since there is exactly one theme. The
+   forced ThemeProvider no longer applies a `.dark` class. */
+:root {
+  /* Brand — one accent, used sparingly (§1.1) */
+  --brand-primary:         #2563EB;
+  --brand-primary-hover:   #1D4ED8;
+  --brand-primary-subtle:  #EFF6FF;
+
+  /* Semantic status — used only for their meaning (§1.2) */
+  --status-success: #059669;
+  --status-warning: #D97706;
+  --status-danger:  #DC2626;
+  --status-info:    #2563EB;
+
+  /* Neutrals (§1.3) */
+  --bg-primary:      #F8FAFC;
+  --bg-card:         #FFFFFF;
+  --bg-card-muted:   #F1F5F9;
+  --text-primary:    #0F172A;
+  --text-secondary:  #475569;
+  --text-muted:      #64748B;
+  --border-subtle:   rgba(15, 23, 42, 0.08);
+  --border-strong:   rgba(15, 23, 42, 0.16);
+
+  /* Legacy aliases kept for a lower-risk migration — resolve to tokens above */
+  --page-bg:        var(--bg-primary);
+  --page-bg-soft:   var(--bg-card-muted);
+  --surface-base:   var(--bg-card);
+  --surface-raised: var(--bg-card-muted);
+  --surface-glass:  rgba(255, 255, 255, 0.82);
+  --brand-hover:    var(--brand-primary-hover);
+  --success: var(--status-success);
+  --warning: var(--status-warning);
+  --danger:  var(--status-danger);
+  --info:    var(--status-info);
+
+  /* Status-color compatibility aliases (a handful of components still key off
+     these older names) — resolve to the same semantic tokens, no glow. */
+  --brand-secondary: var(--status-success);
+  --brand-warning: var(--status-warning);
+  --brand-danger: var(--status-danger);
+  --brand-info: var(--status-info);
+  --brand-secondary-glow: color-mix(in srgb, var(--status-success) 14%, transparent);
+  --brand-warning-glow: color-mix(in srgb, var(--status-warning) 14%, transparent);
+  --brand-danger-glow: color-mix(in srgb, var(--status-danger) 14%, transparent);
+  --brand-primary-glow: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+
+  /* Background Colors */
+  --bg-secondary: var(--bg-card-muted);
+  --bg-tertiary: #E2E8F0;
+  --bg-sidebar: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-overlay: rgba(15, 23, 42, 0.5);
+  --bg-dashboard: var(--page-bg);
+
+  /* Text Colors */
+  --text-subtle: rgba(15, 23, 42, 0.38);
+  --text-inverse: #FFFFFF;
+
+  /* Border Colors */
+  --border-normal: rgba(15, 23, 42, 0.08);
+  --border-glass: rgba(15, 23, 42, 0.06);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(15, 23, 42, 0.06);
+  --glass-blur: 20px;
+  --glass-top-highlight: inset 0 1px 0 rgba(15, 23, 42, 0.03);
+
+  /* Cinematic easing */
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-cinematic: 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Neutral gradient (no colored glow) — subtle depth only */
+  --gradient-primary: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-hover) 100%);
+}
+
+/* =============================================================================
+   TYPOGRAPHY TOKENS
+   ============================================================================ */
+
+:root {
+  /* Font Families */
+  --font-sans: var(--font-plus-jakarta-sans), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-sora), "Sora", var(--font-sans);
+  --font-logo: var(--font-display);
+  --font-ui: var(--font-sans);
+  --font-code: var(--font-mono);
+  
+  /* Font Sizes - Following Tailwind scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-page-title: 1.25rem;
+  --text-section-title: 1.40625rem;
+  --text-panel-title: 1.1875rem;
+  --text-control: 0.875rem;
+  --text-label: 0.6875rem;
+  
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  
+  /* Line Heights */
+  --leading-tight: 1.15;
+  --leading-title: 1.2;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+}
+
+/* =============================================================================
+   SPACING TOKENS
+   ============================================================================ */
+
+:root {
+  /* Spacing Scale - Using Tailwind's default spacing scale */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+}
+
+/* =============================================================================
+   BORDER RADIUS TOKENS
+   ============================================================================ */
+
+:root {
+  /* Border Radius Scale */
+  --radius-none: 0;
+  --radius-sm: 0.375rem;    /* 6px */
+  --radius: 0.5rem;        /* 8px */
+  --radius-md: 0.75rem;     /* 12px */
+  --radius-lg: 1rem;        /* 16px */
+  --radius-xl: 1.5rem;      /* 24px */
+  --radius-2xl: 2rem;       /* 32px */
+  --radius-3xl: 3rem;       /* 48px */
+  --radius-full: 9999px;
+  
+  /* Common named radii */
+  --radius-card: 1.25rem;   /* 20px */
+  --radius-panel: 1.125rem;  /* 18px */
+  --radius-button: 0.875rem; /* 14px */
+  --radius-input: 0.875rem;  /* 14px */
+  --radius-badge: 9999px;
+}
+
+/* =============================================================================
+   SHADOW TOKENS
+   ============================================================================ */
+
+:root {
+  /* Neutral elevation only — no colored glow (DESIGN_SYSTEM.md §1.4).
+     Lighter opacities than a dark theme needs — shadows read darker
+     against a white/light-gray surface at the same alpha. */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.14);
+  --shadow-xl: var(--shadow-lg);
+
+  /* Focus ring — the one sanctioned use of brand color in a "glow" role */
+  --shadow-focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.45);
+
+  --shadow-card: var(--shadow-sm);
+  --shadow-card-hover: var(--shadow-md);
+}
+
+/* =============================================================================
+   TRANSITION TOKENS
+   ============================================================================ */
+
+:root {
+  /* Transition Durations */
+  --transition-fast: 150ms;
+  --transition: 200ms;
+  --transition-moderate: 260ms;
+  --transition-slow: 300ms;
+  --transition-slower: 500ms;
+  
+  /* Transition Timing Functions */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-cinematic: 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-spring: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Common Transition Properties */
+  --transition-colors: var(--transition) var(--ease-in-out);
+  --transition-opacity: var(--transition) var(--ease-in-out);
+  --transition-shadow: var(--transition) var(--ease-in-out);
+  --transition-transform: var(--transition-moderate) var(--ease-spring);
+}
+
+/* =============================================================================
+   Z-INDEX SCALE
+   ============================================================================ */
+
+:root {
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-toast: 800;
+}
+
+/* =============================================================================
+   SIZING TOKENS
+   ============================================================================ */
+
+:root {
+  /* Common sizes */
+  --size-touch-target: 44px;
+  --size-icon-sm: 16px;
+  --size-icon: 20px;
+  --size-icon-lg: 24px;
+  
+  /* Sidebar */
+  --sidebar-width-collapsed: 64px;
+  --sidebar-width-expanded: 256px;
+  
+  /* Header */
+  --header-height: 64px;
+  
+  /* Card */
+  --card-padding: 1.5rem;
+  --card-border-radius: var(--radius-xl);
+}
+
+/* =============================================================================
+   ANIMATION TOKENS
+   ============================================================================ */
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Breakpoint Tokens */
+:root {
+  /* Breakpoints - Following Tailwind's default breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

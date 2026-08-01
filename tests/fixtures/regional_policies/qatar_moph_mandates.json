@@ -1,0 +1,168 @@
+{
+  "market_region": "QATAR",
+  "regulatory_body": "MOPH_QATAR",
+  "effective_date": "2017-01-01",
+  "description": "Qatar Ministry of Public Health mandatory health insurance requirements under Qatar's National Health Insurance Scheme (Seha). These mandates establish minimum coverage standards, copayment caps, benefit limits, and prohibited exclusions for all health insurance policies issued within the State of Qatar, in accordance with Law No. 22 of 2021 on Health Insurance and subsequent MOPH regulatory directives.",
+  "clauses": [
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "MOPH-QA-2.1",
+      "title": "Mandatory Inpatient Coverage",
+      "full_text": "All health insurance policies issued in the State of Qatar shall provide inpatient hospitalization coverage at a minimum standard ward level in all MOPH-licensed healthcare facilities. Insurers shall not impose copayment charges exceeding QAR 200 per admission for inpatient services, and total annual inpatient copayment obligations shall not exceed QAR 5,000 per insured member per policy year. Coverage must include room and board, physician fees, surgical procedures, diagnostic investigations, and medically necessary consumables for the duration of the admitted episode of care, as stipulated under Law No. 22 of 2021 on Health Insurance, Article 8.",
+      "structured_data": {
+        "benefit_type": "INPATIENT",
+        "is_mandatory": true,
+        "prohibited_exclusions": ["ACUTE_MEDICAL", "ICU", "SURGICAL"],
+        "minimum_coverage": "FULL_INPATIENT",
+        "room_type_minimum": "STANDARD_WARD",
+        "max_copay_per_admission_qar": 200.0,
+        "max_copay_annual_qar": 5000.0
+      },
+      "applicable_claim_types": ["INPATIENT", "DAYCARE", "EMERGENCY"],
+      "is_mandatory": true,
+      "regulatory_note": "Per MOPH Circular No. 14/2017 and Law No. 22 of 2021 Article 8, all insurers must provide standard ward inpatient coverage as a baseline entitlement. Policies offering sub-standard ward accommodation are non-compliant."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "MOPH-QA-2.2",
+      "title": "Mandatory Outpatient Coverage",
+      "full_text": "All health insurance policies shall include outpatient consultation and treatment coverage across MOPH-licensed primary care centers, polyclinics, and hospital outpatient departments within the State of Qatar. Coinsurance applied to outpatient visits shall not exceed twenty percent (20%) of the eligible claim amount, and in no event shall the copayment per outpatient visit exceed QAR 50. Outpatient coverage must include general practitioner consultations, specialist referrals, diagnostic laboratory tests, radiology services, and prescribed outpatient physiotherapy sessions as mandated under MOPH regulatory guidelines.",
+      "structured_data": {
+        "benefit_type": "OUTPATIENT",
+        "is_mandatory": true,
+        "max_copay_pct": 20,
+        "max_copay_qar_per_visit": 50.0,
+        "prohibited_copay_above_qar": 50.0,
+        "covers": ["GP_CONSULTATION", "SPECIALIST", "DIAGNOSTICS", "LAB", "RADIOLOGY", "PHYSIOTHERAPY"]
+      },
+      "applicable_claim_types": ["OUTPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "MOPH mandates that outpatient copayment structures must not create financial barriers to accessing primary and preventive healthcare services. Coinsurance exceeding 20% on outpatient visits is deemed non-compliant under Law No. 22 of 2021 Article 10."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "MOPH-QA-2.3",
+      "title": "Mandatory Emergency Treatment",
+      "full_text": "All health insurance policies shall provide full coverage for emergency medical treatment at any MOPH-licensed healthcare facility within the State of Qatar, without the imposition of any copayment, coinsurance, or deductible. Emergency treatment includes but is not limited to stabilization, resuscitation, emergency surgical intervention, and all medically necessary diagnostics and treatments administered during the emergency episode. The insured or the treating facility shall notify the insurer within twenty-four (24) hours of the emergency admission or presentation. Failure to notify within the stipulated period shall not constitute grounds for claim denial where the emergency is verified by the attending physician, in accordance with MOPH Emergency Care Regulations.",
+      "structured_data": {
+        "benefit_type": "EMERGENCY",
+        "is_mandatory": true,
+        "preauth_prohibition": true,
+        "max_copay_emergency": 0.0,
+        "geographic_scope": "ALL_QATAR_FACILITIES",
+        "non_network_reimbursement": "NETWORK_RATE",
+        "notification_hours": 24
+      },
+      "applicable_claim_types": ["EMERGENCY", "INPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "Under Law No. 22 of 2021 Article 12 and MOPH Emergency Care Regulations, no insurer may deny or reduce emergency claims on the basis of non-notification where the emergency is clinically substantiated. Zero copayment on emergency services is a non-negotiable regulatory mandate."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "MOPH-QA-2.4",
+      "title": "Mandatory Maternity Benefits",
+      "full_text": "All health insurance policies shall include maternity coverage for female insured members, subject to a maximum waiting period of twelve (12) months from the date of policy inception. Maternity benefits shall include a minimum of six (6) antenatal consultations, delivery services, postnatal care, and coverage for the newborn infant for a period of thirty (30) days from the date of birth. The minimum benefit payable for normal vaginal delivery shall be QAR 10,000, and for caesarean section delivery shall be QAR 15,000. Coverage shall extend to medically necessary complications arising during pregnancy, delivery, or the immediate postnatal period, as required under MOPH Maternal and Child Health directives and Law No. 22 of 2021.",
+      "structured_data": {
+        "benefit_type": "MATERNITY",
+        "is_mandatory": true,
+        "max_waiting_period_months": 12,
+        "min_antenatal_visits": 6,
+        "newborn_coverage_days_minimum": 30,
+        "min_normal_delivery_qar": 10000.0,
+        "min_caesarean_qar": 15000.0,
+        "prohibited_exclusions": ["PREGNANCY_COMPLICATIONS", "CAESAREAN", "ECTOPIC_PREGNANCY"]
+      },
+      "applicable_claim_types": ["MATERNITY", "INPATIENT", "OUTPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "MOPH Maternal and Child Health Circular No. 7/2018 stipulates that maternity waiting periods exceeding 12 months are prohibited. Newborn coverage for the first 30 days is automatic and does not require separate enrollment under Law No. 22 of 2021 Article 14."
+    },
+    {
+      "clause_type": "BENEFIT",
+      "section_reference": "MOPH-QA-2.5",
+      "title": "Mandatory Pharmacy Coverage",
+      "full_text": "All health insurance policies shall provide pharmaceutical coverage for medications prescribed by MOPH-licensed physicians. Copayment for brand-name medications shall not exceed thirty percent (30%) of the dispensed medication cost. Copayment for generic medications shall not exceed fifteen percent (15%) of the dispensed medication cost. Medications administered during an inpatient admission shall carry zero (0%) copayment and are to be included as part of the inpatient episode cost. All prescribed medications must appear on the MOPH-approved Qatar National Formulary or be subject to prior authorization where clinically justified, in accordance with MOPH Pharmaceutical Affairs regulations and Law No. 22 of 2021.",
+      "structured_data": {
+        "benefit_type": "PHARMACY",
+        "is_mandatory": true,
+        "max_brand_copay_pct": 30,
+        "max_generic_copay_pct": 15,
+        "inpatient_medications_copay": 0,
+        "formulary": "QATAR_NATIONAL_FORMULARY"
+      },
+      "applicable_claim_types": ["PHARMACY", "OUTPATIENT", "INPATIENT"],
+      "is_mandatory": true,
+      "regulatory_note": "MOPH Pharmaceutical Affairs Directive No. 3/2019 mandates adherence to the Qatar National Formulary. Insurers charging copayment on inpatient medications or exceeding the 30% brand / 15% generic thresholds are in violation of Law No. 22 of 2021 Article 16."
+    },
+    {
+      "clause_type": "COPAY_COINSURANCE",
+      "section_reference": "MOPH-QA-3.1",
+      "title": "Maximum Copayment Caps",
+      "full_text": "Insurers operating within the State of Qatar shall observe the following maximum copayment and coinsurance thresholds: (a) outpatient services shall not exceed twenty percent (20%) coinsurance or QAR 50 per visit, whichever is lower; (b) emergency services shall carry zero (0%) copayment; (c) inpatient services shall not exceed QAR 200 per admission; (d) total annual out-of-pocket expenditure by the insured member across all service categories shall not exceed QAR 15,000 per policy year. Once the annual out-of-pocket maximum is reached, the insurer shall bear one hundred percent (100%) of eligible claim costs for the remainder of the policy year. These caps are established pursuant to MOPH cost-sharing regulations under Law No. 22 of 2021, Article 18.",
+      "structured_data": {
+        "is_mandatory": true,
+        "outpatient_max_copay_pct": 20,
+        "outpatient_max_copay_qar": 50.0,
+        "emergency_max_copay_qar": 0.0,
+        "inpatient_max_copay_qar_per_admission": 200.0,
+        "annual_oop_max_qar": 15000.0,
+        "violation_consequence": "EXCESS_COPAY_VOID"
+      },
+      "applicable_claim_types": ["OUTPATIENT", "INPATIENT", "EMERGENCY", "PHARMACY", "MATERNITY"],
+      "is_mandatory": true,
+      "regulatory_note": "MOPH Circular No. 21/2020 reaffirms that annual out-of-pocket caps are absolute and apply across all in-network and emergency services. Insurers must implement real-time OOP tracking to ensure members are not charged beyond the QAR 15,000 annual threshold under Law No. 22 of 2021 Article 18."
+    },
+    {
+      "clause_type": "LIMITATION",
+      "section_reference": "MOPH-QA-3.2",
+      "title": "Minimum Annual Benefit Limit",
+      "full_text": "All health insurance policies issued in the State of Qatar shall maintain a minimum annual aggregate benefit limit of no less than QAR 250,000 per insured member per policy year. Emergency medical services shall carry a dedicated sub-limit of no less than QAR 250,000 per policy year. Maternity benefits shall maintain minimum sub-limits of QAR 10,000 for normal vaginal delivery and QAR 15,000 for caesarean section delivery. Policies issued with annual benefit limits below these prescribed thresholds shall be deemed non-compliant and subject to regulatory enforcement action by MOPH, pursuant to Law No. 22 of 2021, Article 20 and MOPH Benefit Standards Directive.",
+      "structured_data": {
+        "is_mandatory": true,
+        "min_annual_limit_qar": 250000.0,
+        "min_emergency_limit_qar": 250000.0,
+        "min_maternity_normal_qar": 10000.0,
+        "min_maternity_caesarean_qar": 15000.0
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "EMERGENCY", "MATERNITY"],
+      "is_mandatory": true,
+      "regulatory_note": "MOPH Benefit Standards Directive No. 5/2018 establishes QAR 250,000 as the floor for annual aggregate limits. Insurers may offer higher limits but may not issue policies below the prescribed minimum. Non-compliant policies are subject to suspension under Law No. 22 of 2021 Article 20."
+    },
+    {
+      "clause_type": "EXCLUSION",
+      "section_reference": "MOPH-QA-4.1",
+      "title": "Prohibited Exclusions — Conditions Insurers May Not Exclude",
+      "full_text": "Insurers operating within the State of Qatar are prohibited from excluding the following conditions and services from health insurance coverage: (a) HIV/AIDS-related treatment, including antiretroviral therapy, opportunistic infection management, and related laboratory monitoring; (b) mental health and psychiatric services, with a minimum of fifteen (15) inpatient days per policy year for acute psychiatric care; (c) renal dialysis services, including hemodialysis and peritoneal dialysis for chronic kidney disease; (d) cancer screening and early detection services, including mammography, colonoscopy, cervical screening, and PSA testing as recommended by MOPH preventive care guidelines; (e) substance abuse detoxification services, with a minimum of seven (7) inpatient days per episode for medically supervised detoxification. Any policy containing exclusions for the above-listed conditions shall be deemed non-compliant under MOPH regulations and Law No. 22 of 2021, Article 22.",
+      "structured_data": {
+        "is_mandatory": true,
+        "prohibited_exclusion_categories": [
+          "HIV_AIDS_TREATMENT",
+          "MENTAL_HEALTH_ACUTE_INPATIENT",
+          "DIALYSIS_CHRONIC_KIDNEY_DISEASE",
+          "CANCER_SCREENING",
+          "SUBSTANCE_ABUSE_DETOX"
+        ],
+        "mental_health_inpatient_min_days": 15,
+        "substance_abuse_detox_min_days": 7
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "DAYCARE"],
+      "is_mandatory": true,
+      "regulatory_note": "MOPH Non-Exclusion Directive No. 9/2019, issued pursuant to Law No. 22 of 2021 Article 22, explicitly prohibits the exclusion of the listed conditions. Insurers found to have denied claims on prohibited exclusion grounds are subject to fines and license review by the MOPH Health Insurance Regulatory Unit."
+    },
+    {
+      "clause_type": "WAITING_PERIOD",
+      "section_reference": "MOPH-QA-5.1",
+      "title": "Maximum Waiting Period Caps",
+      "full_text": "Insurers shall not impose waiting periods exceeding the following thresholds: (a) pre-existing diseases and conditions shall carry a maximum waiting period of six (6) months from the date of policy inception or renewal; (b) no waiting period shall be applied to emergency medical treatment regardless of the nature or origin of the presenting condition; (c) no waiting period shall be applied to maternity complications, including ectopic pregnancy, pre-eclampsia, eclampsia, placental abruption, and other obstetric emergencies. Standard maternity benefits (non-emergency) may be subject to a waiting period not exceeding twelve (12) months as specified under clause MOPH-QA-2.4. Waiting periods applied in contravention of these caps shall render the relevant policy provision void and unenforceable, as stipulated under Law No. 22 of 2021, Article 24 and MOPH Waiting Period Standards.",
+      "structured_data": {
+        "is_mandatory": true,
+        "max_ped_waiting_period_months": 6,
+        "no_waiting_period_for": ["EMERGENCY", "MATERNITY_COMPLICATIONS"],
+        "portability_required": true,
+        "portability_waiting_period_carryover": true
+      },
+      "applicable_claim_types": ["INPATIENT", "OUTPATIENT", "EMERGENCY", "MATERNITY"],
+      "is_mandatory": true,
+      "regulatory_note": "MOPH Waiting Period Standards Circular No. 11/2018, issued under Law No. 22 of 2021 Article 24, caps pre-existing condition waiting periods at 6 months. Any waiting period applied to emergency services or maternity complications is automatically void. Insurers must honor these caps upon policy inception and renewal."
+    }
+  ]
+}

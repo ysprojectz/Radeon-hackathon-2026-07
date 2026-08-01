@@ -1,0 +1,37 @@
+{
+  "claim_reference": "CLM-INDIA-2026-SYN038",
+  "claim_type": "OUTPATIENT",
+  "market_region": "INDIA",
+  "currency": "INR",
+  "member_number": "STAR-2024-500038",
+  "patient_name": "Rekha Reddy",
+  "patient_dob": "1961-11-08",
+  "gender": "FEMALE",
+  "provider_code": "MED006",
+  "provider_name": "Medanta The Medicity",
+  "provider_city": "Gurugram",
+  "provider_state": "Haryana",
+  "network_tier": "NON_NETWORK",
+  "service_date": "2026-06-30",
+  "admission_date": null,
+  "discharge_date": null,
+  "primary_diagnosis_code": "M54.5",
+  "primary_diagnosis_desc": "Low back pain",
+  "is_cashless": false,
+  "insurer_name": "ICICI Lombard General Insurance Co. Ltd.",
+  "policy_number": "ICICILOM-COMP-2024-600038",
+  "policy_tier": "ENHANCED_GOLD",
+  "tpa_name": "MediAssist India TPA Pvt. Ltd.",
+  "tpa_id": "TPA70417",
+  "total_billed": 5100.0,
+  "line_items": [
+    {
+      "line_number": 1,
+      "procedure_code": "M545",
+      "procedure_desc": "Orthopaedic consultation + X-ray",
+      "service_category": "CONSULTATION",
+      "billed_amount": 5100.0,
+      "units": 1
+    }
+  ]
+}
