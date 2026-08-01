@@ -1,7 +1,7 @@
 -- ============================================================
 -- Claims Adjudication Engine — Database Migration 012
--- Multi-Market Support: UAE + India Specific Fields
--- Adds India and UAE-specific fields for complete market support
+-- India-Specific Fields
+-- Adds India-specific fields for complete market support
 -- ============================================================
 
 -- ============================================================
@@ -47,19 +47,11 @@ EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 -- UPDATE CLAIMS TABLE - Market-specific fields
 -- ============================================================
 
-ALTER TABLE claims 
+ALTER TABLE claims
 -- Market detection confidence
 ADD COLUMN IF NOT EXISTS market_confidence NUMERIC(5,4) DEFAULT 0.0,
 
--- UAE-specific fields
-ADD COLUMN IF NOT EXISTS emirates_id VARCHAR(20),
-ADD COLUMN IF NOT EXISTS daman_card VARCHAR(50),
-ADD COLUMN IF NOT EXISTS dha_code VARCHAR(50),
-ADD COLUMN IF NOT EXISTS mohap_license VARCHAR(50),
-ADD COLUMN IF NOT EXISTS iban VARCHAR(100),
-ADD COLUMN IF NOT EXISTS bank_name VARCHAR(200),
-
--- India-specific fields  
+-- India-specific fields
 ADD COLUMN IF NOT EXISTS aadhaar_number VARCHAR(20),
 ADD COLUMN IF NOT EXISTS pan_number VARCHAR(20),
 ADD COLUMN IF NOT EXISTS tpa_id VARCHAR(50),
@@ -90,11 +82,9 @@ ADD COLUMN IF NOT EXISTS aadhaar_number VARCHAR(20);
 -- UPDATE PROVIDERS TABLE - Additional market info
 -- ============================================================
 
-ALTER TABLE providers 
+ALTER TABLE providers
 ADD COLUMN IF NOT EXISTS tpa_registered BOOLEAN DEFAULT FALSE,
-ADD COLUMN IF NOT EXISTS tpa_id VARCHAR(50),
-ADD COLUMN IF NOT EXISTS dha_code VARCHAR(50),
-ADD COLUMN IF NOT EXISTS mohap_license VARCHAR(50);
+ADD COLUMN IF NOT EXISTS tpa_id VARCHAR(50);
 
 -- ============================================================
 -- UPDATE POLICIES TABLE - India-specific fields
@@ -116,8 +106,8 @@ ADD COLUMN IF NOT EXISTS ayush_coverage_pct INTEGER DEFAULT 0;
 -- UPDATE HITL_REVIEWS TABLE - Market context
 -- ============================================================
 
-ALTER TABLE hitl_reviews 
-ADD COLUMN IF NOT EXISTS market_region market_region DEFAULT 'UAE';
+ALTER TABLE hitl_reviews
+ADD COLUMN IF NOT EXISTS market_region market_region DEFAULT 'INDIA';
 
 -- ============================================================
 -- INDEXES FOR PERFORMANCE
@@ -128,7 +118,6 @@ CREATE INDEX IF NOT EXISTS idx_claims_market_confidence ON claims(market_region,
 CREATE INDEX IF NOT EXISTS idx_claims_aadhaar ON claims(aadhaar_number) WHERE aadhaar_number IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_claims_pan ON claims(pan_number) WHERE pan_number IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_claims_tpa ON claims(tpa_id) WHERE tpa_id IS NOT NULL;
-CREATE INDEX IF NOT EXISTS idx_claims_emirates_id ON claims(emirates_id) WHERE emirates_id IS NOT NULL;
 
 -- Member-specific indexes
 CREATE INDEX IF NOT EXISTS idx_members_aadhaar ON members(aadhaar_number) WHERE aadhaar_number IS NOT NULL;
@@ -168,16 +157,12 @@ BEGIN
     END IF;
 END $$;
 
--- PIN code, Emirates ID, and confidence validation
+-- PIN code and confidence validation
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'chk_claims_pin') THEN
         ALTER TABLE claims ADD CONSTRAINT chk_claims_pin
         CHECK (pin_code IS NULL OR pin_code ~ '^\d{6}$');
-    END IF;
-    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'chk_claims_emirates_id') THEN
-        ALTER TABLE claims ADD CONSTRAINT chk_claims_emirates_id
-        CHECK (emirates_id IS NULL OR emirates_id ~ '^\d{13,15}$');
     END IF;
     IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'chk_claims_market_confidence') THEN
         ALTER TABLE claims ADD CONSTRAINT chk_claims_market_confidence
@@ -198,11 +183,6 @@ COMMENT ON COLUMN claims.sum_insured IS 'India: Total sum insured under policy';
 COMMENT ON COLUMN claims.room_category IS 'India: Room category (Single, Double, Deluxe, etc.)';
 COMMENT ON COLUMN claims.system_of_medicine IS 'India: System of medicine (Allopathy, Ayurveda, etc.)';
 COMMENT ON COLUMN claims.pin_code IS 'India: 6-digit postal PIN code';
-COMMENT ON COLUMN claims.emirates_id IS 'UAE: 13-15 digit Emirates ID';
-COMMENT ON COLUMN claims.daman_card IS 'UAE: Daman insurance card number';
-COMMENT ON COLUMN claims.dha_code IS 'UAE: Dubai Health Authority code';
-COMMENT ON COLUMN claims.mohap_license IS 'UAE: Ministry of Health license';
-COMMENT ON COLUMN claims.iban IS 'UAE: International Bank Account Number';
 COMMENT ON COLUMN claims.market_evidence IS 'Array of evidence strings from market detection';
 
 COMMENT ON TYPE room_category IS 'India: Categories of hospital rooms for coverage calculation';
@@ -234,10 +214,10 @@ VALUES (
     NOW(),
     'SYSTEM',
     'migration_012',
-    'Multi-market support migration: Added UAE and India specific fields',
+    'Multi-market support migration: Added India specific fields',
     jsonb_build_object(
         'migration_number', '012',
-        'description', 'Adds India and UAE-specific fields for complete multi-market support',
+        'description', 'Adds India-specific fields for complete multi-market support',
         'tables_modified', jsonb_build_array('claims', 'members', 'providers', 'policies', 'hitl_reviews'),
         'new_enums', jsonb_build_array('room_category', 'system_of_medicine')
     ),

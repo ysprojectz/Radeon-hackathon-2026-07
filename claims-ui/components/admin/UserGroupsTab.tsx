@@ -29,7 +29,6 @@ import {
   ALL_MARKETS,
   ALL_ROLES,
   ALL_SCREEN_IDS,
-  GCC_MARKETS,
   MARKET_OPTIONS,
   ROLE_OPTIONS,
   SCREEN_CATALOG,
@@ -168,7 +167,7 @@ export function UserGroupsTab({ config, onSaved }: { config?: SystemConfig | nul
       name: "New Access Group",
       description: "Set the roles and markets this group can operate in.",
       roleScope: ["ADJUSTER"],
-      marketScope: ["UAE"],
+      marketScope: ["INDIA"],
       screenAccess: ["dashboard", "claims", "submit", "settings"],
       isActive: true,
     };
@@ -505,8 +504,6 @@ export function UserGroupsTab({ config, onSaved }: { config?: SystemConfig | nul
                 <div className="mb-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
                   {[
                     { label: "All", values: ALL_MARKETS },
-                    { label: "GCC", values: GCC_MARKETS },
-                    { label: "UAE + KSA", values: ["UAE", "KSA"] },
                     { label: "India", values: ["INDIA"] },
                   ].map((preset) => (
                     <button

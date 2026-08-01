@@ -100,13 +100,6 @@ function SectionCard({ title, badge, children }: SectionCardProps) {
 interface Props { config: SystemConfig | undefined; onSaved: () => void; }
 
 export function RulesEngineTab({ config, onSaved }: Props) {
-  // GCC fields
-  const [copayInNetwork,     setCopayInNetwork]     = useState("10");
-  const [copayOutOfNetwork,  setCopayOutOfNetwork]  = useState("20");
-  const [copayDirectBilling, setCopayDirectBilling] = useState("0");
-  const [drgThreshold,       setDrgThreshold]       = useState("30000");
-  const [preauthPenalty,     setPreauthPenalty]      = useState("30");
-
   // India fields
   const [roomRentCap,        setRoomRentCap]        = useState("1.0");
   const [ayushMinDays,       setAyushMinDays]       = useState("1");
@@ -116,11 +109,6 @@ export function RulesEngineTab({ config, onSaved }: Props) {
 
   useEffect(() => {
     if (config) {
-      setCopayInNetwork(String(config.re_gcc_copay_in_network_pct    ?? 10));
-      setCopayOutOfNetwork(String(config.re_gcc_copay_out_of_network_pct ?? 20));
-      setCopayDirectBilling(String(config.re_gcc_copay_direct_billing_pct ?? 0));
-      setDrgThreshold(String(config.re_gcc_drg_threshold              ?? 30000));
-      setPreauthPenalty(String(config.re_preauth_penalty_pct          ?? 30));
       setRoomRentCap(String(config.re_india_room_rent_limit_pct       ?? 1.0));
       setAyushMinDays(String(config.re_india_ayush_min_days           ?? 1));
       setDomiciliaryMinDays(String(config.re_india_domiciliary_min_days ?? 3));
@@ -131,11 +119,6 @@ export function RulesEngineTab({ config, onSaved }: Props) {
     setLoading(true);
     try {
       const values = {
-        re_gcc_copay_in_network_pct:      parseInt(copayInNetwork),
-        re_gcc_copay_out_of_network_pct:  parseInt(copayOutOfNetwork),
-        re_gcc_copay_direct_billing_pct:  parseInt(copayDirectBilling),
-        re_gcc_drg_threshold:             parseInt(drgThreshold),
-        re_preauth_penalty_pct:           parseInt(preauthPenalty),
         re_india_room_rent_limit_pct:     parseFloat(roomRentCap),
         re_india_ayush_min_days:          parseInt(ayushMinDays),
         re_india_domiciliary_min_days:    parseInt(domiciliaryMinDays),
@@ -150,11 +133,6 @@ export function RulesEngineTab({ config, onSaved }: Props) {
 
       // Guard 2: range validation — report first failing rule
       const rangeErrors: string[] = [];
-      if (values.re_gcc_copay_in_network_pct     < 0 || values.re_gcc_copay_in_network_pct     > 100) rangeErrors.push("Co-Pay In-Network must be 0–100%");
-      if (values.re_gcc_copay_out_of_network_pct < 0 || values.re_gcc_copay_out_of_network_pct > 100) rangeErrors.push("Co-Pay Out-of-Network must be 0–100%");
-      if (values.re_gcc_copay_direct_billing_pct < 0 || values.re_gcc_copay_direct_billing_pct > 100) rangeErrors.push("Co-Pay Direct Billing must be 0–100%");
-      if (values.re_gcc_drg_threshold            <= 0)                                                  rangeErrors.push("DRG Threshold must be greater than 0");
-      if (values.re_preauth_penalty_pct          < 0 || values.re_preauth_penalty_pct          > 100) rangeErrors.push("Pre-Auth Penalty must be 0–100%");
       if (values.re_india_room_rent_limit_pct    < 0 || values.re_india_room_rent_limit_pct    > 10)  rangeErrors.push("Room Rent Cap must be 0–10%");
       if (values.re_india_ayush_min_days         < 1)                                                  rangeErrors.push("AYUSH Min Days must be at least 1");
       if (values.re_india_domiciliary_min_days   < 1)                                                  rangeErrors.push("Domiciliary Min Days must be at least 1");
@@ -196,48 +174,6 @@ export function RulesEngineTab({ config, onSaved }: Props) {
         These settings act as system-level fallbacks when a specific policy doesn&apos;t
         define a value. Changes take effect immediately on the next adjudication call — no restart required.
       </div>
-
-      {/* ── GCC Market ─────────────────────────────────────────────────────── */}
-      <SectionCard title="GCC Market Rules" badge="UAE · KSA · Gulf">
-        <FieldRow
-          label="Co-Pay: In-Network"
-          tooltip="Co-payment percentage applied to claims from in-network providers (e.g., 10 = 10% member pays)"
-          value={copayInNetwork}
-          onChange={setCopayInNetwork}
-          unit="%" min={0} max={100}
-        />
-        <FieldRow
-          label="Co-Pay: Out-of-Network"
-          tooltip="Co-payment percentage for out-of-network providers. Typically higher to incentivise network use."
-          value={copayOutOfNetwork}
-          onChange={setCopayOutOfNetwork}
-          unit="%" min={0} max={100}
-        />
-        <FieldRow
-          label="Co-Pay: Direct Billing"
-          tooltip="Co-payment for direct billing arrangements with specific hospitals. Usually 0% (cashless)."
-          value={copayDirectBilling}
-          onChange={setCopayDirectBilling}
-          unit="%" min={0} max={100}
-        />
-
-        <div className="my-1 border-t border-border/40" />
-
-        <FieldRow
-          label="DRG High-Value Threshold"
-          tooltip="Inpatient claims above this amount (in AED/SAR) are flagged for DRG validation and HITL review. Standard: 30,000."
-          value={drgThreshold}
-          onChange={setDrgThreshold}
-          unit="AED" min={1000} max={500000} step={1000}
-        />
-        <FieldRow
-          label="Pre-Auth Missing Penalty"
-          tooltip="Percentage penalty applied when a required pre-authorisation was not obtained before treatment (Section 6.1)."
-          value={preauthPenalty}
-          onChange={setPreauthPenalty}
-          unit="%" min={0} max={100}
-        />
-      </SectionCard>
 
       {/* ── India Market ───────────────────────────────────────────────────── */}
       <SectionCard title="India Market Rules" badge="IRDAI · GIPSA">

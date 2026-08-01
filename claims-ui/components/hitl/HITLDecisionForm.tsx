@@ -404,7 +404,7 @@ export function HITLDecisionForm({
       {/* Override amount field */}
       {decision === "OVERRIDE_AMOUNT" && (
         <div className="space-y-2">
-          <Label className="text-[11px] font-black uppercase tracking-[0.18em] text-white/35">Override Amount ({item.currency ?? "AED"})</Label>
+          <Label className="text-[11px] font-black uppercase tracking-[0.18em] text-white/35">Override Amount ({item.currency ?? "INR"})</Label>
           <Input
             type="number"
             min={0.01}

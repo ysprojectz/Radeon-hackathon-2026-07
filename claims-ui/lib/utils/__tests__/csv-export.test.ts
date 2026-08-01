@@ -7,11 +7,11 @@ describe("CSV Export Utility", () => {
     claim_reference: "CLM-2026-001",
     status: "SETTLED",
     claim_type: "IPD",
-    market_region: "UAE",
-    currency: "AED",
+    market_region: "INDIA",
+    currency: "INR",
     member_number: "MEM12345",
     patient_name: "John Doe",
-    provider_name: "Emirates Hospital",
+    provider_name: "Apollo Hospital",
     provider_code: "PROV001",
     network_tier: "IN_NETWORK",
     service_date: "2026-03-01T00:00:00Z",
@@ -88,8 +88,8 @@ describe("CSV Export Utility", () => {
     const csv = convertClaimsToCSV([mockClaim]);
     const lines = csv.split("\n");
 
-    expect(lines[1]).toContain("AED 15000.50");
-    expect(lines[1]).toContain("AED 12000.00");
+    expect(lines[1]).toContain("INR 15000.50");
+    expect(lines[1]).toContain("INR 12000.00");
   });
 
   test("formats dates to YYYY-MM-DD", () => {

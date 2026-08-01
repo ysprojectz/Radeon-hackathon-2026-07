@@ -18,7 +18,7 @@ const ROLES = [
   "ADMIN", "ADJUSTER", "SENIOR_ADJUSTER",
   "MEDICAL_DIRECTOR", "COMPLIANCE_OFFICER", "API_CONSUMER",
 ];
-const REGIONS = ["UAE", "INDIA", "SAUDI", "BAHRAIN", "OMAN", "QATAR", "KUWAIT"];
+const REGIONS = ["INDIA"];
 
 interface Props {
   open:         boolean;
@@ -33,7 +33,7 @@ export function UserFormDialog({ open, onOpenChange, editUser, onSuccess }: Prop
   const [email,    setEmail]    = useState("");
   const [name,     setName]     = useState("");
   const [role,     setRole]     = useState("ADJUSTER");
-  const [region,   setRegion]   = useState("UAE");
+  const [region,   setRegion]   = useState("INDIA");
   const [active,   setActive]   = useState(true);
   const [password, setPassword] = useState("");
   const [loading,  setLoading]  = useState(false);
@@ -50,7 +50,7 @@ export function UserFormDialog({ open, onOpenChange, editUser, onSuccess }: Prop
         setRegion(editUser.market_region);
         setActive(editUser.is_active);
       } else {
-        setEmail(""); setName(""); setRole("ADJUSTER"); setRegion("UAE"); setActive(true);
+        setEmail(""); setName(""); setRole("ADJUSTER"); setRegion("INDIA"); setActive(true);
       }
     }
   }, [open, editUser]);

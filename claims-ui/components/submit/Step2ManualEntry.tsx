@@ -9,7 +9,7 @@ import { submitClaimJSON, ApiError, formatApiError } from "@/lib/api";
 import type { ClaimResponse } from "@/lib/types";
 
 const MARKET_CURRENCY: Record<string, string> = {
-  UAE: "AED", KSA: "SAR", BAHRAIN: "BHD", INDIA: "INR",
+  INDIA: "INR",
 };
 
 const CLAIM_TYPES = ["OUTPATIENT", "INPATIENT", "DENTAL", "OPTICAL", "PHARMACY"];
@@ -35,7 +35,7 @@ function isOlderThan365Days(dateStr: string): boolean {
 
 export function Step2ManualEntry({ market, onComplete, onBack }: Step2ManualEntryProps) {
   const today = todayString();
-  const defaultCurrency = MARKET_CURRENCY[market] ?? "AED";
+  const defaultCurrency = MARKET_CURRENCY[market] ?? "INR";
 
   // ── Form field state ────────────────────────────────────────────────────────
   const [claimType, setClaimType]         = useState("OUTPATIENT");
@@ -362,7 +362,7 @@ export function Step2ManualEntry({ market, onComplete, onBack }: Step2ManualEntr
                 id="currency"
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                placeholder="AED"
+                placeholder="INR"
                 maxLength={3}
               />
             </div>

@@ -8,23 +8,11 @@ import type { AnalyticsCardDesign } from "./analyticsCardDesign";
 import type { LucideIcon } from "lucide-react";
 
 const MARKET_COLORS: Record<string, string> = {
-  UAE:     "#06b6d4",
   INDIA:   "#10B981",
-  KSA:     "#F59E0B",
-  BAHRAIN: "#8B5CF6",
-  OMAN:    "#F97316",
-  QATAR:   "#14B8A6",
-  KUWAIT:  "#EC4899",
 };
 
 const MARKET_FLAGS: Record<string, string> = {
-  UAE:     "🇦🇪",
   INDIA:   "🇮🇳",
-  KSA:     "🇸🇦",
-  BAHRAIN: "🇧🇭",
-  OMAN:    "🇴🇲",
-  QATAR:   "🇶🇦",
-  KUWAIT:  "🇰🇼",
 };
 
 interface ClaimsMarketChartProps {

@@ -18,17 +18,13 @@ const STATUS_LABEL: Record<string, string> = {
 };
 
 const MARKET_LABEL: Record<string, string> = {
-  UAE: "UAE",
   INDIA: "India",
-  KSA: "Saudi Arabia",
 };
 
 const ALL = "__all__";
 const DEBOUNCE_MS = 300;
 const MARKET_OPTIONS = [
-  { value: "UAE", label: "UAE" },
   { value: "INDIA", label: "India" },
-  { value: "KSA", label: "Saudi Arabia" },
 ];
 
 type DraftFilters = {

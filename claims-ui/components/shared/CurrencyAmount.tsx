@@ -11,7 +11,7 @@ interface CurrencyAmountProps {
 
 export function CurrencyAmount({
   amount,
-  currency = "AED",
+  currency = "INR",
   className,
   bold,
 }: CurrencyAmountProps) {

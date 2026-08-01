@@ -36,9 +36,7 @@ const APPROVAL_MODELS = [
 ];
 
 const APPROVAL_MARKETS = [
-  { value: "UAE", label: "UAE", currency: "AED" },
   { value: "INDIA", label: "India", currency: "INR" },
-  { value: "KSA", label: "Saudi Arabia", currency: "SAR" },
 ];
 
 // ── Section card wrapper ───────────────────────────────────────────────────────
@@ -124,7 +122,7 @@ export function ClaimApprovalTab({ config, onSaved }: Props) {
   // Auto-approval thresholds
   const [autoThreshold, setAutoThreshold] = useState("95");
   const [maxAmount,     setMaxAmount]     = useState("50000");
-  const [selectedMarket, setSelectedMarket] = useState("UAE");
+  const [selectedMarket, setSelectedMarket] = useState("INDIA");
   const [marketThresholds, setMarketThresholds] = useState<Record<string, { currency: string; max_amount: number }>>({});
   const [threshLoading, setThreshLoading] = useState(false);
 
@@ -132,9 +130,7 @@ export function ClaimApprovalTab({ config, onSaved }: Props) {
   const [approvalModel,   setApprovalModel]   = useState("qwen/qwen3-32b");
   const [modelLoading,    setModelLoading]    = useState(false);
 
-  // VAT rates
-  const [vatUae,    setVatUae]    = useState("5.0");
-  const [vatKsa,    setVatKsa]    = useState("15.0");
+  // GST rate
   const [gstIndia,  setGstIndia]  = useState("18.0");
   const [vatLoading, setVatLoading] = useState(false);
 
@@ -142,22 +138,18 @@ export function ClaimApprovalTab({ config, onSaved }: Props) {
     if (!config) return;
     setAutoThreshold(String(config.claim_auto_approve_threshold ?? 95));
     const thresholds = config.claim_auto_approve_thresholds_by_market ?? {
-      UAE: { currency: "AED", max_amount: config.claim_auto_approve_max_amount ?? 50000 },
       INDIA: { currency: "INR", max_amount: 1000000 },
-      KSA: { currency: "SAR", max_amount: 50000 },
     };
     setMarketThresholds(thresholds);
     setMaxAmount(String(thresholds[selectedMarket]?.max_amount ?? config.claim_auto_approve_max_amount ?? 50000));
     setApprovalModel(config.claim_approval_llm_model           ?? "qwen/qwen3-32b");
-    setVatUae(String(config.vat_rate_uae   ?? 5.0));
-    setVatKsa(String(config.vat_rate_ksa   ?? 15.0));
     setGstIndia(String(config.gst_rate_india ?? 18.0));
   }, [config, selectedMarket]);
 
   const selectedMarketCurrency =
     marketThresholds[selectedMarket]?.currency ??
     APPROVAL_MARKETS.find((market) => market.value === selectedMarket)?.currency ??
-    "AED";
+    "INR";
 
   function handleMarketChange(market: string) {
     setSelectedMarket(market);
@@ -212,11 +204,9 @@ export function ClaimApprovalTab({ config, onSaved }: Props) {
     setVatLoading(true);
     try {
       await adminUpdateConfig({
-        vat_rate_uae:  parseFloat(vatUae),
-        vat_rate_ksa:  parseFloat(vatKsa),
         gst_rate_india: parseFloat(gstIndia),
       });
-      toast.success("Tax / VAT rates saved");
+      toast.success("Tax rate saved");
       onSaved();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Save failed");
@@ -330,38 +320,36 @@ export function ClaimApprovalTab({ config, onSaved }: Props) {
         </Button>
       </Section>
 
-      {/* ── Tax / VAT Rates ────────────────────────────────────────────────── */}
+      {/* ── Tax / GST Rate ─────────────────────────────────────────────────── */}
       <Section
-        title="Tax / VAT Rate Override"
-        description="Per-market tax rates applied during settlement calculation"
+        title="Tax / GST Rate Override"
+        description="Tax rate applied during settlement calculation"
         icon={Percent}
       >
         <div className="space-y-2">
-          <VatRow market="UAE (Value Added Tax)"       flag="/flags/ae.svg" value={vatUae}   onChange={setVatUae}   />
-          <VatRow market="KSA (Value Added Tax)"       flag="/flags/sa.svg" value={vatKsa}   onChange={setVatKsa}   />
           <VatRow market="India (Goods & Service Tax)" flag="/flags/in.svg" value={gstIndia} onChange={setGstIndia} />
         </div>
 
         <p className={`text-[11px] ${adminSectionCopyClass}`}>
-          These rates override environment defaults. Applied only to non-exempt services during settlement.
+          This rate overrides the environment default. Applied only to non-exempt services during settlement.
         </p>
 
         <Button onClick={saveVatRates} disabled={vatLoading} size="sm" className={adminActionButtonClass}>
           <Save className="h-3.5 w-3.5" />
-          {vatLoading ? "Saving…" : "Save Tax Rates"}
+          {vatLoading ? "Saving…" : "Save Tax Rate"}
         </Button>
 
-        {/* ── VAT-Exempt Service Categories ──────────────────────────────── */}
+        {/* ── GST-Exempt Service Categories ──────────────────────────────── */}
         <div className="pt-1 border-t space-y-2.5">
           <div className="flex items-center gap-1.5">
             <BadgeCheck className="h-3.5 w-3.5 text-emerald-500" />
             <p className="text-[11px] font-semibold text-foreground uppercase tracking-[0.08em]">
-              VAT-Exempt Service Categories
+              GST-Exempt Service Categories
             </p>
           </div>
           <p className={`text-[11px] leading-relaxed ${adminSectionCopyClass}`}>
-            The following service categories are <strong className="text-foreground">zero-rated</strong> under
-            UAE FTA &amp; KSA ZATCA regulations for curative medical services. VAT is never added
+            The following service categories are <strong className="text-foreground">zero-rated</strong>
+            for curative medical services. GST is never added
             to these categories during settlement regardless of the rate above.
           </p>
           <div className="flex flex-wrap gap-1.5">
@@ -388,8 +376,8 @@ export function ClaimApprovalTab({ config, onSaved }: Props) {
             ))}
           </div>
           <p className={`text-[10px] ${adminSectionCopyClass}`}>
-            PROCEDURE &amp; PHARMACY were added per UAE FTA guidance — medical procedures and prescription
-            medicines are zero-rated for VAT purposes.
+            PROCEDURE &amp; PHARMACY are zero-rated: medical procedures and prescription
+            medicines are exempt from GST.
           </p>
         </div>
       </Section>

@@ -24,56 +24,26 @@ export const STATUS_LABELS: Record<string, string> = {
 // ─── Market / Region ─────────────────────────────────────────────────────────
 
 export const MARKET_LABELS: Record<string, string> = {
-  UAE: "UAE",
   INDIA: "India",
-  KSA: "Saudi Arabia",
-  BAHRAIN: "Bahrain",
-  OMAN: "Oman",
-  QATAR: "Qatar",
-  KUWAIT: "Kuwait",
 };
 
 export const MARKET_FLAGS: Record<string, string> = {
-  UAE: "🇦🇪",
   INDIA: "🇮🇳",
-  KSA: "🇸🇦",
-  BAHRAIN: "🇧🇭",
-  OMAN: "🇴🇲",
-  QATAR: "🇶🇦",
-  KUWAIT: "🇰🇼",
 };
 
 export const MARKET_CURRENCY: Record<string, string> = {
-  UAE: "AED",
   INDIA: "INR",
-  KSA: "SAR",
-  BAHRAIN: "BHD",
-  OMAN: "OMR",
-  QATAR: "QAR",
-  KUWAIT: "KWD",
 };
 
 export const CURRENCY_LABELS: Record<string, string> = {
   USD: "USD",
-  AED: "AED",
   INR: "INR",
-  SAR: "SAR",
-  BHD: "BHD",
-  OMR: "OMR",
-  QAR: "QAR",
-  KWD: "KWD",
 };
 
 // FX rates: 1 unit of currency = X USD
 export const USD_FX_RATES: Record<string, number> = {
   USD: 1.0,
-  AED: 0.272294,
   INR: 0.0120,
-  SAR: 0.266667,
-  BHD: 2.65,
-  OMR: 2.60,
-  QAR: 0.274725,
-  KWD: 3.25,
 };
 
 // ─── HITL trigger reasons ────────────────────────────────────────────────────
@@ -115,7 +85,6 @@ export const TIER_LABELS: Record<string, string> = {
   ENHANCED_GOLD: "Enhanced Gold",
   ENHANCED_SILVER: "Enhanced Silver",
   BASIC: "Basic",
-  THIQA: "Thiqa",
 };
 
 // ─── Claim types ─────────────────────────────────────────────────────────────

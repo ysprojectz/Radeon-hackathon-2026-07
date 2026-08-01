@@ -22,10 +22,10 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 
-const MARKETS = ["UAE", "KSA", "INDIA", "BAHRAIN", "OMAN", "QATAR", "KUWAIT"];
+const MARKETS = ["INDIA"];
 
 const EMPTY_FORM: HMSSourceCreate = {
-  name: "", market_region: "UAE", pull_base_url: "",
+  name: "", market_region: "INDIA", pull_base_url: "",
   claim_pull_path: "/api/v1/claims/{claim_id}",
   pull_auth_header: "", webhook_secret: "", enabled: true,
 };

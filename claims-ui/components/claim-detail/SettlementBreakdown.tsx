@@ -21,7 +21,7 @@ interface SettlementBreakdownProps {
 type LedgerTone = "default" | "deduction" | "positive" | "final" | "info";
 
 export function SettlementBreakdown({ settlement: s, claim }: SettlementBreakdownProps) {
-  const currency = s.currency || claim?.currency || "AED";
+  const currency = s.currency || claim?.currency || "INR";
   const billed = amount(s.total_billed);
   const allowed = amount(s.total_allowed);
   const planPayment = amount(s.total_plan_payment);

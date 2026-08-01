@@ -128,7 +128,7 @@ for f in database/migrations/*.sql; do
 done
 # Note: harmless errors on migrations 030/031/033 (missing claims_admin role) are expected
 
-# 5. Seed reference data and 15 test claims
+# 5. Seed reference data and test claims (India-only)
 docker compose -f deploy/radeon/docker-compose.yml \
   exec api_gateway python scripts/seed_db.py
 ./deploy/radeon/seed.sh

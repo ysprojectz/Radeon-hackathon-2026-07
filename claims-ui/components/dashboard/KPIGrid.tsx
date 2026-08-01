@@ -38,7 +38,7 @@ function formatPercentage(value?: number): string {
 }
 
 export function KPIGrid({ kpis, isLoading, dateFrom, dateTo, displayCurrency, marketRegion, periodLabel }: KPIGridProps) {
-  const currency = kpis?.display_currency ?? displayCurrency ?? "AED";
+  const currency = kpis?.display_currency ?? displayCurrency ?? "INR";
   const [trends, setTrends] = useState<{
     claims?: { value: number };
     settled?: { value: number };

@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Seeds the running demo stack with the 15 testing_samples/ claims so a judge
-# sees real adjudication results immediately after bring-up, instead of an
-# empty UI. Run after `docker compose up` reports api_gateway healthy.
+# Seeds the running demo stack with the testing_samples/ claims (India-only)
+# so a judge sees real adjudication results immediately after bring-up,
+# instead of an empty UI. Run after `docker compose up` reports api_gateway
+# healthy.
 #
 # Uses the built-in default ADJUSTER demo account (services/api_gateway/app/
 # user_store.py auto-seeds it on first startup — adjuster@claims-engine.local,
@@ -53,4 +54,5 @@ for f in "$SAMPLES_DIR"/*.json; do
     --data @"$f" > /dev/null && count=$((count + 1)) || echo "  -> failed: $ref"
 done
 
-echo "Seeded $count/15 claims. Open the UI to view adjudication results."
+total=$(ls "$SAMPLES_DIR"/*.json 2>/dev/null | wc -l | tr -d ' ')
+echo "Seeded $count/$total claims. Open the UI to view adjudication results."

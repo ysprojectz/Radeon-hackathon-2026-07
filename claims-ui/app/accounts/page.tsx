@@ -40,7 +40,7 @@ import type {
 } from "@/lib/types";
 
 const PAGE_SIZE = 20;
-const MARKETS = ["ALL", "UAE", "KSA", "BAHRAIN", "OMAN", "QATAR", "KUWAIT", "INDIA"];
+const MARKETS = ["ALL", "INDIA"];
 const STATUSES: Array<AccountVerificationStatus | "ALL"> = ["ALL", "UNVERIFIED", "PENDING", "VERIFIED", "FAILED", "BLOCKED"];
 const ACCOUNT_TYPES: CustomerAccountType[] = ["SAVINGS", "CURRENT", "CHECKING", "NRE", "NRO", "WALLET", "UPI", "OTHER"];
 const ACCOUNT_CONTROL_ROLES = new Set(["ADMIN", "SENIOR_ADJUSTER", "COMPLIANCE_OFFICER"]);
@@ -51,7 +51,7 @@ const inputClass =
   "h-11 w-full rounded-xl border border-[var(--border-strong)] bg-[var(--bg-card)] px-3 text-sm text-[var(--text-primary)] outline-none transition-colors placeholder:text-[var(--text-muted)] focus:border-brand-primary";
 const labelClass = "ui-control-label mb-1.5 block text-[var(--text-secondary)]";
 
-function makeEmptyForm(marketRegion = "UAE"): CustomerAccountCreate {
+function makeEmptyForm(marketRegion = "INDIA"): CustomerAccountCreate {
   return {
     member_number: "",
     patient_name: "",
@@ -132,7 +132,7 @@ function AccountFormDialog({
   open,
   onOpenChange,
   onCreated,
-  defaultMarket = "UAE",
+  defaultMarket = "INDIA",
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -186,7 +186,7 @@ function AccountFormDialog({
           <div className="grid gap-4 sm:grid-cols-2">
             <label>
               <span className={labelClass}>Member Number</span>
-              <input required value={form.member_number} onChange={(e) => setField("member_number", e.target.value)} className={inputClass} placeholder="MEM-UAE-001" />
+              <input required value={form.member_number} onChange={(e) => setField("member_number", e.target.value)} className={inputClass} placeholder="MEM-IND-001" />
             </label>
             <label>
               <span className={labelClass}>Claim Reference</span>
@@ -274,9 +274,9 @@ export default function AccountsPage() {
   const [actionId, setActionId] = useState<string | null>(null);
   const [manualRefreshing, setManualRefreshing] = useState(false);
   const [currentRole, setCurrentRole] = useState<string | null>(null);
-  const [userMarket, setUserMarket] = useState<string>("UAE");
+  const [userMarket, setUserMarket] = useState<string>("INDIA");
   const [payoutAmount, setPayoutAmount] = useState("");
-  const [payoutCurrency, setPayoutCurrency] = useState("AED");
+  const [payoutCurrency, setPayoutCurrency] = useState("INR");
   const canControlAccounts = currentRole ? ACCOUNT_CONTROL_ROLES.has(currentRole) : false;
   const isGlobalRole = currentRole ? GLOBAL_VIEW_ROLES.has(currentRole) : false;
   // Markets shown in filter — global roles see all, regional roles stay pinned to their own region.
@@ -302,16 +302,16 @@ export default function AccountsPage() {
       .then((user) => {
         if (!cancelled) {
           setCurrentRole(user.role);
-          setUserMarket(user.market_region || "UAE");
+          setUserMarket(user.market_region || "INDIA");
           // Global roles start on ALL; regional roles start on their own market
           const isGlobal = GLOBAL_VIEW_ROLES.has(user.role);
-          setMarket(isGlobal ? "ALL" : (user.market_region || "UAE"));
+          setMarket(isGlobal ? "ALL" : (user.market_region || "INDIA"));
         }
       })
       .catch(() => {
         if (!cancelled) {
           setCurrentRole(null);
-          setMarket("UAE");
+          setMarket("INDIA");
         }
       });
     return () => {
@@ -633,7 +633,7 @@ export default function AccountsPage() {
                     </label>
                     <label className="w-full lg:w-28">
                       <span className={labelClass}>Currency</span>
-                      <input value={payoutCurrency} onChange={(e) => setPayoutCurrency(e.target.value.toUpperCase().slice(0, 3))} className={inputClass} placeholder="AED" />
+                      <input value={payoutCurrency} onChange={(e) => setPayoutCurrency(e.target.value.toUpperCase().slice(0, 3))} className={inputClass} placeholder="INR" />
                     </label>
                     <div className="flex flex-wrap gap-2">
                       <button

@@ -47,7 +47,7 @@ export function Step1PolicySelect({ onNext }: Step1Props) {
 
       {/* Market filter pills */}
       <div className="flex gap-2 flex-wrap">
-        {["all", "UAE", "INDIA", "KSA"].map((m) => (
+        {["all", "INDIA"].map((m) => (
           <Button
             key={m}
             size="sm"

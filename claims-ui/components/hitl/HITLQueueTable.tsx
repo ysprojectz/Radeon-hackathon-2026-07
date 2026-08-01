@@ -214,7 +214,7 @@ export function HITLQueueTable({
               <div className="hidden lg:block lg:col-span-1 text-center">
                 <CurrencyAmount
                   amount={item.total_billed}
-                  currency={item.currency ?? "AED"}
+                  currency={item.currency ?? "INR"}
                   className="text-sm font-medium"
                 />
               </div>
@@ -223,7 +223,7 @@ export function HITLQueueTable({
               <div className="hidden lg:block lg:col-span-1 text-center">
                 <CurrencyAmount
                   amount={item.ai_settlement_amount}
-                  currency={item.currency ?? "AED"}
+                  currency={item.currency ?? "INR"}
                   className="text-sm font-medium"
                 />
               </div>
@@ -289,7 +289,7 @@ export function HITLQueueTable({
                 <span className="text-muted-foreground text-xs">Billed:</span>
                 <CurrencyAmount
                   amount={item.total_billed}
-                  currency={item.currency ?? "AED"}
+                  currency={item.currency ?? "INR"}
                   className="font-medium"
                 />
               </div>
@@ -297,7 +297,7 @@ export function HITLQueueTable({
                 <span className="text-muted-foreground text-xs">Recommended:</span>
                 <CurrencyAmount
                   amount={item.ai_settlement_amount}
-                  currency={item.currency ?? "AED"}
+                  currency={item.currency ?? "INR"}
                   className="font-medium"
                 />
               </div>

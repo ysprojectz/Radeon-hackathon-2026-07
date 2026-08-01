@@ -48,7 +48,7 @@ import { cn } from "@/lib/utils";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-const MARKETS = ["UAE", "KSA", "BAHRAIN", "OMAN", "QATAR", "KUWAIT", "INDIA"];
+const MARKETS = ["INDIA"];
 const POLICY_TYPES = ["NATIONAL", "COMPANY"];
 
 const TYPE_CONFIG = {

@@ -10,12 +10,6 @@ export const ROLE_OPTIONS = [
 ] as const;
 
 export const MARKET_OPTIONS = [
-  { key: "UAE", label: "UAE", region: "GCC" },
-  { key: "KSA", label: "Saudi Arabia", region: "GCC" },
-  { key: "BAHRAIN", label: "Bahrain", region: "GCC" },
-  { key: "OMAN", label: "Oman", region: "GCC" },
-  { key: "QATAR", label: "Qatar", region: "GCC" },
-  { key: "KUWAIT", label: "Kuwait", region: "GCC" },
   { key: "INDIA", label: "India", region: "Asia" },
 ] as const;
 
@@ -42,12 +36,9 @@ export type ScreenId = (typeof SCREEN_CATALOG)[number]["id"];
 export const ALL_ROLES = ROLE_OPTIONS.map((role) => role.key);
 export const ALL_MARKETS = MARKET_OPTIONS.map((market) => market.key);
 export const ALL_SCREEN_IDS = SCREEN_CATALOG.map((screen) => screen.id);
-export const GCC_MARKETS = MARKET_OPTIONS.filter((market) => market.region === "GCC").map((market) => market.key);
 
 export function canonicalMarket(value?: string | null) {
-  const normalized = String(value ?? "").trim().toUpperCase();
-  if (normalized === "SAUDI" || normalized === "SAUDI_ARABIA") return "KSA";
-  return normalized;
+  return String(value ?? "").trim().toUpperCase();
 }
 
 export function getDefaultGroups(): AccessGroupPolicy[] {
@@ -66,7 +57,7 @@ export function getDefaultGroups(): AccessGroupPolicy[] {
       name: "Claims Operations",
       description: "Handles daily adjudication, review queue triage, settlement checks, and due-time follow-up.",
       roleScope: ["ADJUSTER", "SENIOR_ADJUSTER"],
-      marketScope: ["UAE", "KSA", "INDIA"],
+      marketScope: ["INDIA"],
       screenAccess: ["dashboard", "hitl", "claims", "claim-journey", "accounts", "submit", "settings"],
       isActive: true,
     },

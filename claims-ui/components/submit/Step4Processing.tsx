@@ -10,7 +10,7 @@ import { AlertCircle, CheckCircle, Cpu, FileText, Shield, Calculator } from "luc
 import { toast } from "sonner";
 
 const MARKET_CURRENCY: Record<string, string> = {
-  UAE: "AED", KSA: "SAR", BAHRAIN: "BHD", INDIA: "INR",
+  INDIA: "INR",
 };
 
 interface Step4Props {
@@ -196,7 +196,7 @@ export function Step4Processing({
           claim_type: fields.claim_type ?? "OUTPATIENT",
           market_region: fields.market_region ?? market,
           network_tier: fields.network_tier,
-          currency: fields.currency ?? MARKET_CURRENCY[market] ?? "AED",
+          currency: fields.currency ?? MARKET_CURRENCY[market] ?? "INR",
           primary_diagnosis_code: fields.primary_diagnosis_code ?? "",
           bank_account_holder: fields.bank_account_holder || fields.account_holder_name || undefined,
           account_holder_name: fields.account_holder_name || fields.bank_account_holder || undefined,

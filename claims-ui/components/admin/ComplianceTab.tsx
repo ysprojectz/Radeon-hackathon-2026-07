@@ -59,7 +59,7 @@ import {
   adminSectionTitleClass,
 } from "@/components/admin/admin-theme";
 
-const MARKETS = ["UAE", "INDIA", "SAUDI", "BAHRAIN", "OMAN", "QATAR", "KUWAIT"] as const;
+const MARKETS = ["INDIA"] as const;
 
 const SAMPLE_CLAUSES = `[
   {
@@ -131,7 +131,7 @@ function MetricCard({
 }
 
 export function ComplianceTab() {
-  const [selectedMarket, setSelectedMarket] = useState<string>("UAE");
+  const [selectedMarket, setSelectedMarket] = useState<string>("INDIA");
   const [updates, setUpdates] = useState<ComplianceUpdateRecord[]>([]);
   const [verifications, setVerifications] = useState<ComplianceVerificationRecord[]>([]);
   const [drift, setDrift] = useState<ComplianceDriftResult | null>(null);
@@ -142,7 +142,7 @@ export function ComplianceTab() {
   const [runningVerification, setRunningVerification] = useState(false);
   const [checkingDrift, setCheckingDrift] = useState(false);
 
-  const [formMarket, setFormMarket] = useState<string>("UAE");
+  const [formMarket, setFormMarket] = useState<string>("INDIA");
   const [regulatoryBody, setRegulatoryBody] = useState("");
   const [source, setSource] = useState("");
   const [effectiveDate, setEffectiveDate] = useState("");

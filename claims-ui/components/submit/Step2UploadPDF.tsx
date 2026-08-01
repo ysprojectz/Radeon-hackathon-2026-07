@@ -94,7 +94,7 @@ export function Step2UploadPDF({ policy, onNext, onBack }: Step2Props) {
           <Input
             value={providerCode}
             onChange={(e) => setProviderCode(e.target.value)}
-            placeholder="e.g. UAE-003"
+            placeholder="e.g. IND-003"
             className="h-9 text-sm"
           />
         </div>

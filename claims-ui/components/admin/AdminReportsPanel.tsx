@@ -59,7 +59,7 @@ const PERIOD_PRESETS = [
   { label: "Custom",    days: -1 },
 ] as const;
 
-const MARKETS = ["All", "UAE", "KSA", "INDIA", "BAHRAIN", "OMAN", "QATAR", "KUWAIT"];
+const MARKETS = ["All", "INDIA"];
 
 const PAGE_SIZE = 50;
 const REPORT_FETCH_CHUNK_SIZE = 10_000;

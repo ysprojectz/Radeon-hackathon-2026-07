@@ -1,7 +1,7 @@
 -- ============================================================
 -- Claims Adjudication Engine — Database Migration 002
 -- Creates regional_policy_clauses table for government-mandated
--- regulatory rules (UAE DHA/DOH EBP, India IRDAI).
+-- regulatory rules (India IRDAI).
 --
 -- These are Tier 1 (non-waivable) rules applied BEFORE company
 -- policy clauses (Tier 2) in every claim adjudication.
@@ -17,7 +17,7 @@
 CREATE TABLE IF NOT EXISTS regional_policy_clauses (
     id                      UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     market_region           market_region NOT NULL,
-    regulatory_body         VARCHAR(50)   NOT NULL,   -- UAE_DHA_DOH | IRDAI | KSA_CCHI
+    regulatory_body         VARCHAR(50)   NOT NULL,   -- IRDAI
     clause_type             clause_type   NOT NULL,
     section_reference       VARCHAR(100)  NOT NULL,   -- e.g. DHA-EBP-2.1, IRDAI-HI-3.1
     title                   VARCHAR(500)  NOT NULL,
@@ -42,99 +42,6 @@ CREATE INDEX IF NOT EXISTS idx_regional_clauses_regulatory_body
 
 CREATE INDEX IF NOT EXISTS idx_regional_clauses_type
     ON regional_policy_clauses(clause_type);
-
--- ============================================================
--- SEED — UAE DHA/DOH Essential Benefits Package (9 clauses)
--- ============================================================
-
-INSERT INTO regional_policy_clauses
-    (market_region, regulatory_body, clause_type, section_reference, title,
-     full_text, structured_data, applicable_claim_types, effective_date,
-     is_mandatory, is_active, regulatory_note)
-VALUES
-
--- DHA-EBP-2.1 Inpatient
-('UAE', 'UAE_DHA_DOH', 'BENEFIT', 'DHA-EBP-2.1',
- 'Mandatory Essential Benefits — Inpatient Coverage',
- 'All health insurance policies in Dubai must cover inpatient treatment including surgical and medical care, room and board at a standard ward or semi-private room level, ICU care, diagnostic investigations, medications prescribed during hospitalization, physiotherapy directly related to the admission, and blood transfusions. Exclusion of inpatient care for acute medical conditions is not permitted.',
- '{"benefit_type":"INPATIENT","is_mandatory":true,"prohibited_exclusions":["ACUTE_MEDICAL","ICU","SURGICAL"],"minimum_coverage":"FULL_INPATIENT","room_type_minimum":"STANDARD_WARD","max_copay_per_admission_aed":500.0}',
- '["INPATIENT","DAYCARE","EMERGENCY"]'::jsonb,
- '2014-01-01', TRUE, TRUE,
- 'DHA EBP Circular 15/2014'),
-
--- DHA-EBP-2.2 Outpatient
-('UAE', 'UAE_DHA_DOH', 'BENEFIT', 'DHA-EBP-2.2',
- 'Mandatory Outpatient Coverage',
- 'Outpatient general practitioner and specialist consultations must be covered with a maximum copayment of 20% of the eligible claim amount and not to exceed AED 50 per consultation. Any copay exceeding AED 50 per outpatient visit is prohibited under the EBP.',
- '{"benefit_type":"OUTPATIENT","is_mandatory":true,"max_copay_pct":20,"max_copay_aed_per_visit":50.0,"prohibited_copay_above_aed":50.0}',
- '["OUTPATIENT"]'::jsonb,
- '2014-01-01', TRUE, TRUE,
- 'DHA Health Insurance Law No. 11 of 2013; Executive Council Resolution No. 32 of 2013'),
-
--- DHA-EBP-2.3 Emergency
-('UAE', 'UAE_DHA_DOH', 'BENEFIT', 'DHA-EBP-2.3',
- 'Mandatory Emergency Treatment — Worldwide',
- 'Emergency treatment must be covered at any facility globally without prior authorization. Copay must not apply to genuine emergency admissions. Post-emergency notification within 24 hours of admission is acceptable.',
- '{"benefit_type":"EMERGENCY","is_mandatory":true,"preauth_prohibition":true,"max_copay_emergency":0.0,"notification_hours":24}',
- '["EMERGENCY"]'::jsonb,
- '2014-01-01', TRUE, TRUE,
- 'DHA EBP Circular 15/2014, Section 4.3'),
-
--- DHA-EBP-2.4 Maternity
-('UAE', 'UAE_DHA_DOH', 'BENEFIT', 'DHA-EBP-2.4',
- 'Mandatory Maternity Benefits',
- 'Health insurance policies must cover maternity benefits with a maximum waiting period of 12 months. Newborn care for the first 30 days from birth must be included. Exclusion of pregnancy-related complications is prohibited.',
- '{"benefit_type":"MATERNITY","is_mandatory":true,"max_waiting_period_months":12,"min_antenatal_visits":6,"newborn_coverage_days_minimum":30,"prohibited_exclusions":["PREGNANCY_COMPLICATIONS","CAESAREAN"]}',
- '["MATERNITY","INPATIENT","OUTPATIENT"]'::jsonb,
- '2015-01-01', TRUE, TRUE,
- 'DHA Circular 33/2015'),
-
--- DHA-EBP-2.5 Pharmacy
-('UAE', 'UAE_DHA_DOH', 'BENEFIT', 'DHA-EBP-2.5',
- 'Mandatory Pharmacy Coverage',
- 'Prescribed medications for covered conditions must be covered with a maximum copayment of 30% for brand-name and 20% for generics. Inpatient medications must be covered at 100% with no additional copay.',
- '{"benefit_type":"PHARMACY","is_mandatory":true,"max_brand_copay_pct":30,"max_generic_copay_pct":20,"inpatient_medications_copay":0,"formulary":"UAE_MOH_FORMULARY"}',
- '["PHARMACY","OUTPATIENT","INPATIENT"]'::jsonb,
- '2016-01-01', TRUE, TRUE,
- 'DHA Drug Formulary Requirement — Circular 22/2016'),
-
--- DHA-EBP-3.1 Copay Caps
-('UAE', 'UAE_DHA_DOH', 'COPAY_COINSURANCE', 'DHA-EBP-3.1',
- 'Mandatory Copayment Caps — EBP Maximum',
- 'Maximum copayment caps: Outpatient: 20%, maximum AED 50 per visit. Emergency: AED 0. Inpatient: maximum AED 500 per admission. Annual OOP max: AED 10,000 per member per year. Any excess copay above these caps is void.',
- '{"is_mandatory":true,"outpatient_max_copay_pct":20,"outpatient_max_copay_aed":50,"emergency_max_copay_aed":0,"inpatient_max_copay_aed_per_admission":500,"annual_oop_max_aed":10000,"violation_consequence":"EXCESS_COPAY_VOID"}',
- '["INPATIENT","OUTPATIENT","EMERGENCY"]'::jsonb,
- '2014-01-01', TRUE, TRUE,
- 'Executive Council Resolution 32/2013, Article 14'),
-
--- DHA-EBP-3.2 Annual Limit Minimum
-('UAE', 'UAE_DHA_DOH', 'LIMITATION', 'DHA-EBP-3.2',
- 'Prohibited Annual Limit Below EBP Minimum',
- 'All health insurance policies in the UAE must provide a minimum annual benefit limit of AED 150,000 per member per year. Minimum emergency limit AED 150,000, maternity normal AED 7,000, caesarean AED 10,000.',
- '{"is_mandatory":true,"min_annual_limit_aed":150000,"min_emergency_limit_aed":150000,"min_maternity_normal_aed":7000,"min_maternity_caesarean_aed":10000}',
- '["INPATIENT","EMERGENCY","MATERNITY"]'::jsonb,
- '2014-01-01', TRUE, TRUE,
- 'DHA Health Insurance Law No. 11 of 2013, Article 8'),
-
--- DHA-EBP-4.1 Prohibited Exclusions
-('UAE', 'UAE_DHA_DOH', 'EXCLUSION', 'DHA-EBP-4.1',
- 'Prohibited Exclusions — Conditions Insurers May Not Exclude',
- 'The following may not be excluded: HIV/AIDS treatment for legal residents, Mental health acute inpatient (min 15 days/year), Substance abuse detox (min 7 days/year), Cancer screening per MOH guidelines, Dialysis, Post-admission physiotherapy.',
- '{"is_mandatory":true,"prohibited_exclusion_categories":["HIV_AIDS_TREATMENT_LEGAL_RESIDENTS","MENTAL_HEALTH_ACUTE_INPATIENT","SUBSTANCE_ABUSE_DETOX","CANCER_SCREENING","DIALYSIS","POST_ADMISSION_PHYSIOTHERAPY"],"mental_health_inpatient_min_days":15,"substance_abuse_detox_min_days":7}',
- '["INPATIENT","OUTPATIENT","DAYCARE"]'::jsonb,
- '2018-01-01', TRUE, TRUE,
- 'DHA Ministerial Resolution 52/2018'),
-
--- DHA-EBP-5.1 Waiting Period Caps
-('UAE', 'UAE_DHA_DOH', 'WAITING_PERIOD', 'DHA-EBP-5.1',
- 'Mandatory Limits on Waiting Periods',
- 'Pre-existing condition waiting periods may not exceed 6 months. No waiting period for emergency, maternity complications, or new cancer diagnosis. Portability must carry over completed waiting periods.',
- '{"is_mandatory":true,"max_ped_waiting_period_months":6,"no_waiting_period_for":["EMERGENCY","MATERNITY_COMPLICATIONS","NEW_CANCER_DIAGNOSIS"],"portability_required":true}',
- '["INPATIENT","OUTPATIENT","EMERGENCY","MATERNITY"]'::jsonb,
- '2014-01-01', TRUE, TRUE,
- 'DHA Circular 15/2014 Section 5')
-
-ON CONFLICT DO NOTHING;
 
 -- ============================================================
 -- SEED — India IRDAI Mandatory Clauses (9 clauses)

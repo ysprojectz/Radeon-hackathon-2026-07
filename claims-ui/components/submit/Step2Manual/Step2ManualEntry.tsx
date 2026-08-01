@@ -20,9 +20,6 @@ interface Step2ManualEntryProps {
 }
 
 const MARKET_CURRENCY: Record<string, string> = {
-  UAE: "AED",
-  KSA: "SAR",
-  BAHRAIN: "BHD",
   INDIA: "INR",
 };
 
@@ -38,7 +35,7 @@ export function Step2ManualEntry({ market, onNext, onBack }: Step2ManualEntryPro
   const [formData, setFormData] = useState<ManualFormState>({
     claim_type: "OUTPATIENT",
     market_region: market,
-    currency: MARKET_CURRENCY[market] || "AED",
+    currency: MARKET_CURRENCY[market] || "INR",
     member_number: "",
     patient_name: "",
     patient_dob: "",

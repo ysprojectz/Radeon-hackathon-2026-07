@@ -86,7 +86,7 @@ const MULTI_AGENT_FLOW_CHART = `flowchart TD
         PH2["Stage 2 - OCR Agent\nPDF/Image Text Extraction\nField extraction with confidence scoring\nMarket auto-detection"]
         
         %% Stage 3: Rules Engine
-        PH3["Stage 3 - Rules Engine Agent\nGCC: Essential benefits - Copay by tier - DRG\nIndia: Room rent cap - GIPSA rate - AYUSH\nDeterministic rule evaluation\n7 predefined rules"]
+        PH3["Stage 3 - Rules Engine Agent\nIndia: Room rent cap - GIPSA rate - AYUSH\nDeterministic rule evaluation\n7 predefined rules"]
         
         %% Stage 4: AI
         PH4["Stage 4 - Intelligence AI Agent\nRegulatory and company policy reasoning\nPolicy citation extraction\nReasoning with guardrails"]
@@ -95,10 +95,10 @@ const MULTI_AGENT_FLOW_CHART = `flowchart TD
         PH5["Stage 5 - Dual-Validation Agent\nCross-model validation\nCompare Rules Engine vs AI results\nCalculate disagreement score\nFlag conflicts for HITL"]
         
         %% Stage 6: Settlement
-        PH6["Stage 6 - Settlement Agent\nGCC: Copay based - 20 to 0 percent\nIndia: Proportionate - 80 to 40 percent\nVAT and GST calculation\nCopay, Deductible, Plan share"]
-        
+        PH6["Stage 6 - Settlement Agent\nIndia: Proportionate - 80 to 40 percent\nGST calculation\nCopay, Deductible, Plan share"]
+
         %% Stage 7: Calculation
-        PH7["Stage 7 - Calculation Agent\nCurrency conversion\nTax application - UAE 5 percent, KSA 15 percent, India 18 percent\nAccumulator management\nFinal amount calculation"]
+        PH7["Stage 7 - Calculation Agent\nCurrency conversion\nTax application - India 18 percent GST\nAccumulator management\nFinal amount calculation"]
         
         %% Stage 8: Audit
         PH8["Stage 8 - Audit Agent\nSHA-256 hash chain\nImmutable audit trail\nComplete event logging\nChain integrity verification"]
@@ -114,7 +114,7 @@ const MULTI_AGENT_FLOW_CHART = `flowchart TD
         ROUTE{"HITL\nRoute?"}
         
         AUTO_ROUTE{"Confidence at least 95 percent\nAND No violations\nAND Amount within regional limit?"}
-        REGIONAL_LIMITS["Regional Auto-Limits:\nUAE/KSA: 50,000\nBahrain/Oman/Qatar/Kuwait: 5,000\nIndia: 500,000"]
+        REGIONAL_LIMITS["Regional Auto-Limits:\nIndia: 500,000"]
         
         CONFIDENCE --> ROUTE
         ROUTE --> AUTO_ROUTE
@@ -227,10 +227,10 @@ const FLOW_CHART = `flowchart TD
 
     subgraph PIPELINE ["Adjudication Pipeline — 6 Phases"]
         PH1["Phase 1 — Identity Validation\nLook up Member - Provider - Policy\nFail-fast if unknown"]
-        PH2["Phase 2 — Rules Engine\nGCC: Essential benefits - Copay by network tier - DRG\nIndia: Room rent cap - GIPSA rate - AYUSH - Domiciliary"]
+        PH2["Phase 2 — Rules Engine\nIndia: Room rent cap - GIPSA rate - AYUSH - Domiciliary"]
         PH3["Phase 3 — Intelligence AI Agent\nTier 1 regulatory + Tier 2 company clause analysis"]
         PH3B["Phase 3b — Dual-Agent Validation\nRules Engine vs AI Agent cross-check\nDisagreement triggers manual review"]
-        PH4["Phase 4 - Settlement Calculator\nUAE 5 percent VAT - KSA 15 percent VAT\nCopay - Deductible - Plan share vs Member share"]
+        PH4["Phase 4 - Settlement Calculator\nIndia 18 percent GST\nCopay - Deductible - Plan share vs Member share"]
         PH5["Phase 5 — Confidence Scoring\nBase 100 - Deductions: denials - high value\nlow pre-auth - AI conflict - HITL recommendations"]
         ROUTE{"HITL\nRoute?"}
 
@@ -238,7 +238,7 @@ const FLOW_CHART = `flowchart TD
     end
 
     ROUTE -->|Confidence 95 percent or above\nNo violations - No flags| SETTLED
-    ROUTE -->|Regulatory violation\nOR Confidence 80 to 95 percent\nOR AI-flagged items\nOR Claim above 50k AED\nOR Claim above 100k AED| HITL_FLAG
+    ROUTE -->|Regulatory violation\nOR Confidence 80 to 95 percent\nOR AI-flagged items\nOR Claim above 50k INR\nOR Claim above 100k INR| HITL_FLAG
 
     subgraph HITL ["Human-in-the-Loop Review"]
         HITL_FLAG["HITL PENDING\nAdded to Reviewer Queue - SLA timer started"]

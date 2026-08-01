@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
 const PAGE_LIMIT = 20;
-const MARKET_OPTIONS = ["ALL", "UAE", "KSA", "BAHRAIN", "OMAN", "QATAR", "KUWAIT", "INDIA"];
+const MARKET_OPTIONS = ["ALL", "INDIA"];
 
 async function fetchHITLPage(page: number, marketRegion: string): Promise<HITLQueueResponse> {
   return getHITLQueue(page, PAGE_LIMIT, marketRegion);

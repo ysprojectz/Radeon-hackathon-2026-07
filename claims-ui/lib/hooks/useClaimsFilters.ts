@@ -6,7 +6,7 @@ import type { GetClaimsParams } from '@/lib/api';
 /**
  * URL-synced filter state for claims list.
  * Converts URL query params to GetClaimsParams and vice versa.
- * Example URL: /claims?status=SETTLED&market_region=UAE&search=CLM&page=2&sort_by=service_date&sort_order=desc&service_date_from=2024-01-01
+ * Example URL: /claims?status=SETTLED&market_region=INDIA&search=CLM&page=2&sort_by=service_date&sort_order=desc&service_date_from=2024-01-01
  */
 export function useClaimsFilters() {
   const [status, setStatus] = useQueryState('status', parseAsString.withDefault(''));

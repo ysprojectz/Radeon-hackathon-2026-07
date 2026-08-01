@@ -58,7 +58,7 @@ export default function DashboardPage() {
   const [customTo, setCustomTo] = useState<string | undefined>();
   const [marketRegion, setMarketRegion] = useState("");
 
-  // Use market-specific currency (USD, AED, INR, etc.) for all claim values
+  // Use market-specific currency (USD, INR, etc.) for all claim values
   const dashboardCurrency = marketRegion ? (MARKET_CURRENCY[marketRegion] ?? "USD") : "USD";
 
   // Initialize from URL params on mount

@@ -24,15 +24,12 @@ import { MARKET_LABELS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { OCRUploadResult, DuplicateClaimInfo } from "@/lib/types";
 
-const MARKETS = ["UAE", "KSA", "BAHRAIN", "INDIA"];
+const MARKETS = ["INDIA"];
 const AI_INTAKE_MAX_BYTES = 20 * 1024 * 1024;
 const MULTI_DOC_MAX_BYTES = 50 * 1024 * 1024;
 const MULTI_DOC_MAX_FILES = 15;
 
 const MARKET_FLAGS: Record<string, string> = {
-  UAE: "🇦🇪",
-  KSA: "🇸🇦",
-  BAHRAIN: "🇧🇭",
   INDIA: "🇮🇳",
 };
 

@@ -351,7 +351,7 @@ export interface ClaimResponse {
   date_received: string;
   date_adjudicated?: string;
   date_settled?: string;
-  // OCR extended fields (GCC: contact, address, physician, pre-auth, insurer, etc.)
+  // OCR extended fields (contact, address, physician, pre-auth, insurer, etc.)
   ocr_extracted_data?: OcrExtractedData;
   // Pre-production verification flags
   member_verified?: boolean;
@@ -1009,7 +1009,7 @@ export interface SystemConfig {
   nvidia_enabled:                      boolean;
   nvidia_api_key:                      string | null;
   nvidia_model:                        string;
-  // Rules Engine Configurable Parameters — GCC Market
+  // Rules Engine Configurable Parameters
   re_gcc_copay_in_network_pct:         number;
   re_gcc_copay_out_of_network_pct:     number;
   re_gcc_copay_direct_billing_pct:     number;

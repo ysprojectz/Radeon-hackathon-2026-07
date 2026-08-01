@@ -588,7 +588,7 @@ export default function AuditLogsPage() {
             <div className="p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
               <div>
                 <label className="text-[0.7rem] font-semibold text-white/50 block mb-1">Reference</label>
-                <Input placeholder="CLM-UAE-..." value={draft.reference} onChange={e => setDraft(d => ({ ...d, reference: e.target.value }))} onKeyDown={e => e.key === "Enter" && applyFilters()} className="h-9 text-sm glass-input" />
+                <Input placeholder="CLM-INDIA-..." value={draft.reference} onChange={e => setDraft(d => ({ ...d, reference: e.target.value }))} onKeyDown={e => e.key === "Enter" && applyFilters()} className="h-9 text-sm glass-input" />
               </div>
               <div>
                 <label className="text-[0.7rem] font-semibold text-white/50 block mb-1">Event Type</label>

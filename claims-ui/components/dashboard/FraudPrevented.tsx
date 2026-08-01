@@ -27,7 +27,7 @@ function fmt(value?: string): string {
   return n.toFixed(0);
 }
 
-export function FraudPrevented({ fraudToday, fraudTotal, isLoading, currency = "AED" }: Props) {
+export function FraudPrevented({ fraudToday, fraudTotal, isLoading, currency = "INR" }: Props) {
   const totalVal  = parseFloat(fraudTotal ?? "0");
   const todayVal  = parseFloat(fraudToday ?? "0");
   const hasTotal  = !isLoading && totalVal > 0;

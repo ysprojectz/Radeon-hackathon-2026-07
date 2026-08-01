@@ -22,9 +22,7 @@ interface Props { config: SystemConfig | undefined; onSaved: () => void; }
 
 const CHAT_ROLES = ["ADMIN", "ADJUSTER", "SENIOR_ADJUSTER", "MEDICAL_DIRECTOR", "COMPLIANCE_OFFICER"];
 const SETTINGS_MARKETS = [
-  { key: "UAE", currency: "AED" },
   { key: "INDIA", currency: "INR" },
-  { key: "KSA", currency: "SAR" },
 ];
 
 export function SystemTab({ config, onSaved }: Props) {
@@ -62,9 +60,7 @@ export function SystemTab({ config, onSaved }: Props) {
       setChatRoles(config.chat_assistant_roles ?? CHAT_ROLES);
       setChatMarkets(config.chat_assistant_markets ?? SETTINGS_MARKETS.map((m) => m.key));
       setSlaSettings(config.sla_settings_by_market ?? {
-        UAE: { enabled: true, hours: 8 },
         INDIA: { enabled: true, hours: 12 },
-        KSA: { enabled: true, hours: 8 },
       });
     }
   }, [config]);

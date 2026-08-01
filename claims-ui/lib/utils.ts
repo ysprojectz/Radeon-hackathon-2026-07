@@ -9,15 +9,13 @@ export function cn(...inputs: ClassValue[]) {
 // ─── Currency formatting ──────────────────────────────────────────────────────
 
 const CURRENCY_LOCALES: Record<string, string> = {
-  AED: "en-AE",
   INR: "en-IN",
-  SAR: "en-SA",
   USD: "en-US",
 };
 
 export function formatCurrency(
   amount: string | number | undefined | null,
-  currency: string = "AED"
+  currency: string = "INR"
 ): string {
   if (amount === undefined || amount === null || amount === "") return "—";
   const num = typeof amount === "string" ? parseFloat(amount) : amount;
