@@ -83,6 +83,7 @@ services:
       LOCAL_LLM_SECONDARY_ENABLED: ${LOCAL_LLM_SECONDARY_ENABLED:-false}
       LOCAL_LLM_SECONDARY_BASE_URL: ${LOCAL_LLM_SECONDARY_BASE_URL:-http://host.docker.internal:8001/v1}
       LOCAL_LLM_SECONDARY_MODEL: ${LOCAL_LLM_SECONDARY_MODEL:-Qwen/Qwen2.5-7B-Instruct-AWQ}
+      LOCAL_LLM_TOOLS_ENABLED: ${LOCAL_LLM_TOOLS_ENABLED:-false}
 
       # All cloud LLM providers explicitly disabled for the demo — the point
       # is proving zero cloud dependency for core inference.
