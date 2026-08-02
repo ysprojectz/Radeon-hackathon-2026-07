@@ -82,8 +82,9 @@ sleep 2
 # 48GB total, so Agent C's engine core crashed with "No available memory for
 # the cache blocks." (0.5+0.6=1.1 was never safely under 1.0 to begin with;
 # the earlier "verified" note should not have been trusted without re-testing
-# it.) 0.45/0.4 (sums to 0.85, ~20GB headroom) was empirically re-verified
-# working on the same instance immediately after.
+# it.) 0.45/0.4 worked on that instance, but 0.4 for Agent C is NOT a locked
+# value — see the CORRECTED 2026-08-01 note above Agent C's launch below,
+# where 0.4 failed on a later fresh instance and 0.30 was what actually fit.
 AGENT_B_GPU_UTIL="0.85"
 [[ "$WANT_AGENT_C" == "1" ]] && AGENT_B_GPU_UTIL="0.45"
 
@@ -106,16 +107,23 @@ nohup vllm serve Qwen/Qwen2.5-14B-Instruct-AWQ --host 0.0.0.0 --port 8000 \
 disown
 
 if [[ "$WANT_AGENT_C" == "1" ]]; then
-  echo "Starting Agent C (Qwen2.5-7B-Instruct-AWQ, port 8001, 40% VRAM budget)..."
-  # Explicit utilization on BOTH agents is required — vLLM's default 0.9 per
-  # process accounts for OTHER processes' actual GPU usage too, so launching
-  # a second server with the default starves whichever started second
-  # (found 2026-07-24). 0.45/0.4 (sums to 0.85, ~20GB headroom on 48GB) was
-  # empirically re-verified working for 14B+7B same day — the earlier 0.5/0.6
-  # note in this script was wrong (see the comment above Agent B's launch).
+  # CORRECTED 2026-08-01: --gpu-memory-utilization is NOT an additive split
+  # across processes — vLLM checks target_ceiling (fraction x total VRAM)
+  # <= actual free memory at THAT process's own startup time, not a share
+  # of total device capacity. Re-verified on a fresh instance: Agent B at
+  # 0.45 was actually using ~56.5% of the 48GB pool once loaded (27.13GiB),
+  # leaving only ~16.11GiB free for Agent C. 0.4 failed ("No available
+  # memory for the cache blocks"); 0.85 failed with a clearer error
+  # confirming the free-memory math. 0.30 (0.30*48=14.4GiB ceiling, under
+  # the ~16.11GiB actually free) succeeded, 7.14GiB KV cache. This is the
+  # value that fit THIS instance's actual free memory after Agent B loaded,
+  # not a portable constant — if Agent B ends up using a different share of
+  # VRAM on a future instance, re-check free memory via
+  # `rocm-smi --showmeminfo vram` before assuming 0.30 still fits.
+  echo "Starting Agent C (Qwen2.5-7B-Instruct-AWQ, port 8001, 30% VRAM budget)..."
   # shellcheck disable=SC2086
   nohup vllm serve Qwen/Qwen2.5-7B-Instruct-AWQ --host 0.0.0.0 --port 8001 \
-    --max-model-len 16384 --gpu-memory-utilization 0.4 $TOOL_FLAGS \
+    --max-model-len 16384 --gpu-memory-utilization 0.30 $TOOL_FLAGS \
     > /workspace/persist/logs/vllm_agentC.log 2>&1 &
   disown
 fi
