@@ -69,6 +69,25 @@ pkill -9 -f "vllm serve" 2>/dev/null || true
 pkill -9 -f "VLLM::EngineCore" 2>/dev/null || true
 sleep 2
 
+wait_for_server() {
+  local logfile="$1" label="$2"
+  echo -n "Waiting for $label..."
+  for _ in $(seq 1 120); do
+    if grep -qE "Application startup complete|Uvicorn running" "$logfile" 2>/dev/null; then
+      echo " ready."
+      return 0
+    fi
+    if grep -qE "Traceback|ERROR" "$logfile" 2>/dev/null; then
+      echo " FAILED — see $logfile"
+      return 1
+    fi
+    sleep 5
+    echo -n "."
+  done
+  echo " timed out after 10 minutes — check $logfile"
+  return 1
+}
+
 # Agent B's VRAM budget depends on whether Agent C is also launching. The
 # Phase 3 sweep (2026-07-24, bench/phase3_optimize.sh) confirmed 0.85 is a
 # clean ~9% throughput win over 0.5 for Agent B running ALONE (9.5/28.4/56.5
@@ -82,9 +101,10 @@ sleep 2
 # 48GB total, so Agent C's engine core crashed with "No available memory for
 # the cache blocks." (0.5+0.6=1.1 was never safely under 1.0 to begin with;
 # the earlier "verified" note should not have been trusted without re-testing
-# it.) 0.45/0.4 worked on that instance, but 0.4 for Agent C is NOT a locked
-# value — see the CORRECTED 2026-08-01 note above Agent C's launch below,
-# where 0.4 failed on a later fresh instance and 0.30 was what actually fit.
+# it.) 0.45/0.4 worked on that instance, but no fixed value for Agent C has
+# held across instances — see the CORRECTED 2026-08-03 note below, where
+# Agent C's utilization is now computed from actual free memory instead of
+# a hardcoded constant.
 AGENT_B_GPU_UTIL="0.85"
 [[ "$WANT_AGENT_C" == "1" ]] && AGENT_B_GPU_UTIL="0.45"
 
@@ -107,50 +127,58 @@ nohup vllm serve Qwen/Qwen2.5-14B-Instruct-AWQ --host 0.0.0.0 --port 8000 \
 disown
 
 if [[ "$WANT_AGENT_C" == "1" ]]; then
-  # CORRECTED 2026-08-01: --gpu-memory-utilization is NOT an additive split
-  # across processes — vLLM checks target_ceiling (fraction x total VRAM)
-  # <= actual free memory at THAT process's own startup time, not a share
-  # of total device capacity. Re-verified on a fresh instance: Agent B at
-  # 0.45 was actually using ~56.5% of the 48GB pool once loaded (27.13GiB),
-  # leaving only ~16.11GiB free for Agent C. 0.4 failed ("No available
-  # memory for the cache blocks"); 0.85 failed with a clearer error
-  # confirming the free-memory math. 0.30 (0.30*48=14.4GiB ceiling, under
-  # the ~16.11GiB actually free) succeeded, 7.14GiB KV cache. This is the
-  # value that fit THIS instance's actual free memory after Agent B loaded,
-  # not a portable constant — if Agent B ends up using a different share of
-  # VRAM on a future instance, re-check free memory via
-  # `rocm-smi --showmeminfo vram` before assuming 0.30 still fits.
-  echo "Starting Agent C (Qwen2.5-7B-Instruct-AWQ, port 8001, 30% VRAM budget)..."
+  # CORRECTED 2026-08-03: a hardcoded value for Agent C kept needing
+  # rediscovery — free VRAM after Agent B loads has been observed anywhere
+  # from ~16GiB to ~29GiB across different instances/boots (0.30, 0.45, and
+  # 0.55 each failed at least once). --gpu-memory-utilization is not an
+  # additive split — vLLM checks target_ceiling (fraction x total VRAM)
+  # against actual free memory at THAT process's own startup time. So:
+  # wait for Agent B to actually finish loading FIRST (launching Agent C
+  # immediately after Agent B, without waiting, measures free memory before
+  # Agent B's footprint has stabilized — a likely contributor to the
+  # inconsistent numbers seen 2026-08-01/02), then measure real free VRAM
+  # via rocm-smi and compute Agent C's utilization from that, instead of
+  # guessing a constant.
+  wait_for_server /workspace/persist/logs/vllm_agentB.log "Agent B (port 8000)"
+
+  echo "Letting Agent B's VRAM usage settle before measuring (it keeps"
+  echo "allocating briefly after the startup-complete log line — a likely"
+  echo "contributor to the free-memory drift seen 2026-08-02, ~29GiB down"
+  echo "to ~24GiB between two checks a few minutes apart)..."
+  sleep 20
+
+  echo "Measuring actual free VRAM before launching Agent C..."
+  AGENT_C_GPU_UTIL=$(python3 -c "
+import re, subprocess, sys
+out = subprocess.run(['rocm-smi', '--showmeminfo', 'vram'], capture_output=True, text=True).stdout
+total = int(re.search(r'VRAM Total Memory \(B\): (\d+)', out).group(1))
+used = int(re.search(r'VRAM Total Used Memory \(B\): (\d+)', out).group(1))
+free_gib = (total - used) / 1024**3
+total_gib = total / 1024**3
+SAFETY_MARGIN_GIB = 6.0   # buffer for continued drift after measurement + non-tracked overhead
+MIN_FLOOR_GIB = 18.0      # Agent C's own weights+compile footprint has been observed up to ~15GiB; need headroom above that for KV cache too
+target_gib = free_gib - SAFETY_MARGIN_GIB
+print(f'Total: {total_gib:.2f} GiB, currently used: {(used/1024**3):.2f} GiB, free: {free_gib:.2f} GiB', file=sys.stderr)
+if target_gib < MIN_FLOOR_GIB:
+    print(f'ERROR: only {target_gib:.2f} GiB available for Agent C after the {SAFETY_MARGIN_GIB} GiB safety margin — below the {MIN_FLOOR_GIB} GiB floor Agent C needs. Not launching Agent C; free up GPU memory or check what else is using VRAM.', file=sys.stderr)
+    sys.exit(1)
+frac = min(target_gib / total_gib, 0.90)
+print(f'Computed Agent C utilization: {frac:.2f} ({target_gib:.2f} GiB target ceiling)', file=sys.stderr)
+print(f'{frac:.2f}')
+")
+  echo "Starting Agent C (Qwen2.5-7B-Instruct-AWQ, port 8001, ${AGENT_C_GPU_UTIL} VRAM budget — computed from actual free memory)..."
   # shellcheck disable=SC2086
   nohup vllm serve Qwen/Qwen2.5-7B-Instruct-AWQ --host 0.0.0.0 --port 8001 \
-    --max-model-len 16384 --gpu-memory-utilization 0.30 $TOOL_FLAGS \
+    --max-model-len 16384 --gpu-memory-utilization "$AGENT_C_GPU_UTIL" $TOOL_FLAGS \
     > /workspace/persist/logs/vllm_agentC.log 2>&1 &
   disown
 fi
 
 echo ""
 echo "=== Phase 4: wait for readiness ==="
-wait_for_server() {
-  local logfile="$1" label="$2"
-  echo -n "Waiting for $label..."
-  for _ in $(seq 1 120); do
-    if grep -qE "Application startup complete|Uvicorn running" "$logfile" 2>/dev/null; then
-      echo " ready."
-      return 0
-    fi
-    if grep -qE "Traceback|ERROR" "$logfile" 2>/dev/null; then
-      echo " FAILED — see $logfile"
-      return 1
-    fi
-    sleep 5
-    echo -n "."
-  done
-  echo " timed out after 10 minutes — check $logfile"
-  return 1
-}
-
-wait_for_server /workspace/persist/logs/vllm_agentB.log "Agent B (port 8000)"
-if [[ "$WANT_AGENT_C" == "1" ]]; then
+if [[ "$WANT_AGENT_C" != "1" ]]; then
+  wait_for_server /workspace/persist/logs/vllm_agentB.log "Agent B (port 8000)"
+else
   wait_for_server /workspace/persist/logs/vllm_agentC.log "Agent C (port 8001)"
 fi
 
