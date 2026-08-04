@@ -24,6 +24,7 @@ from reportlab.platypus import (
 )
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 import os
+from datetime import datetime
 
 OUTPUT_PATH = os.path.join(
     os.path.dirname(__file__), "..", "testing_samples", "upload_test_pdfs",
@@ -61,7 +62,8 @@ def draw_header_footer(canvas_obj, doc):
     canvas_obj.rect(0, 0, W, 20, fill=1, stroke=0)
     canvas_obj.setFillColor(WHITE)
     canvas_obj.setFont("Helvetica", 7)
-    canvas_obj.drawCentredString(W / 2, 7, "This is a synthetic test document generated for the ACOS on Radeon submission — not a real patient record.")
+    gen_ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    canvas_obj.drawCentredString(W / 2, 7, f"Synthetic test document for the ACOS on Radeon submission — not a real patient record. Generated {gen_ts}")
     canvas_obj.restoreState()
 
 
