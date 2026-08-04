@@ -104,7 +104,7 @@ export default function ClaimsPage() {
   const totalPages = data ? Math.ceil(data.total / PAGE_SIZE) : 1;
   const currentPage = params.page ?? 1;
   const allIds = useMemo(() => data?.claims?.map((c) => c.claim_reference) ?? [], [data?.claims]);
-  const displayCurrency = params.market_region ? (MARKET_CURRENCY[params.market_region] ?? "USD") : "USD";
+  const displayCurrency = params.market_region ? (MARKET_CURRENCY[params.market_region] ?? "INR") : "INR";
 
   const handleMarketRegionChange = useCallback((marketRegion: string) => {
     setSelectedIds(new Set());

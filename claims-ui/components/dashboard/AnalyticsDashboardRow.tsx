@@ -198,7 +198,14 @@ function VolumePanel() {
 }
 
 // ── Panel 2: Status Donut ──────────────────────────────────────────────────────
-function StatusDonutPanel({ kpis, loading }: { kpis?: DashboardKPIs; loading: boolean }) {
+const CURRENCY_SYMBOLS: Record<string, string> = {
+  INR: "₹",
+  USD: "$",
+};
+
+function StatusDonutPanel({
+  kpis, loading, displayCurrency = "INR",
+}: { kpis?: DashboardKPIs; loading: boolean; displayCurrency?: string }) {
   const raw = kpis?.claims_by_status ?? {};
   const donutData = Object.entries(raw)
     .filter(([, v]) => v > 0)
@@ -207,12 +214,13 @@ function StatusDonutPanel({ kpis, loading }: { kpis?: DashboardKPIs; loading: bo
   const total = donutData.reduce((s, d) => s + d.value, 0);
 
   // Financial summary
+  const currencySymbol = CURRENCY_SYMBOLS[displayCurrency] ?? displayCurrency;
   const settled = parseFloat(kpis?.total_settled_amount ?? "0");
   const settledFmt = settled >= 1_000_000
-    ? `$${(settled / 1_000_000).toFixed(1)}M`
+    ? `${currencySymbol}${(settled / 1_000_000).toFixed(1)}M`
     : settled >= 1_000
-    ? `$${(settled / 1_000).toFixed(1)}K`
-    : `$${settled.toFixed(0)}`;
+    ? `${currencySymbol}${(settled / 1_000).toFixed(1)}K`
+    : `${currencySymbol}${settled.toFixed(0)}`;
 
   const denialRate = kpis?.denial_rate ?? 0;
   const settlePct  = total > 0 ? Math.round(((raw.SETTLED ?? 0) / total) * 100) : 0;
@@ -506,11 +514,12 @@ function NativeObservabilityPanel({ kpis, loading }: { kpis?: DashboardKPIs; loa
 
 // ── Main export ────────────────────────────────────────────────────────────────
 interface Props {
-  kpis?:       DashboardKPIs;
-  kpisLoading: boolean;
+  kpis?:            DashboardKPIs;
+  kpisLoading:      boolean;
+  displayCurrency?: string;
 }
 
-export function AnalyticsDashboardRow({ kpis, kpisLoading }: Props) {
+export function AnalyticsDashboardRow({ kpis, kpisLoading, displayCurrency = "INR" }: Props) {
   return (
     <div className="px-8 flex flex-col gap-6">
       <div className="flex items-center gap-2">
@@ -520,7 +529,7 @@ export function AnalyticsDashboardRow({ kpis, kpisLoading }: Props) {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         <VolumePanel />
-        <StatusDonutPanel kpis={kpis} loading={kpisLoading} />
+        <StatusDonutPanel kpis={kpis} loading={kpisLoading} displayCurrency={displayCurrency} />
         <DenialReasonsPanel kpis={kpis} loading={kpisLoading} />
         <NativeObservabilityPanel kpis={kpis} loading={kpisLoading} />
       </div>

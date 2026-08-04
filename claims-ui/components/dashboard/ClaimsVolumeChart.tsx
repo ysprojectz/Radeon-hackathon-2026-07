@@ -225,7 +225,7 @@ export function ClaimsVolumeChart({
   dateFrom,
   dateTo,
   marketRegion,
-  displayCurrency = "USD",
+  displayCurrency = "INR",
 }: Props) {
   const [data, setData]         = useState<DashboardVolumeDay[]>([]);
   const [loading, setLoading]   = useState(true);

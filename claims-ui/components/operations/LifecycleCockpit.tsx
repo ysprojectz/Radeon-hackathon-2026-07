@@ -190,7 +190,7 @@ function LifecycleClaimRow({
         <p className="mt-1 truncate text-text-muted">{claim.next_action || "Continue claim journey"}</p>
       </td>
       <td className="hidden px-4 py-3 text-right font-mono text-xs text-text-primary lg:table-cell">
-        <CurrencyAmount amount={claim.total_settlement ?? claim.total_billed ?? 0} currency={claim.currency ?? "USD"} />
+        <CurrencyAmount amount={claim.total_settlement ?? claim.total_billed ?? 0} currency={claim.currency ?? "INR"} />
       </td>
       <td className="px-4 py-3">
         <div className="flex items-center justify-end gap-1">

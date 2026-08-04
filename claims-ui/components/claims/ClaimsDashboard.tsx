@@ -115,7 +115,7 @@ export function ClaimsDashboard({ stats, isLoading }: ClaimsDashboardProps) {
 
       <StatCard
         title="Total Settlements"
-        value={`${stats.display_currency || "USD"} ${parseFloat(stats.total_settled_amount).toLocaleString()}`}
+        value={`${stats.display_currency || "INR"} ${parseFloat(stats.total_settled_amount).toLocaleString("en-IN")}`}
         icon={DollarSign}
         color="neutral"
         trend={{ value: "Target met", isUp: true }}

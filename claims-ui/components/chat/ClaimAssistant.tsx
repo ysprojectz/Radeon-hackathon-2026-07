@@ -979,7 +979,7 @@ export function ClaimAssistant() {
       
       const content = [
         `• Matching claims: ${claimCount}`,
-        `• Total billed: ${formatCurrency(totalValue, "USD")}`,
+        `• Total billed: ${formatCurrency(totalValue, "INR")}`,
         "• Open a claim below for the full journey and settlement view.",
       ].join("\n");
       return {

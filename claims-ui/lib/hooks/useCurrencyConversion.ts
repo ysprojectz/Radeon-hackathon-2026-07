@@ -12,9 +12,9 @@ export interface CurrencyConversionResult {
 
 export function useCurrencyConversion(
   marketRegion: string,
-  targetCurrency: string = "USD"
+  targetCurrency: string = "INR"
 ): CurrencyConversionResult {
-  const marketCurrency = marketRegion ? MARKET_CURRENCY[marketRegion] ?? "USD" : "USD";
+  const marketCurrency = marketRegion ? MARKET_CURRENCY[marketRegion] ?? "INR" : "INR";
 
   const convert = useMemo(() => {
     return (amount: number | string): number => {
