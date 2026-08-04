@@ -54,7 +54,7 @@ export function DashboardRegionFilter({
           <span className="text-lg leading-none">🌐</span>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold">Global</p>
-            <p className="text-[10px] uppercase tracking-[0.14em] text-white/30">Display in USD</p>
+            <p className="text-[10px] uppercase tracking-[0.14em] text-white/30">Display in INR</p>
           </div>
         </DropdownMenuItem>
 
@@ -67,7 +67,7 @@ export function DashboardRegionFilter({
             <span className="text-lg leading-none">{MARKET_FLAGS[market] ?? "🏳️"}</span>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold">{MARKET_LABELS[market] ?? market}</p>
-              <p className="text-[10px] uppercase tracking-[0.14em] text-white/30">{MARKET_CURRENCY[market] ?? "USD"}</p>
+              <p className="text-[10px] uppercase tracking-[0.14em] text-white/30">{MARKET_CURRENCY[market] ?? "INR"}</p>
             </div>
           </DropdownMenuItem>
         ))}

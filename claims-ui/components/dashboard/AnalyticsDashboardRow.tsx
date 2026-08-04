@@ -209,10 +209,10 @@ function StatusDonutPanel({ kpis, loading }: { kpis?: DashboardKPIs; loading: bo
   // Financial summary
   const settled = parseFloat(kpis?.total_settled_amount ?? "0");
   const settledFmt = settled >= 1_000_000
-    ? `$${(settled / 1_000_000).toFixed(1)}M`
+    ? `₹${(settled / 1_000_000).toFixed(1)}M`
     : settled >= 1_000
-    ? `$${(settled / 1_000).toFixed(1)}K`
-    : `$${settled.toFixed(0)}`;
+    ? `₹${(settled / 1_000).toFixed(1)}K`
+    : `₹${settled.toFixed(0)}`;
 
   const denialRate = kpis?.denial_rate ?? 0;
   const settlePct  = total > 0 ? Math.round(((raw.SETTLED ?? 0) / total) * 100) : 0;
