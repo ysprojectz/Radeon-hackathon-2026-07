@@ -126,8 +126,8 @@ export function KPICard({
             <span
               className={cn(
                 "block text-[10px] font-black leading-tight mt-0.5",
-                trend && (trend.value >= 0 ? "text-emerald-300" : "text-rose-300"),
-                !trend && urgent && "text-rose-300",
+                trend && (trend.value >= 0 ? "text-[var(--status-success)]" : "text-[var(--status-danger)]"),
+                !trend && urgent && "text-[var(--status-danger)]",
                 !trend && !urgent && text
               )}
             >
@@ -200,8 +200,8 @@ export function KPICard({
           <span
             className={cn(
               "min-w-0 shrink-0 text-right text-[11px] font-black leading-tight tracking-normal line-clamp-2",
-              trend && (trend.value >= 0 ? "text-emerald-300" : "text-rose-300"),
-              !trend && urgent && "text-rose-300",
+              trend && (trend.value >= 0 ? "text-[var(--status-success)]" : "text-[var(--status-danger)]"),
+              !trend && urgent && "text-[var(--status-danger)]",
               !trend && !urgent && text
             )}
           >

@@ -27,7 +27,7 @@ const PRIORITIES = ["URGENT", "HIGH", "MEDIUM", "LOW"];
 
 function statusTone(status: string) {
   if (status === "RESOLVED" || status === "CLOSED") return "bg-emerald-500/10 text-emerald-300 border-emerald-300/20";
-  if (status === "IN_PROGRESS") return "bg-cyan-500/10 text-cyan-300 border-cyan-300/20";
+  if (status === "IN_PROGRESS") return "bg-[var(--status-info)]/10 text-[var(--status-info)] border-[var(--status-info)]/20";
   return "bg-amber-500/10 text-amber-300 border-amber-300/20";
 }
 
@@ -35,7 +35,7 @@ function priorityTone(priority: string) {
   if (priority === "URGENT") return "text-rose-300";
   if (priority === "HIGH") return "text-amber-300";
   if (priority === "LOW") return "text-white/40";
-  return "text-cyan-200";
+  return "text-[var(--status-info)]";
 }
 
 async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
@@ -129,7 +129,7 @@ export default function AdminSupportPage() {
   if (checking) {
     return (
       <div className="flex h-64 items-center justify-center">
-        <Loader2 className="h-6 w-6 animate-spin text-cyan-300" />
+        <Loader2 className="h-6 w-6 animate-spin text-[var(--status-info)]" />
       </div>
     );
   }
@@ -231,12 +231,12 @@ export default function AdminSupportPage() {
                           return href ? (
                             <Link
                               href={href}
-                              className="rounded-full border border-cyan-300/15 bg-cyan-300/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-cyan-200 hover:border-cyan-300/35"
+                              className="rounded-full border border-[var(--status-info)]/15 bg-[var(--status-info)]/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--status-info)] hover:border-[var(--status-info)]/35"
                             >
                               {ticket.claim_reference}
                             </Link>
                           ) : (
-                            <span className="rounded-full border border-cyan-300/15 bg-cyan-300/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-cyan-200">
+                            <span className="rounded-full border border-[var(--status-info)]/15 bg-[var(--status-info)]/10 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--status-info)]">
                               {ticket.claim_reference}
                             </span>
                           );

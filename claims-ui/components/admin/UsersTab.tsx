@@ -203,7 +203,7 @@ export function UsersTab() {
                         <Button
                           variant="ghost"
                           size="icon-xs"
-                          className="text-cyan-400 hover:bg-cyan-500/10 hover:text-cyan-300"
+                          className="text-cyan-400 hover:bg-[var(--status-info)]/10 hover:text-[var(--status-info)]"
                           onClick={() => setMfaResetUser(u)}
                           title="Reset MFA"
                           aria-label={`Reset MFA for ${u.email}`}

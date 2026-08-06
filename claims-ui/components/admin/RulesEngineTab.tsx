@@ -84,7 +84,7 @@ function SectionCard({ title, badge, children }: SectionCardProps) {
     <div className={cn(adminPanelClass, "overflow-hidden shadow-sm")}>
       <div className="flex items-center justify-between border-b border-white/[0.04] bg-white/[0.01] px-5 py-4">
         <p className={cn(adminSectionTitleClass, "text-[15px]")}>{title}</p>
-        <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan-300">
+        <span className="rounded-full border border-[var(--status-info)]/20 bg-[var(--status-info)]/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--status-info)]">
           {badge}
         </span>
       </div>

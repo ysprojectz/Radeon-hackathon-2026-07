@@ -250,7 +250,7 @@ export function SystemTab({ config, onSaved }: Props) {
       <section className={`${adminPanelClass} space-y-4`}>
         <div>
           <h3 className={`${adminSectionTitleClass} flex items-center gap-2`}>
-            <MessageSquare className="h-4 w-4 text-cyan-200" />
+            <MessageSquare className="h-4 w-4 text-[var(--status-info)]" />
             Chat Assistance
           </h3>
         </div>

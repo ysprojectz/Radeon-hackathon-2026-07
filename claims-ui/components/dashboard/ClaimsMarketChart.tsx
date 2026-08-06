@@ -196,7 +196,7 @@ export function ClaimsMarketChart({ data, isLoading, design = "command" }: Claim
 
       <div className="grid shrink-0 grid-cols-2 gap-2">
         {renderSummaryTile("Avg / Mkt", avgPerMarket.toLocaleString(), Globe, "border-violet-400/15 bg-violet-400/[0.07] text-violet-200")}
-        {renderSummaryTile("Spread", spread.toLocaleString(), Layers, "border-cyan-400/15 bg-cyan-400/[0.07] text-cyan-200")}
+        {renderSummaryTile("Spread", spread.toLocaleString(), Layers, "border-[var(--status-info)]/15 bg-[var(--status-info)]/[0.07] text-[var(--status-info)]")}
       </div>
     </div>
   );
@@ -205,7 +205,7 @@ export function ClaimsMarketChart({ data, isLoading, design = "command" }: Claim
     <>
       <div className="grid shrink-0 grid-cols-3 gap-2">
         {renderSummaryTile("Markets", chartData.length.toLocaleString(), Globe, "border-violet-400/15 bg-violet-400/[0.07] text-violet-200")}
-        {renderSummaryTile("Dominance", `${topMarketShare.toFixed(0)}%`, BarChart3, "border-cyan-400/15 bg-cyan-400/[0.07] text-cyan-200")}
+        {renderSummaryTile("Dominance", `${topMarketShare.toFixed(0)}%`, BarChart3, "border-[var(--status-info)]/15 bg-[var(--status-info)]/[0.07] text-[var(--status-info)]")}
         {renderSummaryTile("Distributed", `${diversifiedShare.toFixed(0)}%`, TrendingUp, "border-emerald-400/15 bg-emerald-400/[0.07] text-emerald-200")}
       </div>
       <div className="custom-scrollbar min-h-0 flex-1 space-y-2 overflow-y-auto pr-1">

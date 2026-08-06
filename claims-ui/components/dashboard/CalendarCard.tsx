@@ -56,7 +56,7 @@ const EVENT_TYPES: Record<CalendarEventType, {
     icon: Bell,
     bg: "bg-cyan-500/10",
     border: "border-cyan-500/20",
-    text: "text-cyan-300",
+    text: "text-[var(--status-info)]",
     dot: "bg-cyan-300",
   },
   MEETING: {
@@ -819,7 +819,7 @@ export function CalendarCard({ systemEvents = [] }: CalendarCardProps) {
                 evt.priority === "URGENT" ? "text-rose-300" :
                 evt.priority === "HIGH" ? "text-amber-300" :
                 evt.priority === "LOW" ? "text-white/30" :
-                "text-cyan-200/70";
+                "text-[var(--status-info)]/70";
 
               const Inner = (
                 <div 

@@ -56,7 +56,7 @@ export default function DashboardPage() {
   const [selectedMonth, setSelectedMonth] = useState<number | "Current">("Current");
   const [customFrom, setCustomFrom] = useState<string | undefined>();
   const [customTo, setCustomTo] = useState<string | undefined>();
-  const [marketRegion, setMarketRegion] = useState("");
+  const [marketRegion, setMarketRegion] = useState("INDIA");
 
   // Use market-specific currency (INR, USD, etc.) for all claim values
   const dashboardCurrency = marketRegion ? (MARKET_CURRENCY[marketRegion] ?? "INR") : "INR";
@@ -86,7 +86,7 @@ export default function DashboardPage() {
     }
     setCustomFrom(urlFrom ?? undefined);
     setCustomTo(urlTo ?? undefined);
-    setMarketRegion(urlMarket ?? "");
+    setMarketRegion(urlMarket ?? "INDIA");
   }, [router, searchParams]);
 
   // Calculate date range based on selected period
@@ -541,7 +541,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href={buildClaimsUrl()}
-              className="ui-chip-label rounded-full border border-cyan-300/15 bg-cyan-300/10 px-3 py-1.5 text-cyan-200 transition-colors hover:border-cyan-300/30 hover:bg-cyan-300/15"
+              className="ui-chip-label rounded-full border border-[var(--status-info)]/15 bg-[var(--status-info)]/10 px-3 py-1.5 text-[var(--status-info)] transition-colors hover:border-[var(--status-info)]/30 hover:bg-[var(--status-info)]/15"
             >
               View All
             </Link>
@@ -550,7 +550,7 @@ export default function DashboardPage() {
           <div className="mb-6 flex flex-wrap items-center gap-3">
             {/* Search */}
             <div className="relative flex-1 min-w-[260px] group">
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20 group-hover:text-cyan-300 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20 group-hover:text-[var(--status-info)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
               <input
                 type="search"
                 value={recentSearch}
@@ -585,7 +585,7 @@ export default function DashboardPage() {
                   className={cn(
                     "ui-control-label flex h-12 items-center gap-2 rounded-2xl border px-5 transition-all",
                     statusFilter
-                      ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-200"
+                      ? "border-[var(--status-info)]/30 bg-[var(--status-info)]/10 text-[var(--status-info)]"
                       : "border-white/[0.06] bg-white/[0.04] text-white/45 hover:bg-white/[0.07] hover:text-white"
                   )}
                 >
@@ -614,7 +614,7 @@ export default function DashboardPage() {
                   className={cn(
                     "ui-control-label flex h-12 items-center gap-2 rounded-2xl border px-5 transition-all",
                     typeFilter
-                      ? "border-cyan-300/30 bg-cyan-300/10 text-cyan-200"
+                      ? "border-[var(--status-info)]/30 bg-[var(--status-info)]/10 text-[var(--status-info)]"
                       : "border-white/[0.06] bg-white/[0.04] text-white/45 hover:bg-white/[0.07] hover:text-white"
                   )}
                 >
@@ -714,7 +714,7 @@ export default function DashboardPage() {
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cyan-300/6 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                       </td>
                       <td className="px-4 py-5">
-                        <span className="font-mono text-[13px] font-bold text-white/45 transition-colors group-hover:text-cyan-200">
+                        <span className="font-mono text-[13px] font-bold text-white/45 transition-colors group-hover:text-[var(--status-info)]">
                           #{claim.claim_reference?.split("-").pop()}
                         </span>
                       </td>

@@ -81,10 +81,15 @@ export function Step4Processing({
     submittedRef.current = true;
     const controller = new AbortController();
     
-    // Set a 60-second timeout for the entire submission process
+    // Timeout for the entire submission process. Real sequential dual-agent
+    // LLM inference (Agent B then Agent C, each a genuine GPU generation
+    // call, not a mock) can take several minutes for a full claim with real
+    // policy context — 60s was far too short and aborted the frontend request
+    // while the backend kept processing and succeeded anyway. 10 minutes
+    // gives real inference solid margin while still catching a genuine hang.
     const timeoutId = setTimeout(() => {
       controller.abort();
-    }, 60000);
+    }, 600000);
 
     let cancelled = false;
 

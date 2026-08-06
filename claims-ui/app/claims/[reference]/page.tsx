@@ -187,11 +187,11 @@ export default function ClaimDetailPage({ params }: Props) {
                   />
                 )}
                 {validationWarnings.length > 0 && (
-                  <div className="flex items-start gap-3 rounded-xl border border-amber-500/20 bg-amber-500/8 p-4">
-                    <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div className="flex items-start gap-3 rounded-xl border border-[var(--status-warning)]/20 bg-[var(--status-warning)]/10 p-4">
+                    <AlertCircle className="h-4 w-4 text-[var(--status-warning)] shrink-0 mt-0.5" />
                     <div className="space-y-1">
                       {validationWarnings.map((w, i) => (
-                        <p key={i} className="text-sm text-amber-300/80">{w}</p>
+                        <p key={i} className="text-sm text-[var(--status-warning)]">{w}</p>
                       ))}
                     </div>
                   </div>

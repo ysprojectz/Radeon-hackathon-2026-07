@@ -3611,7 +3611,7 @@ async def list_lifecycle_operations(
     page_size: int = Query(25, ge=1, le=100),
     limit: Optional[int] = Query(None, ge=1, le=500),
     current_user: CurrentUser = Depends(
-        require_roles("ADMIN", "COMPLIANCE_OFFICER", "MEDICAL_DIRECTOR", "SENIOR_ADJUSTER")
+        require_roles("ADMIN", "ADJUSTER", "COMPLIANCE_OFFICER", "MEDICAL_DIRECTOR", "SENIOR_ADJUSTER")
     ),
 ):
     """List current lifecycle operations, including stuck claim detection."""

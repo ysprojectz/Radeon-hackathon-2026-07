@@ -127,9 +127,9 @@ export function ClaimsStatusChart({ data, isLoading, design = "command" }: Claim
       count: pending,
       icon: Clock,
       color: "var(--brand-primary)",
-      bg: "bg-cyan-400/10",
-      border: "border-cyan-400/15",
-      text: "text-cyan-300",
+      bg: "bg-[var(--status-info)]/10",
+      border: "border-[var(--status-info)]/15",
+      text: "text-[var(--status-info)]",
     },
   ];
 

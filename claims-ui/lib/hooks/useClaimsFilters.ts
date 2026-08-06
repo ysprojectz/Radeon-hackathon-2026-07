@@ -10,7 +10,7 @@ import type { GetClaimsParams } from '@/lib/api';
  */
 export function useClaimsFilters() {
   const [status, setStatus] = useQueryState('status', parseAsString.withDefault(''));
-  const [market, setMarket] = useQueryState('market_region', parseAsString.withDefault(''));
+  const [market, setMarket] = useQueryState('market_region', parseAsString.withDefault('INDIA'));
   const [search, setSearch] = useQueryState('search', parseAsString.withDefault(''));
   const [page, setPage] = useQueryState('page', parseAsInteger.withDefault(1));
   const [sortBy, setSortBy] = useQueryState('sort_by', parseAsString.withDefault('service_date'));

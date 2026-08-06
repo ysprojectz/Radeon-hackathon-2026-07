@@ -28,7 +28,7 @@ export function YearPicker({ selectedYear, onYearChange, className }: YearPicker
           type="button"
           className={cn(
             "group flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-2.5 text-sm font-semibold transition-all duration-200 hover:bg-white/[0.08] hover:text-white focus:outline-none",
-            selectedYear !== "Current" && "border-cyan-300/35 bg-cyan-300/14 text-cyan-200",
+            selectedYear !== "Current" && "border-[var(--status-info)]/35 bg-[var(--status-info)]/14 text-[var(--status-info)]",
             className
           )}
         >
@@ -55,15 +55,15 @@ export function YearPicker({ selectedYear, onYearChange, className }: YearPicker
                 }}
                 className={cn(
                   "relative flex w-full cursor-pointer select-none items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold outline-none transition-all focus:bg-white/[0.06]",
-                  isSelected 
-                    ? "bg-cyan-300/15 text-cyan-200 shadow-[inset_0_0_0_1px_rgba(34,211,238,0.2)]" 
+                  isSelected
+                    ? "bg-[var(--status-info)]/15 text-[var(--status-info)] shadow-[inset_0_0_0_1px_rgba(37,99,235,0.2)]"
                     : "text-white/60 hover:text-white"
                 )}
               >
                 <span className="relative z-10">{year}</span>
                 {isSelected && (
-                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-cyan-400/20 shadow-[0_0_12px_rgba(34,211,238,0.3)]">
-                    <Check className="h-3 w-3 text-cyan-300" strokeWidth={3} />
+                  <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[var(--status-info)]/20 shadow-[0_0_12px_rgba(37,99,235,0.3)]">
+                    <Check className="h-3 w-3 text-[var(--status-info)]" strokeWidth={3} />
                   </div>
                 )}
               </DropdownMenuItem>

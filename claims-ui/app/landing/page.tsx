@@ -433,7 +433,7 @@ export default function LandingPage() {
             </div>
 
             <div className="hero-line-4 mt-10 flex items-center gap-8">
-              {[["99.9%", "Uptime"], ["< 2s", "Processing"], ["24/7", "Event Ready"]].map(([v, l]) => (
+              {[["99.9%", "Uptime"], ["2", "Local LLMs"], ["24/7", "Event Ready"]].map(([v, l]) => (
                 <div key={l}>
                   <p className="font-mono text-xl font-black text-white">{v}</p>
                   <p className="mt-0.5 text-[10px] uppercase tracking-widest text-white/30">{l}</p>
@@ -494,8 +494,8 @@ export default function LandingPage() {
       <section className="border-y border-white/[0.06] bg-[var(--bg-dashboard)]">
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/[0.06]">
-            <StatRing target={50000} suffix="+" label="Claims Processed & Tested" color="#2563EB" />
-            <StatRing value="< 2s" label="Target Processing Time" color="#2563EB" />
+            <StatRing value="100%" label="Local GPU Inference" color="#2563EB" />
+            <StatRing target={2} label="Independent Local LLMs" color="#2563EB" />
             <StatRing value="99.9%" label="Uptime Target" color="#2563EB" />
           </div>
         </div>

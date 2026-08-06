@@ -66,7 +66,7 @@ export function TimePeriodFilter({
                     className={cn(
                       "flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-all duration-200 outline-none",
                       isActive
-                        ? "border-cyan-300/35 bg-cyan-300/14 text-cyan-200 shadow-[0_14px_32px_rgba(34,211,238,0.18)]"
+                        ? "border-[var(--status-info)]/35 bg-[var(--status-info)]/14 text-[var(--status-info)] shadow-[0_14px_32px_rgba(37,99,235,0.18)]"
                         : "border-white/[0.08] bg-white/[0.04] text-white/48 hover:bg-white/[0.08] hover:text-white"
                     )}
                   >
@@ -83,12 +83,12 @@ export function TimePeriodFilter({
                     className={cn(
                       "flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold transition-all focus:bg-white/[0.06]",
                       isActive && selectedMonth === "Current"
-                        ? "bg-cyan-300/15 text-cyan-200"
+                        ? "bg-[var(--status-info)]/15 text-[var(--status-info)]"
                         : "text-white/60 hover:text-white"
                     )}
                   >
                     Current Month
-                    {isActive && selectedMonth === "Current" && <Check className="h-3.5 w-3.5 text-cyan-300" />}
+                    {isActive && selectedMonth === "Current" && <Check className="h-3.5 w-3.5 text-[var(--status-info)]" />}
                   </DropdownMenuItem>
                   {MONTHS.map((month, idx) => (
                     <DropdownMenuItem
@@ -100,12 +100,12 @@ export function TimePeriodFilter({
                       className={cn(
                         "flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold transition-all focus:bg-white/[0.06]",
                         isActive && selectedMonth === idx
-                          ? "bg-cyan-300/15 text-cyan-200"
+                          ? "bg-[var(--status-info)]/15 text-[var(--status-info)]"
                           : "text-white/60 hover:text-white"
                       )}
                     >
                       {month}
-                      {isActive && selectedMonth === idx && <Check className="h-3.5 w-3.5 text-cyan-300" />}
+                      {isActive && selectedMonth === idx && <Check className="h-3.5 w-3.5 text-[var(--status-info)]" />}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
@@ -124,7 +124,7 @@ export function TimePeriodFilter({
                     className={cn(
                       "flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-all duration-200 outline-none",
                       isActive
-                        ? "border-cyan-300/35 bg-cyan-300/14 text-cyan-200 shadow-[0_14px_32px_rgba(34,211,238,0.18)]"
+                        ? "border-[var(--status-info)]/35 bg-[var(--status-info)]/14 text-[var(--status-info)] shadow-[0_14px_32px_rgba(37,99,235,0.18)]"
                         : "border-white/[0.08] bg-white/[0.04] text-white/48 hover:bg-white/[0.08] hover:text-white"
                     )}
                   >
@@ -143,12 +143,12 @@ export function TimePeriodFilter({
                       className={cn(
                         "flex w-full cursor-pointer items-center justify-between rounded-lg px-3 py-2.5 text-sm font-bold transition-all focus:bg-white/[0.06]",
                         isActive && selectedYear === year
-                          ? "bg-cyan-300/15 text-cyan-200"
+                          ? "bg-[var(--status-info)]/15 text-[var(--status-info)]"
                           : "text-white/60 hover:text-white"
                       )}
                     >
                       {year}
-                      {isActive && selectedYear === year && <Check className="h-3.5 w-3.5 text-cyan-300" />}
+                      {isActive && selectedYear === year && <Check className="h-3.5 w-3.5 text-[var(--status-info)]" />}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
@@ -165,7 +165,7 @@ export function TimePeriodFilter({
               className={cn(
                 "rounded-xl border px-4 py-2.5 text-sm font-semibold transition-all duration-200",
                 isActive
-                  ? "border-cyan-300/35 bg-cyan-300/14 text-cyan-200 shadow-[0_14px_32px_rgba(34,211,238,0.18)]"
+                  ? "border-[var(--status-info)]/35 bg-[var(--status-info)]/14 text-[var(--status-info)] shadow-[0_14px_32px_rgba(37,99,235,0.18)]"
                   : "border-white/[0.08] bg-white/[0.04] text-white/48 hover:bg-white/[0.08] hover:text-white"
               )}
             >

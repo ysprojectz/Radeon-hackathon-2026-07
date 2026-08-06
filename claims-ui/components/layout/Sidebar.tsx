@@ -43,11 +43,11 @@ const NAV_SECTIONS = [
   {
     title: "Operations",
     items: [
+      { href: "/submit",          label: "Claim Submission", icon: FileCheck, screenId: "submit" },
       { href: "/hitl",            label: "Review Queue",    icon: AlertTriangle, screenId: "hitl" },
       { href: "/claims",          label: "Claims List",     icon: FileText, screenId: "claims" },
       { href: "/operations/lifecycle", label: "Claim Journey", icon: Activity, screenId: "claim-journey" },
       { href: "/accounts",        label: "Accounts",        icon: CreditCard, screenId: "accounts" },
-      { href: "/submit",          label: "Claim Submission", icon: FileCheck, screenId: "submit" },
     ],
   },
   {

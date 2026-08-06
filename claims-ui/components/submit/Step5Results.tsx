@@ -83,22 +83,22 @@ export function Step5Results({ claimReference, onReset }: Step5Props) {
                 className="text-base font-semibold"
               />
             </div>
-            <div className="rounded-lg dark:bg-[var(--status-success)]/10 bg-[var(--status-success)] border dark:border-[var(--status-success)]/20 border-[var(--status-success)] p-3">
-              <p className="text-xs dark:text-[var(--status-success)] text-[var(--status-success)] mb-1">Plan Paid</p>
+            <div className="rounded-lg bg-[var(--status-success)]/10 border border-[var(--status-success)]/20 p-3">
+              <p className="text-xs text-[var(--status-success)] mb-1">Plan Paid</p>
               <CurrencyAmount
                 amount={settlement.total_plan_payment}
                 currency={settlement.currency}
                 bold
-                className="text-base dark:text-[var(--status-success)] text-[var(--status-success)]"
+                className="text-base text-[var(--status-success)]"
               />
             </div>
-            <div className="rounded-lg dark:bg-[var(--status-warning)]/10 bg-[var(--status-warning)] border dark:border-[var(--status-warning)]/20 border-[var(--status-warning)] p-3">
-              <p className="text-xs dark:text-[var(--status-warning)] text-[var(--status-warning)] mb-1">Member Resp.</p>
+            <div className="rounded-lg bg-[var(--status-warning)]/10 border border-[var(--status-warning)]/20 p-3">
+              <p className="text-xs text-[var(--status-warning)] mb-1">Member Resp.</p>
               <CurrencyAmount
                 amount={settlement.total_member_responsibility}
                 currency={settlement.currency}
                 bold
-                className="text-base dark:text-[var(--status-warning)] text-[var(--status-warning)]"
+                className="text-base text-[var(--status-warning)]"
               />
             </div>
           </div>

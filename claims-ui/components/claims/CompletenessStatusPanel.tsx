@@ -31,20 +31,20 @@ const STATUS_CONFIG: Record<ComponentStatus, {
 }> = {
   COMPLETED: {
     icon: <CheckCircle2 className="h-3 w-3" />,
-    color: "text-emerald-300",
-    bgColor: "border-emerald-400/20 bg-emerald-400/10",
+    color: "text-[var(--status-success)]",
+    bgColor: "border-[var(--status-success)]/20 bg-[var(--status-success)]/10",
     label: "Done",
   },
   SKIPPED: {
     icon: <MinusCircle className="h-3 w-3" />,
-    color: "text-amber-300",
-    bgColor: "border-amber-400/20 bg-amber-400/10",
+    color: "text-[var(--status-warning)]",
+    bgColor: "border-[var(--status-warning)]/20 bg-[var(--status-warning)]/10",
     label: "Skipped",
   },
   FAILED: {
     icon: <XCircle className="h-3 w-3" />,
-    color: "text-red-300",
-    bgColor: "border-red-400/20 bg-red-400/10",
+    color: "text-[var(--status-danger)]",
+    bgColor: "border-[var(--status-danger)]/20 bg-[var(--status-danger)]/10",
     label: "Failed",
   },
   NOT_STARTED: {
@@ -134,15 +134,15 @@ export function CompletenessStatusPanel({
 
   const completedCount = Object.values(components).filter((component) => component.status === "COMPLETED").length;
   const overallColor = all_completed
-    ? "text-emerald-300"
+    ? "text-[var(--status-success)]"
     : any_failed
-      ? "text-red-300"
-      : "text-amber-300";
+      ? "text-[var(--status-danger)]"
+      : "text-[var(--status-warning)]";
   const progressColor = all_completed
-    ? "bg-emerald-300"
+    ? "bg-[var(--status-success)]"
     : any_failed
-      ? "bg-red-300"
-      : "bg-amber-300";
+      ? "bg-[var(--status-danger)]"
+      : "bg-[var(--status-warning)]";
 
   return (
     <div className={cn("glass-card rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4", className)}>
@@ -224,7 +224,7 @@ export function CompletenessStatusPanel({
             {failure_reasons.length > 0 ? (
               <ul className="space-y-1">
                 {failure_reasons.map((reason, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-red-200/82">
+                  <li key={idx} className="flex items-start gap-2 text-xs text-[var(--status-danger)]">
                     <XCircle className="mt-0.5 h-3 w-3 shrink-0" />
                     <span>{reason}</span>
                   </li>
@@ -246,7 +246,7 @@ function Score({ label, value, highlight }: { label: string; value: string; high
   return (
     <div className="rounded-lg border border-white/[0.06] bg-white/[0.035] px-3 py-2">
       <p className="ui-eyebrow mb-1 text-white/28">{label}</p>
-      <p className={cn("font-mono text-sm font-bold", highlight ? "text-emerald-300" : "text-white/74")}>
+      <p className={cn("font-mono text-sm font-bold", highlight ? "text-[var(--status-success)]" : "text-white/74")}>
         {value}%
       </p>
     </div>

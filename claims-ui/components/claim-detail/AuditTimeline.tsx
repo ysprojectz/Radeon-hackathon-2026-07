@@ -206,7 +206,7 @@ export function AuditTimeline({ audit, showHash = false }: AuditTimelineProps) {
                     </span>
                     <Link
                       href={`/accounts?search=${encodeURIComponent(audit.claim_reference)}&status=${firstEntry.event_type === "ACCOUNT_NOT_REGISTERED" ? "ALL" : "UNVERIFIED"}`}
-                      className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white/62 transition-colors hover:border-cyan-300/30 hover:text-cyan-200"
+                      className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white/62 transition-colors hover:border-[var(--status-info)]/30 hover:text-[var(--status-info)]"
                     >
                       Open Accounts
                     </Link>

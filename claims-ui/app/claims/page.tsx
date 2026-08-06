@@ -92,19 +92,20 @@ export default function ClaimsPage() {
     (params.received_date_from && params.received_date_to && params.received_date_from > params.received_date_to)
   );
   const { data, isLoading, error, refresh } = useClaims(params, { enabled: !dateRangeInvalid });
+  const displayCurrency = params.market_region ? (MARKET_CURRENCY[params.market_region] ?? "INR") : "INR";
 
   // Dashboard KPIs hook - synced with current filters where applicable
   const { kpis, isLoading: isKpisLoading } = useDashboardKPIs({
     dateFrom: params.received_date_from,
     dateTo: params.received_date_to,
     marketRegion: params.market_region,
+    displayCurrency,
     enabled: !dateRangeInvalid
   });
 
   const totalPages = data ? Math.ceil(data.total / PAGE_SIZE) : 1;
   const currentPage = params.page ?? 1;
   const allIds = useMemo(() => data?.claims?.map((c) => c.claim_reference) ?? [], [data?.claims]);
-  const displayCurrency = params.market_region ? (MARKET_CURRENCY[params.market_region] ?? "INR") : "INR";
 
   const handleMarketRegionChange = useCallback((marketRegion: string) => {
     setSelectedIds(new Set());

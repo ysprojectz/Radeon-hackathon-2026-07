@@ -54,7 +54,7 @@ function statusTone(status: string) {
   if (status === "RESOLVED" || status === "CLOSED")
     return "border-emerald-300/20 bg-emerald-300/10 text-emerald-200";
   if (status === "IN_PROGRESS")
-    return "border-cyan-300/20 bg-cyan-300/10 text-cyan-200";
+    return "border-[var(--status-info)]/20 bg-[var(--status-info)]/10 text-[var(--status-info)]";
   return "border-amber-300/20 bg-amber-300/10 text-amber-200";
 }
 
@@ -62,7 +62,7 @@ function priorityTone(priority: string) {
   if (priority === "URGENT") return "text-rose-300";
   if (priority === "HIGH") return "text-amber-300";
   if (priority === "LOW") return "text-white/35";
-  return "text-cyan-200";
+  return "text-[var(--status-info)]";
 }
 
 function formatBytes(bytes: number) {
@@ -513,12 +513,12 @@ export function SupportPanel() {
                                     return href ? (
                                       <Link
                                         href={href}
-                                        className="rounded-full border border-cyan-300/15 bg-cyan-300/10 px-2 py-1 text-cyan-200 hover:border-cyan-300/35"
+                                        className="rounded-full border border-[var(--status-info)]/15 bg-[var(--status-info)]/10 px-2 py-1 text-[var(--status-info)] hover:border-[var(--status-info)]/35"
                                       >
                                         {ticket.claim_reference}
                                       </Link>
                                     ) : (
-                                      <span className="rounded-full border border-cyan-300/15 bg-cyan-300/10 px-2 py-1 text-cyan-200">
+                                      <span className="rounded-full border border-[var(--status-info)]/15 bg-[var(--status-info)]/10 px-2 py-1 text-[var(--status-info)]">
                                         {ticket.claim_reference}
                                       </span>
                                     );

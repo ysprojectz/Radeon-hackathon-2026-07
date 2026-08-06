@@ -64,7 +64,7 @@ export default function TitlePreviewPage() {
     <div className="min-h-screen bg-dashboard-bg py-8 text-white">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-8 max-w-5xl rounded-[1.75rem] border border-white/[0.08] bg-white/[0.03] px-6 py-6 backdrop-blur-xl">
-          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-cyan-200/55">
+          <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[var(--status-info)]/55">
             Title Preview
           </p>
           <h1 className="mt-3 text-2xl font-black tracking-[0.08em] text-white sm:text-3xl">

@@ -435,10 +435,10 @@ export function PipelineObservabilityPanel({ claim, audit }: PipelineObservabili
                 </div>
              </div>
              {lifecycleError && (
-               <div className="glass-card rounded-2xl border border-amber-300/15 bg-amber-300/[0.04] p-4">
+               <div className="glass-card rounded-2xl border border-[var(--status-warning)]/20 bg-[var(--status-warning)]/10 p-4">
                  <div className="flex items-start gap-3">
-                   <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-200" />
-                   <p className="text-xs leading-relaxed text-amber-100/70">
+                   <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--status-warning)]" />
+                   <p className="text-xs leading-relaxed text-[var(--status-warning)]">
                      Claim journey service unavailable. Showing claim and event-derived tracking. {friendlyText(lifecycleError)}
                    </p>
                  </div>

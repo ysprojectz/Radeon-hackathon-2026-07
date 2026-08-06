@@ -332,7 +332,7 @@ ROLES = {
 # Roles that can write / adjudicate
 WRITE_ROLES = {"ADMIN", "ADJUSTER", "SENIOR_ADJUSTER", "MEDICAL_DIRECTOR"}
 # Roles that can perform HITL review
-HITL_ROLES  = {"ADMIN", "SENIOR_ADJUSTER", "MEDICAL_DIRECTOR"}
+HITL_ROLES  = {"ADMIN", "ADJUSTER", "SENIOR_ADJUSTER", "MEDICAL_DIRECTOR"}
 # Roles that can access audit / compliance data
 AUDIT_ROLES = {"ADMIN", "COMPLIANCE_OFFICER", "MEDICAL_DIRECTOR"}
 
@@ -1075,7 +1075,7 @@ async def list_active_sessions(current_user: CurrentUser = Depends(get_current_u
 
     try:
         sessions = get_user_sessions(current_user.email)
-        session_infos = [SessionInfo(**s) for s in sessions]
+        session_infos = [SessionInfo(**s.to_dict()) for s in sessions]
         logger.info(
             "[AUTH] listed %d sessions for %s",
             len(session_infos),

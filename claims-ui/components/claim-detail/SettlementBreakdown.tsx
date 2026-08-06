@@ -322,7 +322,7 @@ function Metric({
   currency: string;
   tone?: "default" | "positive" | "warning";
 }) {
-  const color = tone === "positive" ? "text-emerald-300" : tone === "warning" ? "text-amber-300" : "text-white/88";
+  const color = tone === "positive" ? "text-[var(--status-success)]" : tone === "warning" ? "text-[var(--status-warning)]" : "text-white/88";
   return (
     <div className="rounded-xl border border-white/[0.08] bg-black/20 px-3 py-2.5">
       <p className="ui-eyebrow mb-1 text-white/30">{label}</p>
@@ -346,10 +346,10 @@ function LedgerRow({
 }) {
   const toneClass = {
     default: "text-white/82",
-    deduction: "text-red-300",
-    positive: "text-emerald-300",
+    deduction: "text-[var(--status-danger)]",
+    positive: "text-[var(--status-success)]",
     final: "text-brand-primary",
-    info: "text-blue-200",
+    info: "text-[var(--status-info)]",
   }[tone];
 
   return (
@@ -437,7 +437,7 @@ function Money({
   currency: string;
   tone?: "default" | "deduction" | "positive";
 }) {
-  const color = tone === "positive" ? "text-emerald-300/90" : tone === "deduction" ? "text-amber-200/90" : "text-white/72";
+  const color = tone === "positive" ? "text-[var(--status-success)]" : tone === "deduction" ? "text-[var(--status-warning)]" : "text-white/72";
   return (
     <span className={`px-1 text-right font-mono text-xs font-semibold tabular-nums ${color}`}>
       <CurrencyAmount amount={value ?? 0} currency={currency} />
@@ -461,8 +461,8 @@ function SummaryTile({
   sublabel?: string;
 }) {
   const toneClass = {
-    emerald: "border-emerald-400/20 bg-emerald-400/[0.08] text-emerald-300",
-    amber: "border-amber-400/20 bg-amber-400/[0.08] text-amber-300",
+    emerald: "border-[var(--status-success)]/20 bg-[var(--status-success)]/[0.08] text-[var(--status-success)]",
+    amber: "border-[var(--status-warning)]/20 bg-[var(--status-warning)]/[0.08] text-[var(--status-warning)]",
     cyan: "border-brand-primary/20 bg-brand-primary/[0.08] text-brand-primary",
   }[tone];
 

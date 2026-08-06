@@ -271,7 +271,7 @@ export function ClaimsVolumeChart({
             <>
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-cyan-400/[0.07] border border-cyan-400/[0.12]">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                <span className="text-[10px] font-black text-cyan-300">{totalClaims.toLocaleString()}</span>
+                <span className="text-[10px] font-black text-[var(--status-info)]">{totalClaims.toLocaleString()}</span>
               </span>
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-purple-400/[0.07] border border-purple-400/[0.12]">
                 <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
@@ -311,7 +311,7 @@ export function ClaimsVolumeChart({
         {loading ? (
           <ChartLoading />
         ) : error ? (
-          <ChartEmpty className="text-rose-300">
+          <ChartEmpty className="text-[var(--status-danger)]">
             Failed to load chart data
           </ChartEmpty>
         ) : !hasData ? (

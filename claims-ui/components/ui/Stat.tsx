@@ -14,7 +14,7 @@ const toneClassName: Record<Exclude<NonNullable<StatProps["tone"]>, "custom">, s
   success: "border-emerald-300/15 bg-emerald-300/[0.07] text-emerald-200",
   warning: "border-amber-300/15 bg-amber-300/[0.07] text-amber-200",
   danger: "border-red-400/15 bg-red-400/[0.07] text-red-300",
-  info: "border-cyan-400/15 bg-cyan-400/[0.07] text-cyan-200",
+  info: "border-[var(--status-info)]/15 bg-[var(--status-info)]/[0.07] text-[var(--status-info)]",
   violet: "border-violet-400/15 bg-violet-400/[0.07] text-violet-200",
 }
 

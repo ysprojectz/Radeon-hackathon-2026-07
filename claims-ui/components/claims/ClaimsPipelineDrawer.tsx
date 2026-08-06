@@ -86,8 +86,8 @@ const DEPARTMENTS: Array<{
     label: "Processing",
     icon: Activity,
     desc: "Document intake",
-    shell: "border-cyan-400/30 bg-cyan-400/10",
-    iconClass: "text-cyan-300",
+    shell: "border-[var(--status-info)]/30 bg-[var(--status-info)]/10",
+    iconClass: "text-[var(--status-info)]",
     dot: "bg-cyan-400",
   },
   {
@@ -245,7 +245,7 @@ function typeStyles(type: EventType) {
   if (type === "user") {
     return { bg: "bg-fuchsia-400/10", text: "text-fuchsia-300", border: "border-fuchsia-400/25", icon: User };
   }
-  return { bg: "bg-cyan-400/10", text: "text-cyan-300", border: "border-cyan-400/25", icon: Info };
+  return { bg: "bg-[var(--status-info)]/10", text: "text-[var(--status-info)]", border: "border-[var(--status-info)]/25", icon: Info };
 }
 
 function escapeCsvValue(value: unknown): string {
@@ -712,7 +712,7 @@ export function ClaimsPipelineDrawer({ claimRef, open, onOpenChange }: ClaimsPip
         <DialogHeader className="border-b border-white/[0.08] px-4 py-4 sm:px-5 xl:px-6">
           <div className="grid gap-4 xl:grid-cols-[minmax(260px,0.75fr)_minmax(380px,1fr)_auto] xl:items-center">
             <div className="flex min-w-0 items-center gap-3 pr-8 xl:pr-0">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/18 bg-cyan-300/[0.08] text-cyan-200">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[var(--status-info)]/18 bg-[var(--status-info)]/[0.08] text-[var(--status-info)]">
                 <Zap className="h-5 w-5" />
               </div>
               <div className="min-w-0 text-left">

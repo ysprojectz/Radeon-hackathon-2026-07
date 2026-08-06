@@ -283,12 +283,12 @@ export function SettingsWorkspace({
                 </section>
 
                 {sessionsError && (
-                  <div className="rounded-2xl border border-red-500/20 bg-red-500/[0.08] p-4">
+                  <div className="rounded-2xl border border-[var(--status-danger)]/20 bg-[var(--status-danger)]/[0.08] p-4">
                     <div className="flex gap-3">
-                      <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+                      <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--status-danger)]" />
                       <div>
-                        <p className="text-sm font-semibold text-red-300">Failed to load sessions</p>
-                        <p className="mt-1 text-xs leading-5 text-red-200/70">{sessionsError}</p>
+                        <p className="text-sm font-semibold text-[var(--status-danger)]">Failed to load sessions</p>
+                        <p className="mt-1 text-xs leading-5 text-[var(--status-danger)]/80">{sessionsError}</p>
                       </div>
                     </div>
                   </div>

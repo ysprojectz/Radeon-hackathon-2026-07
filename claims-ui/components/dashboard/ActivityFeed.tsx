@@ -73,7 +73,7 @@ export function ActivityFeed({ claims, isLoading }: Props) {
                 <div className="flex min-w-0 flex-1 items-center gap-3">
                   <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${statusColor}`} />
                   <div className="min-w-0 flex-1">
-                    <span className="block truncate text-xs font-semibold text-white/85 transition-colors hover:text-cyan-300">
+                    <span className="block truncate text-xs font-semibold text-white/85 transition-colors hover:text-[var(--status-info)]">
                       {claim.claim_reference}
                     </span>
                     <p className="mt-0.5 truncate text-[11px] text-white/50">

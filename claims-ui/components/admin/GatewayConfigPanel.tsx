@@ -127,7 +127,7 @@ function ConnectivityHint({ gateway, env }: { gateway: "stripe" | "paytm" | "cas
 
   return (
     <div className="rounded-xl border border-cyan-300/15 bg-cyan-300/[0.06] px-4 py-3">
-      <p className="ui-eyebrow text-cyan-200/55">{title}</p>
+      <p className="ui-eyebrow text-[var(--status-info)]/55">{title}</p>
       <div className="mt-2 space-y-1">
         {lines.map((line) => (
           <p key={line} className="break-all font-mono text-xs text-cyan-100/70">
@@ -861,7 +861,7 @@ function PayoutHistory() {
       {/* ── Section header — identical rhythm to accounts table header ── */}
       <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-4 sm:px-6">
         <div className="flex items-center gap-3">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-300">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--status-info)]/20 bg-[var(--status-info)]/10 text-[var(--status-info)]">
             <Zap className="h-5 w-5" />
           </span>
           <div>
@@ -1017,7 +1017,7 @@ export default function GatewayConfigPage() {
       <section className="glass-card overflow-hidden px-5 py-5 sm:px-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-300">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--status-info)]/20 bg-[var(--status-info)]/10 text-[var(--status-info)]">
               <Landmark className="h-5 w-5" />
             </span>
             <div>
