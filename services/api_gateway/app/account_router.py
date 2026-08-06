@@ -74,7 +74,7 @@ async def list_customer_accounts(
     # Non-global roles are locked to their own market region.
     # Global roles (ADMIN, SENIOR_ADJUSTER, etc.) may supply an explicit filter or see all.
     if current_user.role not in _GLOBAL_VIEW_ROLES:
-        effective_region = current_user.market_region or "UAE"
+        effective_region = current_user.market_region or "INDIA"
     else:
         effective_region = market_region  # None → no filter (all regions)
 

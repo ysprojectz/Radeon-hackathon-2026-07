@@ -78,7 +78,7 @@ def _seed_users() -> dict[str, dict]:
             "email":           email,
             "full_name":       name,
             "role":            role,
-            "market_region":   "UAE",
+            "market_region":   "INDIA",
             "tenant_id":       "default",
             "is_active":       True,
             "hashed_password": hash_password(pwd),
